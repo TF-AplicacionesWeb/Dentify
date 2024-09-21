@@ -2,13 +2,17 @@
 
 export default {
   name: "login.vue",
+  methods:{
+    goToRegister(){
+      this.$router.push('/register');
+    }
+  }
 
 
 }
 </script>
 
 <template>
-
   <div>
     <div class="flex gap-24 items-center">
       <pv-Image src="src/assets/img/login.png" width="80%" class="w-1/2"></pv-Image>
@@ -27,6 +31,7 @@ export default {
                         placeholder="enter your password"/>
 
           <pv-button class="mt-4 button">Log In</pv-button>
+          <a class="underline cursor-pointer text-1xl" @click="goToRegister">Don't have an account yet?</a>
         </div>
       </div>
     </div>
