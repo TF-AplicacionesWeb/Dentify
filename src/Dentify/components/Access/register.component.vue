@@ -1,6 +1,8 @@
 <script>
+import changelangComponent from "../misc/changelang.component.vue";
 export default {
   name: "register.component",
+  components:{changelangComponent},
   methods:{
     goToLogin(){
       this.$router.push("/login");
@@ -10,16 +12,22 @@ export default {
 </script>
 
 <template>
+  <pv-toolbar  class="w-full fixed top-0 left-0 flex items-center justify-between p-4">
+    <template #end>
+
+      <changelangComponent></changelangComponent>
+    </template>
+  </pv-toolbar>
   <div>
     <div class="flex gap-24 items-center">
       <pv-Image src="src/assets/img/login.png" width="80%" class="w-1/2"></pv-Image>
       <div>
         <div class="flex flex-col items-center justify-center">
           <pv-Image src="src/assets/img/logoDentify.png" width="190px"></pv-Image>
-          <h1 class="mt-8 mb-8 text-center" style="font-size: 50px">Register</h1>
+          <h1 class="mt-8 mb-8 text-center" style="font-size: 50px">{{$t('Access.Register')}}</h1>
         </div>
         <div class="flex flex-col gap-3">
-          <label for="username" class="text-left">Username</label>
+          <label for="username" class="text-left">{{$t('Access.Username')}}</label>
           <pv-inputtext id="username" class="custom-input cursor-text" v-model="value" type="text" size="small"
                         placeholder="enter your username"/>
 
@@ -27,16 +35,16 @@ export default {
           <pv-inputtext type="password" id="email" class="custom-input cursor-text" v-model="value" size="small" toggleMask
                         placeholder="enter your email"/>
 
-          <label for="password" class="text-left">Password</label>
+          <label for="password" class="text-left">{{$t('Access.Password')}}</label>
           <pv-inputtext type="password" id="password" class="custom-input cursor-text" v-model="value" size="small" toggleMask
                         placeholder="enter your password"/>
-          <label for="confirm-password" class="text-left">Confirm Password</label>
+          <label for="confirm-password" class="text-left">{{$t('Access.C_password')}}</label>
           <pv-inputtext type="password" id="confirm-password" class="custom-input cursor-text" v-model="value" size="small" toggleMask
                         placeholder="confirm your password"/>
 
-          <pv-button class="mt-4 button">Sign In</pv-button>
+          <pv-button class="mt-4 button">{{$t('Access.SignIn')}}</pv-button>
 
-          <a class="underline cursor-pointer text-1xl" @click="goToLogin">Already have an account?</a>
+          <a class="underline cursor-pointer text-1xl" @click="goToLogin">{{$t('Access.ToLogin')}}</a>
         </div>
       </div>
     </div>
@@ -71,7 +79,7 @@ export default {
   color: white;
 }
 
-button:hover {
+.button:hover {
   background-color: #2C3E40;
   color: black;
   border-color: #2C3E50;
