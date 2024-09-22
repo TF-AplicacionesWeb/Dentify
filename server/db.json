@@ -11,5 +11,205 @@
       "register_date": "2023-01-15",
       "trial": true
     }
+  ],
+  "Dentists": [
+    {
+      "dni": 123456,
+      "first_name": "Dr. Mario",
+      "last_name": "Lopez",
+      "specialty": "Orthodontics",
+      "experience": 10,
+      "phone": "5555555555",
+      "email": "mario.lopez@clinic.com"
+    },
+    {
+      "dni": 654321,
+      "first_name": "Dr. Lucia",
+      "last_name": "Martinez",
+      "specialty": "Endodontics",
+      "experience": 8,
+      "phone": "4444444444",
+      "email": "lucia.martinez@clinic.com"
+    }
+  ],
+  "Inventory": [
+    {
+      "id_material": 1,
+      "material_name": "Gloves",
+      "quantity": 200,
+      "unit_price": 0.50,
+      "last_update_date": "2024-09-15"
+    },
+    {
+      "id_material": 2,
+      "material_name": "Masks",
+      "quantity": 500,
+      "unit_price": 0.30,
+      "last_update_date": "2024-09-16"
+    }
+  ],
+  "Patients": [
+    {
+      "dni": 101010,
+      "id_record": 1,
+      "first_name": "Carlos",
+      "last_name": "Garcia",
+      "email": "carlos.garcia@example.com",
+      "age": 30,
+      "medical_history": "Diabetes",
+      "birth_date": "1994-05-20"
+    },
+    {
+      "dni": 202020,
+      "id_record": 2,
+      "first_name": "Maria",
+      "last_name": "Hernandez",
+      "email": "maria.hernandez@example.com",
+      "age": 25,
+      "medical_history": "Asthma",
+      "birth_date": "1999-03-14"
+    }
+  ],
+  "Appointments": [
+    {
+      "id_appointment": 1,
+      "patient_dni": 101010,
+      "dentist_dni": 123456,
+      "appointment_date": "2024-10-10 09:00:00",
+      "reason": "Dental check-up",
+      "completed": 1,
+      "reminder_sent": 1,
+      "duration": 30,
+      "payment_id": 1,
+      "payment_status": 1
+    },
+    {
+      "id_appointment": 2,
+      "patient_dni": 202020,
+      "dentist_dni": 654321,
+      "appointment_date": "2024-10-12 11:00:00",
+      "reason": "Endodontic treatment",
+      "completed": 0,
+      "reminder_sent": 0,
+      "duration": 60,
+      "payment_id": 2,
+      "payment_status": 0
+    }
+  ],
+  "Payments": [
+    {
+      "payment_id": 1,
+      "amount": 100.00,
+      "payment_date": "2024-10-09"
+    },
+    {
+      "payment_id": 2,
+      "amount": 300.00,
+      "payment_date": "2024-10-11"
+    }
+  ],
+  "Payment_MethodPayment": [
+    {
+      "payment_id": 1,
+      "payment_method_id": 1
+    },
+    {
+      "payment_id": 2,
+      "payment_method_id": 2
+    }
+  ],
+  "PaymentMethod": [
+    {
+      "payment_method_id": 1,
+      "name": "Credit Card"
+    },
+    {
+      "payment_method_id": 2,
+      "name": "Bank Transfer"
+    }
+  ],
+  "Metrics": [
+    {
+      "id_metrics": 1,
+      "dentist_id": 123456,
+      "total_appointments": 10,
+      "total_payments": 1000.00,
+      "start_date": "2024-01-01",
+      "end_date": "2024-12-31"
+    },
+    {
+      "id_metrics": 2,
+      "dentist_id": 654321,
+      "total_appointments": 15,
+      "total_payments": 1500.00,
+      "start_date": "2024-01-01",
+      "end_date": "2024-12-31"
+    }
+  ],
+  "Schedules": [
+    {
+      "id_schedule": 1,
+      "dentist_id": 123456,
+      "weekday": "Monday",
+      "start_time": "09:00:00",
+      "end_time": "12:00:00"
+    },
+    {
+      "id_schedule": 2,
+      "dentist_id": 654321,
+      "weekday": "Tuesday",
+      "start_time": "10:00:00",
+      "end_time": "13:00:00"
+    }
+  ],
+  "MedicalRecords": [
+    {
+      "id_record": 1,
+      "medical_history": "Diabetes",
+      "dentist_id": 123456,
+      "date": "2024-10-09",
+      "diagnosis": "Advanced cavity",
+      "treatment": "Endodontic treatment"
+    },
+    {
+      "id_record": 2,
+      "medical_history": "Asthma",
+      "dentist_id": 654321,
+      "date": "2024-10-11",
+      "diagnosis": "Toothache",
+      "treatment": "Extraction"
+    }
+  ],
+  "Record_Exams": [
+    {
+      "record_id": 1,
+      "exam_id": 1
+    },
+    {
+      "record_id": 2,
+      "exam_id": 2
+    }
+  ],
+  "Exams": [
+    {
+      "exam_id": 1,
+      "description": "Dental X-ray",
+      "image_path": "/images/xray1.jpg"
+    },
+    {
+      "exam_id": 2,
+      "description": "Dental CT scan",
+      "image_path": "/images/ctscan2.jpg"
+    }
+  ],
+  "Material_Record": [
+    {
+      "material_id": 1,
+      "record_id": 1
+    },
+    {
+      "material_id": 2,
+      "record_id": 2
+    }
   ]
 }
