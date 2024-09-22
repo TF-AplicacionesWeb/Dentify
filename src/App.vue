@@ -1,6 +1,4 @@
 <script setup>
-import login from "./Dentify/components/Access/login.component.vue";
-import register from "./Dentify/components/Access/register.component.vue";
 </script>
 
 <template>
@@ -9,6 +7,7 @@ import register from "./Dentify/components/Access/register.component.vue";
   <router-link to="/login"></router-link>
   <router-link to="/dashboard"></router-link>
   <router-link to="/support"></router-link>
+  <router-link to="/profile"></router-link>
   <router-view />
 
 </template>

@@ -5,6 +5,8 @@ import homeComponent from "../Dentify/components/Home/home.component.vue";
 import notFoundComponent from "../public/not-found.component.vue";
 import dashboardComponent from "../Dentify/components/user/dashboard.component.vue";
 import supportComponent from "../Dentify/components/Home/support.component.vue";
+import profileOverlayComponent from "../Dentify/components/Profile/profile-overlay.component.vue";
+
 
 const router = createRouter(
     {
@@ -24,6 +26,9 @@ const router = createRouter(
             },
             {
               path: "/support", component: supportComponent
+            },
+            {
+              path: "/profile", component: profileOverlayComponent
             },
             {
                 path: "/:pathMatch(.*)*", // Captura todas las rutas no definidas
