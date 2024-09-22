@@ -95,7 +95,7 @@ export default {
   text-align: center;
 }
 .dashboard-card.info-card {
-  border-radius: 0px;
+  border-radius: 0;
 }
 /* Contenedor de Citas y Pagos */
 .appointments-payments-container {

@@ -18,6 +18,7 @@
     "primevue": "^4.0.7",
     "tailwindcss": "^3.4.12",
     "vue": "^3.4.37",
+    "vue-i18n": "^10.0.3",
     "vue-router": "^4.4.5"
   },
   "devDependencies": {

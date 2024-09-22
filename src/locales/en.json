@@ -1,0 +1,26 @@
+{
+  "Toolbar": {
+    "Dashboard": "Dashboard",
+    "Appointments": "Appointments",
+    "Payments": "Payments",
+    "Patients": "Patients",
+    "Specialists": "Specialists",
+    "Support": "Support",
+    "Inventory": "Inventory",
+    "Reports": "Reports",
+    "Metrics": "Metrics"
+  },
+  "Access": {
+    "Login": "Log In",
+    "Register": "Register",
+    "Username": "Username",
+    "uLabel": "enter your username",
+    "Password": "Password",
+    "pLabel": "enter your password",
+    "C_password": "Confirm Password",
+    "cpLabel": "confirm your password",
+    "SignIn":"Sign In",
+    "ToLogin": "Already have an account?",
+    "ToRegister": "Don't have an account yet?"
+  }
+}
