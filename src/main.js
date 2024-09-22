@@ -5,13 +5,11 @@ import PrimeVue from 'primevue/config'
 import Card from "primevue/card";
 import InputText from 'primevue/inputtext';
 import Button from "primevue/button";
-import router from "./router/index.js";
 import Password from "primevue/password";
 import Image from "primevue/image";
 import Router from "./router/index.js";
 
 const app = createApp(App);
-
 
 app.use(PrimeVue, {unstyled: true});
 app.use(Router);

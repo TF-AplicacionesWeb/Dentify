@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "admin",
+      "password": "admin123",
+      "name": "Juan",
+      "lastname": "Pérez",
+      "email": "juan.perez@mail.com",
+      "phone": "555-1234",
+      "register_date": "2023-01-15",
+      "trial": true
+    }
+  ]
+}
