@@ -1,12 +1,53 @@
 <script>
+import {AuthenApiService} from "../../services/authen-api.service.js";
+
 
 export default {
   name: "login.vue",
+  data(){
+    return {
+      users: null,
+      username: '',
+      password: '',
+      errorMessage: null,
+    }
+  },
+  created(){
+    this.getData();
+  },
   methods:{
     goToRegister(){
       this.$router.push('/register');
+    },
+    getData(){
+      AuthenApiService.getData().then((users)=>{
+        this.users = users;
+      });
+
+    },
+    login(){
+
+      if (!this.username || !this.password) {
+        this.errorMessage = "Please, enter your username and password";
+        return;
+      }
+
+      console.log(this.username + " " + this.password);
+      AuthenApiService.login(this.username, this.password)
+          .then((response) => {
+            if (response.success) {
+
+              this.$router.push('/home');
+            } else {
+
+              this.errorMessage = "username or password is incorrect";
+            }
+          })
+          .catch((error) => {
+            this.errorMessage = "problem with the authentication" + error.message;
+          });
     }
-  }
+  },
 
 
 }
@@ -23,14 +64,17 @@ export default {
         </div>
         <div class="flex flex-col gap-3">
           <label for="username" class="text-left">Username</label>
-          <pv-inputtext id="username" class="custom-input" v-model="value" type="text" size="small"
+          <pv-inputtext id="username" class="custom-input" v-model="username" type="text" size="small"
                         placeholder="enter your username"/>
 
           <label for="password" class="text-left">Password</label>
-          <pv-inputtext type="password" id="password" class="custom-input" v-model="value" size="small" toggleMask
+          <pv-inputtext type="password" id="password" class="custom-input" v-model="password" size="small" toggleMask
                         placeholder="enter your password"/>
 
-          <pv-button class="mt-4 button">Log In</pv-button>
+          <!-- Mostrar mensaje de error si lo hay -->
+          <div v-if="errorMessage" class="text-red-500">{{ errorMessage }}</div>
+
+          <pv-button class="mt-4 button" @click="login">Log In</pv-button>
           <a class="underline cursor-pointer text-1xl" @click="goToRegister">Don't have an account yet?</a>
         </div>
       </div>
