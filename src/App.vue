@@ -7,6 +7,7 @@ import register from "./Dentify/components/Access/register.component.vue";
   <router-link to="/home"></router-link>
   <router-link to="/register"></router-link>
   <router-link to="/login"></router-link>
+  <router-link to="/dashboard"></router-link>
 
   <transition mode="out-in"
               enter-active-class="transition-opacity duration-500"
