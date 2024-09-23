@@ -9,7 +9,8 @@
       "email": "juan.perez@mail.com",
       "phone": "555-1234",
       "register_date": "2023-01-15",
-      "trial": true
+      "trial": true,
+      "name_clinic": "Healthy Smiles"
     }
   ],
   "Dentists": [

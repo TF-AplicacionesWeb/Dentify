@@ -1,13 +1,30 @@
 <script>
+import {AuthenApiService} from "../../../services/authen-api.service.js";
+
 export default {
   name: "profile-content.component",
+  data() {
+    return {
+      users: [],
+      user: null,
+    }
+  },
+  async mounted() {
+    try {
+      const users = await AuthenApiService.getData();
+      this.users = users;
+      this.user = users[0];
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
+  }
 }
 </script>
 
 <template>
   <div class="profile-container">
     <div class="title-section-container">
-      <p>Profile</p>
+      <p>{{ $t('Profile.Profile')}}</p>
     </div>
     <div class="header-profile-container">
       <div class="profile-logo-container">
@@ -15,12 +32,12 @@ export default {
                   class="profile-logo" width="128px"></pv-Image>
       </div>
       <div class="dental-clinic-name-container">
-        <p class="name-clinic">Lorem ipsum</p>
-        <p class="dental-clinic">Dental center</p>
+        <p class="name-clinic">{{user?.name_clinic}}</p>
+        <p class="dental-clinic">{{ $t('Profile.DentalCenter')}}</p>
       </div>
     </div>
     <div class="button-edit-profile-container">
-      <pv-button class="button-edit-profile">Edit profile</pv-button>
+      <pv-button class="button-edit-profile">{{ $t('Profile.EditProfile')}}</pv-button>
     </div>
 
 
@@ -57,6 +74,7 @@ export default {
   display: flex;
   justify-content: left;
   margin-bottom: 0.5em;
+  margin-top: 1.5em;
 }
 
 .profile-logo-container {
@@ -78,7 +96,9 @@ export default {
   font-size: 1em;
   margin-bottom: 0.5em;
   padding: 0;
-  transform: translateY(-3em);
+  transform: translateY(-1em);
+  display: flex;
+  justify-content: start;
 }
 
 .button-edit-profile {

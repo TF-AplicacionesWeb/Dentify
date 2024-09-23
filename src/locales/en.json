@@ -22,5 +22,16 @@
     "SignIn":"Sign In",
     "ToLogin": "Already have an account?",
     "ToRegister": "Don't have an account yet?"
+  },
+  "Profile": {
+    "Profile": "Profile",
+    "DentalCenter": "Dental Center",
+    "EditProfile": "Edit profile",
+    "gInformation": "General information",
+    "Name": "Name",
+    "Email": "Email",
+    "Settings": "Settings",
+    "egInformation": "Edit general information",
+    "cPassword": "Change password"
   }
 }

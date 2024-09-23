@@ -6,10 +6,10 @@ export default {
 
 <template>
   <div class="profile-settings-container">
-    <p><b>Settings</b></p>
+    <p><b>{{ $t('Profile.Settings')}}</b></p>
     <hr class="custom-line">
-    <p style="text-decoration: underline;"><b>Edit general information</b></p>
-    <p style="text-decoration: underline;"><b>Change password</b></p>
+    <p style="text-decoration: underline;"><b>{{ $t('Profile.egInformation')}}</b></p>
+    <p style="text-decoration: underline;"><b>{{ $t('Profile.cPassword')}}</b></p>
   </div>
 </template>
 
