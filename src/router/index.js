@@ -3,6 +3,7 @@ import loginComponent from "../Dentify/components/Access/login.component.vue";
 import registerComponent from "../Dentify/components/Access/register.component.vue";
 import homeComponent from "../Dentify/components/Home/home.component.vue";
 import notFoundComponent from "../public/not-found.component.vue";
+import reservationComponent from "../Dentify/components/Home/Reservation/reservation.component.vue";
 
 const router = createRouter(
     {
@@ -16,6 +17,9 @@ const router = createRouter(
             },
             {
                 path: "/home", component: homeComponent
+            },
+            {
+                path: "/reservation", component: reservationComponent
             },
             {
                 path: "/:pathMatch(.*)*", // Captura todas las rutas no definidas
