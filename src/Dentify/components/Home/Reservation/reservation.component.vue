@@ -12,7 +12,6 @@ export default {
 <template>
 
   <h1 class="support">Reserva de Citas</h1>
-
   <!-- Contenedor principal para el formulario y la imagen -->
   <div class="content-wrapper">
     <!-- Columna izquierda: Formulario -->
@@ -75,20 +74,13 @@ export default {
 
 <style scoped>
 
+
 .support {
   text-align: center;
   font-size: 50px;
   margin-bottom: 30px;
   font-weight: bold;
 }
-
-/*.content-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 50px;
-  margin-top: 30px;
-}*/
 
 h2 {
   text-align: center;
@@ -159,5 +151,7 @@ label {
   font-size: 16px;
   border: none;
 }
+
+
 
 </style>
