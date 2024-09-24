@@ -1,64 +1,52 @@
 <script>
-import {AuthenApiService} from "../services/authen-api.service.js";
+import { AuthenApiService } from "../services/authen-api.service.js";
 import changelangComponent from "../../../../public/changelang.component.vue";
-
 
 export default {
   name: "login.vue",
-  components: {changelangComponent},
-  data(){
+  components: { changelangComponent },
+  data() {
     return {
       users: null,
       username: '',
       password: '',
       errorMessage: null,
-    }
+    };
   },
-  created(){
-    this.getData();
+  created() {
+    // this.getData();
   },
-  methods:{
-    goToRegister(){
+  methods: {
+    goToRegister() {
       this.$router.push('/register');
     },
-    getData(){
-      AuthenApiService.getData().then((users)=>{
-        this.users = users;
-      });
-
-    },
-    login(){
+    async login() {
+      this.errorMessage = null;
 
       if (!this.username || !this.password) {
-        this.errorMessage = "Please, enter your username and password";
+        this.errorMessage = "Username and password are required.";
         return;
       }
 
-      console.log(this.username + " " + this.password);
-      AuthenApiService.login(this.username, this.password)
-          .then((response) => {
-            if (response.success) {
-
-              this.$router.push('home');
-            } else {
-
-              this.errorMessage = "username or password is incorrect";
-            }
-          })
-          .catch((error) => {
-            this.errorMessage = "problem with the authentication" + error.message;
-          });
+      try {
+        const result = await AuthenApiService.login(this.username, this.password);
+        if (result.success) {
+          this.$router.push('/home');
+        } else {
+          this.errorMessage = result.message;
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        this.errorMessage = "An error occurred during login.";
+      }
     }
-  },
-
-
+  }
 }
 </script>
 
 <template>
-  <pv-toolbar  class="w-full fixed top-0 left-0 flex items-center justify-between p-4">
+  <pv-toolbar class="w-full fixed top-0 left-0 flex items-center justify-between p-4">
     <template #end>
-
       <changelangComponent></changelangComponent>
     </template>
   </pv-toolbar>
@@ -88,11 +76,9 @@ export default {
       </div>
     </div>
   </div>
-
 </template>
 
 <style scoped>
-
 .custom-input {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -123,8 +109,5 @@ export default {
   background-color: #2C3E40;
   color: black;
   border-color: #2C3E50;
-
-
 }
-
 </style>
