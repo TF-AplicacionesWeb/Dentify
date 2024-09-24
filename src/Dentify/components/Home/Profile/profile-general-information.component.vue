@@ -27,7 +27,7 @@ export default {
   <div class="profile-general-information-container">
     <p><b>{{ $t('Profile.gInformation')}}</b></p>
     <hr class="custom-line">
-    <p><b>{{ $t('Profile.Name')}}:</b> {{user?.name}}</p>
+    <p><b>{{ $t('Profile.Name')}}:</b> {{user?.name}} {{user?.lastname}}</p>
     <p><b>{{ $t('Profile.Email')}}:</b> {{user?.email}}</p>
   </div>
 </template>

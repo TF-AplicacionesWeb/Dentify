@@ -32,7 +32,7 @@ export default {
                   class="profile-logo" width="128px"></pv-Image>
       </div>
       <div class="dental-clinic-name-container">
-        <p class="name-clinic">{{user?.name_clinic}}</p>
+        <p class="name-clinic">{{user?.company}}</p>
         <p class="dental-clinic">{{ $t('Profile.DentalCenter')}}</p>
       </div>
     </div>
