@@ -1,6 +1,6 @@
 <script>
-import {AuthenApiService} from "../../services/authen-api.service.js";
-import changelangComponent from "../misc/changelang.component.vue";
+import {AuthenApiService} from "../services/authen-api.service.js";
+import changelangComponent from "../../../../public/changelang.component.vue";
 
 
 export default {
@@ -39,7 +39,7 @@ export default {
           .then((response) => {
             if (response.success) {
 
-              this.$router.push('/home');
+              this.$router.push('home');
             } else {
 
               this.errorMessage = "username or password is incorrect";

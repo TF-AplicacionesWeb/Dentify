@@ -65,16 +65,6 @@
       "user_id": 1
     }
   ],
-  "material_history": [
-    {
-      "material_id": 1,
-      "clinical_record_id": 1
-    },
-    {
-      "material_id": 2,
-      "clinical_record_id": 1
-    }
-  ],
   "patients": [
     {
       "dni": 123456789,
@@ -157,6 +147,15 @@
       "start_time": "09:00",
       "end_time": "17:00",
       "user_id": 1
+    }
+  ],
+  "support-message": [
+    {
+      "message_id": 1,
+      "name": "Jose",
+      "email": "example@gmail.com",
+      "description":"",
+      "user_id": "1"
     }
   ]
 }

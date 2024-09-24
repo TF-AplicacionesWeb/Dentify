@@ -1,5 +1,5 @@
 <script>
-import {AuthenApiService} from "../../../services/authen-api.service.js";
+import {AuthenApiService} from "../../../Access/services/authen-api.service.js";
 
 export default {
   name: "profile-content.component",
