@@ -1,34 +1,50 @@
 <script>
+import changelangComponent from "../misc/changelang.component.vue";
+
 export default {
-  name: "support.component.vue"
+  name: "support.component.vue",
+  components: { changelangComponent },
+  data() {
+    return {
+      name: '',
+      email: '',
+      problem: '',
+      additionalDetails: ''
+    };
+  },
+  methods: {
+    enviarSolicitud() {
+      // Aquí iría la lógica para enviar la solicitud
+      console.log('Solicitud enviada');
+    }
+  }
 }
 </script>
 
 <template>
-  <h1 class="support">Soporte</h1>
+  <h1 class="support">{{ $t('Support.Title') }}</h1>
   <div class="support-form-container">
     <div class="form-card">
       <div>
-        <h2>Formulario de solicitud</h2>
+        <h2>{{ $t('Support.FormTitle') }}</h2>
       </div>
       <div class="form-group">
-        <label for="name">Nombre</label>
-        <pv-inputtext id="name" v-model="name" class="input-field" placeholder="Escriba su nombre"/>
+        <label for="name">{{ $t('Support.Name') }}</label>
+        <pv-inputtext id="name" v-model="name" class="input-field" :placeholder="$t('Support.NamePlaceholder')" />
       </div>
       <div class="form-group">
-        <label for="email">Correo</label>
-        <pv-inputtext id="email" v-model="email" class="input-field" placeholder="Escriba su correo"/>
+        <label for="email">{{ $t('Support.Email') }}</label>
+        <pv-inputtext id="email" v-model="email" class="input-field" :placeholder="$t('Support.EmailPlaceholder')" />
       </div>
       <div class="form-group">
-        <label for="problem">¿Cuál es el problema?</label>
-        <pv-inputtext id="problem" v-model="problem" class="input-field" placeholder="Describa el problema"/>
+        <label for="problem">{{ $t('Support.Issue') }}</label>
+        <pv-inputtext id="problem" v-model="problem" class="input-field" :placeholder="$t('Support.IssuePlaceholder')" />
       </div>
       <div class="form-group">
-        <label for="additional-details">Detalles adicionales</label>
-        <pv-inputtext id="additional-details" v-model="additionalDetails" class="input-field"
-                      placeholder="Detalles adicionales"/>
+        <label for="additional-details">{{ $t('Support.AdditionalDetails') }}</label>
+        <pv-inputtext id="additional-details" v-model="additionalDetails" class="input-field" :placeholder="$t('Support.DetailsPlaceholder')" />
       </div>
-      <pv-button label="Enviar" class="submit-btn" @click="enviarSolicitud"/>
+      <pv-button :label="$t('Support.SubmitButton')" class="submit-btn" @click="enviarSolicitud" />
     </div>
   </div>
 </template>
