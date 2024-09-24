@@ -5,22 +5,30 @@ import PrimeVue from 'primevue/config'
 import Card from "primevue/card";
 import InputText from 'primevue/inputtext';
 import Button from "primevue/button";
-import router from "./router/index.js";
 import Password from "primevue/password";
 import Image from "primevue/image";
 import Router from "./router/index.js";
+import Toolbar from "primevue/toolbar";
+import i18n from "./i18n.js";
+import ToggleButton from "primevue/togglebutton";
+import 'primeicons/primeicons.css'
 
 const app = createApp(App);
 
-
 app.use(PrimeVue, {unstyled: true});
 app.use(Router);
+app.use(i18n);
 
 
 app.component('pv-card', Card)
     .component('pv-inputtext', InputText)
     .component('pv-password', Password)
     .component('pv-button', Button)
-    .component('pv-Image', Image);
+    .component('pv-Image', Image)
+    .component('pv-toolbar', Toolbar)
+    .component('pv-togglebutton', ToggleButton);
 
 app.mount('#app');
+
+
+//json-server --watch server/db.json --port 3000
