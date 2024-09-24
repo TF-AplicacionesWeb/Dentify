@@ -7,6 +7,11 @@ export default {
       newPassword: '',
       confirmPassword: '',
     }
+  },
+  methods: {
+    goToProfile(){
+      this.$router.push('/home/profile');
+    }
   }
 }
 </script>
@@ -35,7 +40,7 @@ export default {
     </div>
 
     <div class="button-container">
-      <pv-button class="button-save-changes">{{ $t('Profile.cChanges') }}</pv-button>
+      <pv-button class="button-save-changes" @click="goToProfile">{{ $t('Profile.cChanges') }}</pv-button>
     </div>
   </div>
 </template>

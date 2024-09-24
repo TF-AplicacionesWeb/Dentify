@@ -7,6 +7,11 @@ export default {
       name: '',
       email: '',
     }
+  },
+  methods: {
+    goToProfile(){
+      this.$router.push('/home/profile');
+    }
   }
 }
 </script>
@@ -26,7 +31,7 @@ export default {
                     :placeholder="$t('Profile.pEmail')"></pv-inputtext>
     </div>
     <div class="button-container">
-      <pv-button class="button-save-changes">{{ $t('Profile.cChanges') }}</pv-button>
+      <pv-button class="button-save-changes" @click="goToProfile">{{ $t('Profile.cChanges') }}</pv-button>
     </div>
   </div>
 </template>

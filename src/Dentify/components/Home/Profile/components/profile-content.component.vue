@@ -17,6 +17,11 @@ export default {
     } catch (error) {
       console.error("Error fetching profiles:", error);
     }
+  },
+  methods: {
+    goToSettings(){
+      this.$router.push('/profileSettings');
+    }
   }
 }
 </script>
@@ -37,7 +42,7 @@ export default {
       </div>
     </div>
     <div class="button-edit-profile-container">
-      <pv-button class="button-edit-profile">{{ $t('Profile.EditProfile')}}</pv-button>
+      <pv-button class="button-edit-profile" @click="goToSettings">{{ $t('Profile.EditProfile')}}</pv-button>
     </div>
 
 

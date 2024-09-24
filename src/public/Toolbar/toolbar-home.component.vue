@@ -58,7 +58,7 @@ export default {
     <template #end>
       <div class="flex items-center space-x-4">
         <pv-button class="text-black rounded-lg text-lg px-6 py-3">Notif</pv-button>
-        <pv-button class="text-black rounded-lg text-lg px-6 py-3" @click="this.$router.push('/home/profile')">Perfil</pv-button>
+        <pv-button class="text-black rounded-lg text-lg px-6 py-3" @click="this.$router.push('/home/profile')">{{ $t('Profile.Profile')}}</pv-button>
         <changelang-component></changelang-component>
       </div>
     </template>
