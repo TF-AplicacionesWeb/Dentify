@@ -1,215 +1,162 @@
 {
   "users": [
     {
-      "id": "1",
+      "user_id": 1,
       "username": "admin",
-      "password": "admin123",
-      "name": "Juan",
-      "lastname": "Pérez",
-      "email": "juan.perez@mail.com",
-      "phone": "555-1234",
-      "register_date": "2023-01-15",
-      "trial": true
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "jdoe@example.com",
+      "phone": "1234567890",
+      "registration_date": "2024-01-01",
+      "company": "Example Corp",
+      "password": "admin123"
     }
   ],
-  "Dentists": [
+  "subscriptions": [
     {
-      "dni": 123456,
-      "first_name": "Dr. Mario",
-      "last_name": "Lopez",
+      "subscription_id": 1,
+      "name": "Basic Subscription",
+      "description": "Limited access"
+    },
+    {
+      "subscription_id": 2,
+      "name": "Premium Subscription",
+      "description": "Full access"
+    }
+  ],
+  "subscriptions_users": [
+    {
+      "subscription_id": 1,
+      "user_id": 1
+    },
+    {
+      "subscription_id": 2,
+      "user_id": 1
+    }
+  ],
+  "dentists": [
+    {
+      "dni": 12345678,
+      "first_name": "Dr. Smith",
+      "last_name": "Johnson",
       "specialty": "Orthodontics",
       "experience": 10,
-      "phone": "5555555555",
-      "email": "mario.lopez@clinic.com"
-    },
-    {
-      "dni": 654321,
-      "first_name": "Dr. Lucia",
-      "last_name": "Martinez",
-      "specialty": "Endodontics",
-      "experience": 8,
-      "phone": "4444444444",
-      "email": "lucia.martinez@clinic.com"
+      "phone": "987654321",
+      "email": "drsmith@example.com",
+      "total_appointments": 100,
+      "user_id": 1
     }
   ],
-  "Inventory": [
+  "inventory": [
     {
-      "id_material": 1,
+      "material_id": 1,
       "material_name": "Gloves",
-      "quantity": 200,
-      "unit_price": 0.50,
-      "last_update_date": "2024-09-15"
+      "quantity": 100,
+      "unit_price": 5.50,
+      "last_updated": "2024-01-01",
+      "user_id": 1
     },
     {
-      "id_material": 2,
+      "material_id": 2,
       "material_name": "Masks",
-      "quantity": 500,
-      "unit_price": 0.30,
-      "last_update_date": "2024-09-16"
+      "quantity": 200,
+      "unit_price": 2.50,
+      "last_updated": "2024-01-05",
+      "user_id": 1
     }
   ],
-  "Patients": [
+  "material_history": [
     {
-      "dni": 101010,
-      "id_record": 1,
-      "first_name": "Carlos",
-      "last_name": "Garcia",
-      "email": "carlos.garcia@example.com",
+      "material_id": 1,
+      "clinical_record_id": 1
+    },
+    {
+      "material_id": 2,
+      "clinical_record_id": 1
+    }
+  ],
+  "patients": [
+    {
+      "dni": 123456789,
+      "clinical_record_id": 1,
+      "first_name": "Jane",
+      "last_name": "Doe",
+      "email": "jane@example.com",
       "age": 30,
-      "medical_history": "Diabetes",
-      "birth_date": "1994-05-20"
-    },
-    {
-      "dni": 202020,
-      "id_record": 2,
-      "first_name": "Maria",
-      "last_name": "Hernandez",
-      "email": "maria.hernandez@example.com",
-      "age": 25,
-      "medical_history": "Asthma",
-      "birth_date": "1999-03-14"
+      "medical_history": "None",
+      "birth_date": "1994-05-15",
+      "appointment_id": 1,
+      "user_id": 1
     }
   ],
-  "Appointments": [
+  "clinical_records": [
     {
-      "id_appointment": 1,
-      "patient_dni": 101010,
-      "dentist_dni": 123456,
-      "appointment_date": "2024-10-10 09:00:00",
-      "reason": "Dental check-up",
-      "completed": 1,
-      "reminder_sent": 1,
-      "duration": 30,
+      "clinical_record_id": 1,
+      "medical_history": "No allergies",
+      "record_date": "2024-01-10",
+      "diagnosis": "General check-up",
+      "treatment": "None",
+      "user_id": 1
+    }
+  ],
+  "clinical_exam": [
+    {
+      "clinical_record_id": 1,
+      "exam_id": 1
+    }
+  ],
+  "exams": [
+    {
+      "exam_id": 1,
+      "description": "Dental X-ray",
+      "image_path": "/images/xray1.jpg"
+    }
+  ],
+  "appointments": [
+    {
+      "appointment_id": 1,
+      "dentist_dni": 12345678,
+      "user_id": 1,
+      "appointment_date": "2024-01-15T10:00:00",
+      "reason": "General check-up",
+      "completed": false,
+      "reminder_sent": true,
+      "duration_minutes": 30,
       "payment_id": 1,
-      "payment_status": 1
-    },
-    {
-      "id_appointment": 2,
-      "patient_dni": 202020,
-      "dentist_dni": 654321,
-      "appointment_date": "2024-10-12 11:00:00",
-      "reason": "Endodontic treatment",
-      "completed": 0,
-      "reminder_sent": 0,
-      "duration": 60,
-      "payment_id": 2,
-      "payment_status": 0
+      "payment_status": true
     }
   ],
-  "Payments": [
-    {
-      "payment_id": 1,
-      "amount": 100.00,
-      "payment_date": "2024-10-09"
-    },
-    {
-      "payment_id": 2,
-      "amount": 300.00,
-      "payment_date": "2024-10-11"
-    }
-  ],
-  "Payment_MethodPayment": [
+  "payments": [
     {
       "payment_id": 1,
-      "payment_method_id": 1
-    },
-    {
-      "payment_id": 2,
-      "payment_method_id": 2
+      "amount": 50.00,
+      "payment_date": "2024-01-10"
     }
   ],
-  "PaymentMethod": [
+  "payment_methods": [
     {
       "payment_method_id": 1,
       "name": "Credit Card"
     },
     {
       "payment_method_id": 2,
-      "name": "Bank Transfer"
+      "name": "PayPal"
     }
   ],
-  "Metrics": [
+  "payment_method_relation": [
     {
-      "id_metrics": 1,
-      "dentist_id": 123456,
-      "total_appointments": 10,
-      "total_payments": 1000.00,
-      "start_date": "2024-01-01",
-      "end_date": "2024-12-31"
-    },
-    {
-      "id_metrics": 2,
-      "dentist_id": 654321,
-      "total_appointments": 15,
-      "total_payments": 1500.00,
-      "start_date": "2024-01-01",
-      "end_date": "2024-12-31"
+      "payment_id": 1,
+      "payment_method_id": 1
     }
   ],
-  "Schedules": [
+  "schedules": [
     {
-      "id_schedule": 1,
-      "dentist_id": 123456,
+      "schedule_id": 1,
+      "dentist_dni": 12345678,
       "weekday": "Monday",
-      "start_time": "09:00:00",
-      "end_time": "12:00:00"
-    },
-    {
-      "id_schedule": 2,
-      "dentist_id": 654321,
-      "weekday": "Tuesday",
-      "start_time": "10:00:00",
-      "end_time": "13:00:00"
-    }
-  ],
-  "MedicalRecords": [
-    {
-      "id_record": 1,
-      "medical_history": "Diabetes",
-      "dentist_id": 123456,
-      "date": "2024-10-09",
-      "diagnosis": "Advanced cavity",
-      "treatment": "Endodontic treatment"
-    },
-    {
-      "id_record": 2,
-      "medical_history": "Asthma",
-      "dentist_id": 654321,
-      "date": "2024-10-11",
-      "diagnosis": "Toothache",
-      "treatment": "Extraction"
-    }
-  ],
-  "Record_Exams": [
-    {
-      "record_id": 1,
-      "exam_id": 1
-    },
-    {
-      "record_id": 2,
-      "exam_id": 2
-    }
-  ],
-  "Exams": [
-    {
-      "exam_id": 1,
-      "description": "Dental X-ray",
-      "image_path": "/images/xray1.jpg"
-    },
-    {
-      "exam_id": 2,
-      "description": "Dental CT scan",
-      "image_path": "/images/ctscan2.jpg"
-    }
-  ],
-  "Material_Record": [
-    {
-      "material_id": 1,
-      "record_id": 1
-    },
-    {
-      "material_id": 2,
-      "record_id": 2
+      "start_time": "09:00",
+      "end_time": "17:00",
+      "user_id": 1
     }
   ]
 }
