@@ -54,5 +54,16 @@
     "dentistPlaceholder": "Seleccione el nombre",
     "durationPlaceholder": "Ingrese la duracion estimada",
     "reserveLabel": "Reservar cita"
+  },
+  "Profile": {
+    "Profile": "Perfil",
+    "DentalCenter": "Centro Dental",
+    "EditProfile": "Editar perfil",
+    "gInformation": "Información general",
+    "Name": "Nombre",
+    "Email": "Correo",
+    "Settings": "Configuración",
+    "egInformation": "Editar información general",
+    "cPassword": "Cambiar contraseña"
   }
 }
