@@ -1,6 +1,6 @@
 <script>
-import profileContentComponent from "./profile-content.component.vue";
-import profileGeneralInformationComponent from "./profile-general-information.component.vue";
+import profileContentComponent from "../components/profile-content.component.vue";
+import profileGeneralInformationComponent from "../components/profile-general-information.component.vue";
 
 export default {
   name: "profile-overlay.component",

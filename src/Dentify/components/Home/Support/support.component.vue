@@ -1,5 +1,5 @@
 <script>
-import changelangComponent from "../misc/changelang.component.vue";
+import changelangComponent from "../../../../public/changelang.component.vue";
 
 export default {
   name: "support.component.vue",

@@ -1,5 +1,5 @@
 <script>
-import toolbarHomeComponent from "./Toolbar/toolbar-home.component.vue";
+import toolbarHomeComponent from "../../../../public/Toolbar/toolbar-home.component.vue";
 export default {
   name: "home.component",
   components:{toolbarHomeComponent},
