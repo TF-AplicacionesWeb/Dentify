@@ -23,6 +23,19 @@
     "ToLogin": "¿Ya tienes una cuenta?",
     "ToRegister": "¿Aún no tienes una cuenta?"
   },
+  "Support": {
+    "Title": "Soporte",
+    "FormTitle": "Formulario de Solicitud",
+    "Name": "Nombre",
+    "NamePlaceholder": "Escriba su nombre",
+    "Email": "Correo",
+    "EmailPlaceholder": "Escriba su correo",
+    "Issue": "¿Cuál es el problema?",
+    "IssuePlaceholder": "Describa el problema",
+    "AdditionalDetails": "Detalles adicionales",
+    "DetailsPlaceholder": "Detalles adicionales",
+    "SubmitButton": "Enviar"
+  },
   "Reservation": {
     "Tittle": "Reserva de Citas",
     "SubTittle": "Registro de Citas",
@@ -42,5 +55,4 @@
     "durationPlaceholder": "Ingrese la duracion estimada",
     "reserveLabel": "Reservar cita"
   }
-
 }

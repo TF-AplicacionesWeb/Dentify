@@ -23,6 +23,19 @@
     "ToLogin": "Already have an account?",
     "ToRegister": "Don't have an account yet?"
   },
+  "Support": {
+    "Title": "Support",
+    "FormTitle": "Request Form",
+    "Name": "Name",
+    "NamePlaceholder": "Enter your name",
+    "Email": "Email",
+    "EmailPlaceholder": "Enter your email",
+    "Issue": "What is the issue?",
+    "IssuePlaceholder": "Describe the issue",
+    "AdditionalDetails": "Additional details",
+    "DetailsPlaceholder": "Additional details",
+    "SubmitButton": "Submit"
+  },
   "Reservation": {
     "Tittle": "Appointment Booking",
     "SubTittle": "Appointment Record",
