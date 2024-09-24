@@ -10,6 +10,10 @@ export default {
   },
   methods: {
     goToProfile(){
+      if (!this.name || !this.email) {
+        alert(this.$t('Fill all fields, please'));
+        return;
+      }
       this.$router.push('/home/profile');
     }
   }

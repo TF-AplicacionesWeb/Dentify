@@ -1,4 +1,6 @@
 <script>
+import {ProfileApiService} from "../services/profile-api.service.js";
+
 export default {
   name: "profile-change-password",
   data() {
@@ -6,10 +8,36 @@ export default {
       currentPassword: '',
       newPassword: '',
       confirmPassword: '',
+      profiles: [],
+      profile: null,
+    }
+  },
+  async mounted() {
+    try {
+      const profiles = await ProfileApiService.getData();
+      this.profiles = profiles;
+      this.profile = profiles[0];
+      console.log(this.profile);
+    } catch (error) {
+      console.error("Error fetching profiles:", error);
     }
   },
   methods: {
     goToProfile(){
+      if (!this.currentPassword || !this.newPassword || !this.confirmPassword) {
+        alert(this.$t('Fill all fields, please'));
+        return;
+      } else if (this.currentPassword !== this.profile.password) {
+        alert(this.$t('Wrong current password'));
+        return;
+      } else if (this.newPassword !== this.confirmPassword) {
+        alert(this.$t('New passwords do not match'));
+        return;
+      } else if (this.newPassword.length < 8) {
+        alert(this.$t('New password must be at least 8 characters long'));
+        return;
+      }
+
       this.$router.push('/home/profile');
     }
   }
