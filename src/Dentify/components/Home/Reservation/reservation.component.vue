@@ -11,69 +11,66 @@ export default {
 
 <template>
 
-  <h1 class="support">Reserva de Citas</h1>
-  <!-- Contenedor principal para el formulario y la imagen -->
+  <h1 class="support">{{ $t('Reservation.Tittle') }}</h1>
   <div class="content-wrapper">
-    <!-- Columna izquierda: Formulario -->
     <div class="support-form-container">
       <div class="form-card">
         <div>
-          <h2>Registro de Citas</h2>
+          <h2>{{ $t('Reservation.SubTittle') }}</h2>
         </div>
 
         <div class="form-group">
-          <label for="name">Nombre del paciente</label>
-          <pv-inputtext id="name" v-model="name" class="input-field" placeholder="Ingrese el nombre" />
+          <label for="name">{{ $t('Reservation.Name') }}</label>
+          <pv-inputtext id="name" v-model="name" class="input-field" :placeholder="$t('Reservation.namePlaceholder')" />
         </div>
 
         <div class="form-group">
-          <label for="last-name">Apellido del paciente</label>
-          <pv-inputtext id="last-name" v-model="lastname" class="input-field" placeholder="Ingrese el apellido" />
+          <label for="last-name">{{ $t('Reservation.LastName') }}</label>
+          <pv-inputtext id="last-name" v-model="lastname" class="input-field" :placeholder="$t('Reservation.lastNamePlaceholder')" />
         </div>
 
         <div class="form-group">
-          <label for="dni">DNI</label>
-          <pv-inputtext id="dni" v-model="dni" class="input-field" placeholder="Ingrese el DNI" />
+          <label for="dni">{{ $t('Reservation.DNI') }}</label>
+          <pv-inputtext id="dni" v-model="dni" class="input-field" :placeholder="$t('Reservation.dniPlaceholder')" />
         </div>
 
         <div class="form-group">
-          <label for="date">Fecha</label>
+          <label for="date">{{ $t('Reservation.Date') }}</label>
           <pv-inputtext id="date" v-model="date" class="input-field" placeholder="dd/mm/aa" />
         </div>
 
         <div class="form-group">
-          <label for="time">Hora</label>
+          <label for="time">{{ $t('Reservation.Time') }}</label>
           <pv-inputtext id="time" v-model="time" class="input-field" placeholder="hh/mm" />
         </div>
 
         <div class="form-group">
-          <label for="appointment">Tipo de cita</label>
-          <pv-inputtext id="appointment" v-model="appointment" class="input-field" placeholder="Seleccione el tipo de cita" />
+          <label for="appointment">{{ $t('Reservation.Appointment') }}</label>
+          <pv-inputtext id="appointment" v-model="appointment" class="input-field" :placeholder="$t('Reservation.appointmentPlaceholder')" />
         </div>
 
         <div class="form-group">
-          <label for="dentist">Nombre del odontólogo</label>
-          <pv-inputtext id="dentist" v-model="dentist" class="input-field" placeholder="Seleccione el nombre" />
+          <label for="dentist">{{ $t('Reservation.Dentist') }}</label>
+          <pv-inputtext id="dentist" v-model="dentist" class="input-field" :placeholder="$t('Reservation.dentistPlaceholder')" />
         </div>
 
         <div class="form-group">
-          <label for="duration">Duración</label>
-          <pv-inputtext id="duration" v-model="duration" class="input-field" placeholder="Ingrese la duración estimada" />
+          <label for="duration">{{ $t('Reservation.Duration') }}</label>
+          <pv-inputtext id="duration" v-model="duration" class="input-field" :placeholder="$t('Reservation.durationPlaceholder')" />
         </div>
 
-        <pv-button label="Reservar cita" class="submit-btn" @click="goToReservation()" />
+        <pv-button :label="$t('Reservation.reserveLabel')" class="submit-btn" @click="goToReservation()" />
       </div>
     </div>
 
     <div class="image-container">
-      <pv-Image src="src/assets/img/reservation.png" width="100%"></pv-Image>
+      <pv-Image src="../src/assets/img/reservation.png" width="100%"></pv-Image>
     </div>
   </div>
 
 </template>
 
 <style scoped>
-
 
 .support {
   text-align: center;
@@ -151,7 +148,5 @@ label {
   font-size: 16px;
   border: none;
 }
-
-
 
 </style>

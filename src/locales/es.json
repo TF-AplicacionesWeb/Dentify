@@ -22,6 +22,25 @@
     "SignIn": "Registrarse",
     "ToLogin": "¿Ya tienes una cuenta?",
     "ToRegister": "¿Aún no tienes una cuenta?"
+  },
+  "Reservation": {
+    "Tittle": "Reserva de Citas",
+    "SubTittle": "Registro de Citas",
+    "Name": "Nombre del Paciente",
+    "LastName": "Apellido del Paciente",
+    "DNI": "DNI",
+    "Date": "Fecha",
+    "Time": "Tiempo",
+    "Appointment": "Tipo de cita",
+    "Dentist": "Nombre del odontologo",
+    "Duration": "Duracion",
+    "namePlaceholder": "Ingresa tu nombre",
+    "lastNamePlaceholder": "Ingresa tu apellido",
+    "dniPlaceholder": "Ingresa tu DNI",
+    "appointmentPlaceholder": "Seleccione el tipo de cita",
+    "dentistPlaceholder": "Seleccione el nombre",
+    "durationPlaceholder": "Ingrese la duracion estimada",
+    "reserveLabel": "Reservar cita"
   }
 
 }
