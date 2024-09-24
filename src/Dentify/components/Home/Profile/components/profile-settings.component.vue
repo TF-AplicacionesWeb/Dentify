@@ -17,7 +17,6 @@ export default {
 .profile-settings-container {
   background-color: #D1F2EB;
   border-radius: 30px;
-  height: 20vw;
   padding: 2em 2em;
   text-align: left;
   margin-top: 1em;
