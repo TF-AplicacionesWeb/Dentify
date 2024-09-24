@@ -35,5 +35,24 @@
     "AdditionalDetails": "Additional details",
     "DetailsPlaceholder": "Additional details",
     "SubmitButton": "Submit"
+  },
+  "Reservation": {
+    "Tittle": "Appointment Booking",
+    "SubTittle": "Appointment Record",
+    "Name": "Patient's name",
+    "LastName": "Patient's last name",
+    "DNI": "DNI",
+    "Date": "Date",
+    "Time": "Time",
+    "Appointment": "Type of appointment",
+    "Dentist": "Name of the dentist",
+    "Duration": "Duration",
+    "namePlaceholder": "Enter your name",
+    "lastNamePlaceholder": "Enter your last name",
+    "dniPlaceholder": "Enter the DNI",
+    "appointmentPlaceholder": "Select the type of appointment",
+    "dentistPlaceholder": "Select the name",
+    "durationPlaceholder": "Enter the estimated duration",
+    "reserveLabel": "Reserve appointment"
   }
 }
