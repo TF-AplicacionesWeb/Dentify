@@ -64,6 +64,15 @@
     "Email": "Correo",
     "Settings": "Configuración",
     "egInformation": "Editar información general",
-    "cPassword": "Cambiar contraseña"
+    "cPassword": "Cambiar contraseña",
+    "cChanges": "Guardar cambios",
+    "pName": "escribe tu nombre",
+    "pEmail": "escribe tu correo",
+    "cuPassword": "Contraseña actual",
+    "nPassword": "Contraseña nueva",
+    "ccPassword": "Confirma contraseña nueva",
+    "ecPassword": "ingresa tu actual contraseña",
+    "enPassword": "ingresa tu nueva contraseña",
+    "rnPassword": "repite tu nueva contraseña"
   }
 }

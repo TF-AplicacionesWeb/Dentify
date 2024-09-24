@@ -64,6 +64,15 @@
     "Email": "Email",
     "Settings": "Settings",
     "egInformation": "Edit general information",
-    "cPassword": "Change password"
+    "cPassword": "Change password",
+    "cChanges": "Save changes",
+    "pName": "enter your name",
+    "pEmail": "enter your email",
+    "cuPassword": "Current password",
+    "nPassword": "New password",
+    "ccPassword": "Confirm new password",
+    "ecPassword": "enter your current password",
+    "enPassword": "enter your new password",
+    "rnPassword": "repeat your new password"
   }
 }
