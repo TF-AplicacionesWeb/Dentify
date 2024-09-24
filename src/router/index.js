@@ -1,3 +1,4 @@
+
 import { createRouter, createWebHistory } from "vue-router";
 import loginComponent from "../Dentify/components/Access/login.component.vue";
 import registerComponent from "../Dentify/components/Access/register.component.vue";
@@ -6,6 +7,7 @@ import notFoundComponent from "../public/not-found.component.vue";
 import dashboardComponent from "../Dentify/components/Home/user/dashboard.component.vue";
 import supportComponent from "../Dentify/components/Home/support.component.vue";
 import profileOverlayComponent from "../Dentify/components/Home/Profile/profile-overlay.component.vue";
+import reservationComponent from "../Dentify/components/Home/Reservation/reservation.component.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -30,6 +32,9 @@ const router = createRouter({
                 {
                     path: "profile",
                     component: profileOverlayComponent
+                },
+                {
+                    path: "appointments", component: reservationComponent
                 }
             ]
         },

@@ -22,7 +22,7 @@ export default {
         <i class="pi pi-desktop mx-1"></i>
         {{ $t('Toolbar.Dashboard') }}
       </pv-button>
-      <pv-button class="mx-3">
+      <pv-button class="mx-3" @click="this.$router.push('/home/appointments')">
         <i class="pi pi-calendar-clock mx-1"></i>
         {{ $t('Toolbar.Appointments') }}
       </pv-button>

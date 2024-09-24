@@ -23,15 +23,36 @@
     "ToLogin": "¿Ya tienes una cuenta?",
     "ToRegister": "¿Aún no tienes una cuenta?"
   },
-  "Profile": {
-    "Profile": "Perfil",
-    "DentalCenter": "Centro Dental",
-    "EditProfile": "Editar perfil",
-    "gInformation": "Información general",
+  "Support": {
+    "Title": "Soporte",
+    "FormTitle": "Formulario de Solicitud",
     "Name": "Nombre",
+    "NamePlaceholder": "Escriba su nombre",
     "Email": "Correo",
-    "Settings": "Configuración",
-    "egInformation": "Editar información general",
-    "cPassword": "Cambiar contraseña"
+    "EmailPlaceholder": "Escriba su correo",
+    "Issue": "¿Cuál es el problema?",
+    "IssuePlaceholder": "Describa el problema",
+    "AdditionalDetails": "Detalles adicionales",
+    "DetailsPlaceholder": "Detalles adicionales",
+    "SubmitButton": "Enviar"
+  },
+  "Reservation": {
+    "Tittle": "Reserva de Citas",
+    "SubTittle": "Registro de Citas",
+    "Name": "Nombre del Paciente",
+    "LastName": "Apellido del Paciente",
+    "DNI": "DNI",
+    "Date": "Fecha",
+    "Time": "Tiempo",
+    "Appointment": "Tipo de cita",
+    "Dentist": "Nombre del odontologo",
+    "Duration": "Duracion",
+    "namePlaceholder": "Ingresa tu nombre",
+    "lastNamePlaceholder": "Ingresa tu apellido",
+    "dniPlaceholder": "Ingresa tu DNI",
+    "appointmentPlaceholder": "Seleccione el tipo de cita",
+    "dentistPlaceholder": "Seleccione el nombre",
+    "durationPlaceholder": "Ingrese la duracion estimada",
+    "reserveLabel": "Reservar cita"
   }
 }

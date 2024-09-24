@@ -29,3 +29,6 @@ app.component('pv-card', Card)
     .component('pv-togglebutton', ToggleButton);
 
 app.mount('#app');
+
+
+//json-server --watch server/db.json --port 3000
