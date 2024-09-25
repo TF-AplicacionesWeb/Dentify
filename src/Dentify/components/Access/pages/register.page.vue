@@ -28,6 +28,10 @@ export default {
         this.errorMessage = "All data are required.";
         return;
       }
+      else if (this.password !== this.c_password){
+        alert("Confirm both passwords");
+        return;
+      }
 
       try {
         const result = await AuthenApiService.register({username:this.username, email:this.email, password:this.password});

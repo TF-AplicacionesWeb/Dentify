@@ -8,6 +8,7 @@ import dashboardComponent from "../Dentify/components/Home/Dashboard/pages/dashb
 import supportComponent from "../Dentify/components/Home/Support/support.component.vue";
 import profileOverlayComponent from "../Dentify/components/Home/Profile/pages/profile-overlay.page.vue";
 import reservationComponent from "../Dentify/components/Home/Reservation/pages/reservation.page.vue";
+import patientsPage from "../Dentify/components/Home/Patients/pages/patients.page.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -38,6 +39,9 @@ const router = createRouter({
                 },
                 {
                     path: "appointments", component: reservationComponent
+                },
+                {
+                    path:"patients", component: patientsPage
                 }
             ]
         },

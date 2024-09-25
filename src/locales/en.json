@@ -65,5 +65,11 @@
     "Settings": "Settings",
     "egInformation": "Edit general information",
     "cPassword": "Change password"
+  },
+  "Patients": {
+    "Personal_doc": "Personal doc",
+    "Misc_doc": "Misc doc",
+    "header": "Clinical Records",
+    "button": "New Patient"
   }
 }
