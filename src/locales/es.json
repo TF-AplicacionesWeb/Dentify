@@ -56,7 +56,6 @@
     "reserveLabel": "Reservar cita"
   },
   "Profile": {
-    "Profile": "Perfil",
     "DentalCenter": "Centro Dental",
     "EditProfile": "Editar perfil",
     "gInformation": "Información general",
@@ -73,6 +72,13 @@
     "ccPassword": "Confirma contraseña nueva",
     "ecPassword": "ingresa tu actual contraseña",
     "enPassword": "ingresa tu nueva contraseña",
-    "rnPassword": "repite tu nueva contraseña"
+    "rnPassword": "repite tu nueva contraseña",
+    "cPassword": "Cambiar contraseña"
+  },
+  "Patients": {
+    "Personal_doc": "Ficha Personal",
+    "Misc_doc": "Ficha de seguimiento",
+    "header": "Historial Clinico",
+    "button": "Nuevo Paciente"
   }
 }

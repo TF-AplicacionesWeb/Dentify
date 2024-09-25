@@ -1,39 +1,57 @@
-import axios from "axios";
+
 import {User} from "../model/User.entity.js";
+import BaseService from "../../../../shared/services/base.service.js";
 
-export class AuthenApiService {
-
-
-    static getData() {
-
-        return axios.get("http://localhost:3000/users")
-            .then((response) => {
-            return response.data.map(userdata => new User(userdata));
-        });
+export class AuthenApiService extends BaseService {
+    constructor() {
+        super('http://localhost:3000/users');
     }
 
-    static login(username, password) {
-        const apiUrl = "http://localhost:3000/users"; // URL de tu fake API
+    static async getData() {
+        const serviceInstance = new AuthenApiService();
+        const usersData = await serviceInstance.getAll('');
+        return usersData.map(userdata => new User(userdata));
+    }
 
 
-        return axios
-            .get(apiUrl)
-            .then((response) => {
-                const users = response.data;
-                const user = users.find((u) => u.username === username && u.password === password);
+    static async login(username, password) {
+        const serviceInstance = new AuthenApiService();
+        try {
+            const users = await serviceInstance.getAll('');
+            const user = users.find(u => u.username === username && u.password === password);
 
-                if (user) {
-                    // Si el usuario es encontrado, login exitoso
-                    return { success: true, user };
-                } else {
-                    // Si no se encuentra el usuario, login fallido
-                    return { success: false, message: "Username or password is incorrect" };
-                }
-            })
-            .catch((error) => {
-                console.error("Error durante el login:", error);
-                return { success: false, message: "authentication fail" };
-            });
+            if (user) {
+                return {success: true, user};
+            } else {
+                return {success: false, message: 'Username or password is incorrect'};
+            }
+
+        } catch (error) {
+            console.error("Error durante el login:", error);
+            return {success: false, message: "authentication fail"};
+        }
+    }
+
+    static async register({username, email, password}){
+        const serviceInstance = new AuthenApiService();
+        const user_id = Math.floor(Math.random()*10000)
+        try{
+            const newUser = new User({
+                user_id:user_id,
+                username: username,
+                email: email,
+                password: password
+
+                });
+
+            const createdUser = await serviceInstance.create('', newUser);
+            return { success: true, user: new User(createdUser) };
+
+
+        } catch(error){
+            console.error("Error al registrar:", error)
+            return {success: false, message: "registration fail"};
+        }
     }
 
 }

@@ -56,7 +56,6 @@
     "reserveLabel": "Reserve appointment"
   },
   "Profile": {
-    "Profile": "Profile",
     "DentalCenter": "Dental Center",
     "EditProfile": "Edit profile",
     "gInformation": "General information",
@@ -73,6 +72,14 @@
     "ccPassword": "Confirm new password",
     "ecPassword": "enter your current password",
     "enPassword": "enter your new password",
-    "rnPassword": "repeat your new password"
+    "rnPassword": "repeat your new password",
+    "cPassword": "Change password"
+  },
+  "Patients": {
+    "Personal_doc": "Personal doc",
+    "Misc_doc": "Misc doc",
+    "header": "Clinical Records",
+    "button": "New Patient"
+
   }
 }
