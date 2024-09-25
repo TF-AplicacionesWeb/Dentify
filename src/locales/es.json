@@ -65,5 +65,11 @@
     "Settings": "Configuración",
     "egInformation": "Editar información general",
     "cPassword": "Cambiar contraseña"
+  },
+  "Patients": {
+    "Personal_doc": "Ficha Personal",
+    "Misc_doc": "Ficha de seguimiento",
+    "header": "Historial Clinico",
+    "button": "Nuevo Paciente"
   }
 }

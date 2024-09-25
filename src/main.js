@@ -12,6 +12,8 @@ import Toolbar from "primevue/toolbar";
 import i18n from "./i18n.js";
 import ToggleButton from "primevue/togglebutton";
 import 'primeicons/primeicons.css'
+import IconField from "primevue/iconfield";
+import InputIcon from "primevue/inputicon";
 
 const app = createApp(App);
 
@@ -26,7 +28,10 @@ app.component('pv-card', Card)
     .component('pv-button', Button)
     .component('pv-Image', Image)
     .component('pv-toolbar', Toolbar)
-    .component('pv-togglebutton', ToggleButton);
+    .component('pv-togglebutton', ToggleButton)
+    .component('pv-iconfield', IconField)
+    .component('pv-inputicon', InputIcon);
+
 
 app.mount('#app');
 
