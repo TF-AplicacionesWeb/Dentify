@@ -1,18 +1,66 @@
 <script>
+import { DashboardApiService } from "../services/dashboard-api.service.js";
+
 export default {
-  name: "dashboard.vue"
-}
+  name: "dashboard",
+  data() {
+    return {
+      inventory: [],
+      appointments: [],
+      payments: []
+    };
+  },
+  created() {
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      // Obtener datos de inventario
+      DashboardApiService.getInventory()
+          .then((response) => {
+            this.inventory = response.data;
+          })
+          .catch((error) => {
+            console.error("Error al obtener inventario:", error);
+          });
+
+      // Obtener datos de citas
+      DashboardApiService.getAppointments()
+          .then((response) => {
+            this.appointments = response.data;
+          })
+          .catch((error) => {
+            console.error("Error al obtener citas:", error);
+          });
+
+      // Obtener datos de pagos
+      DashboardApiService.getPayments()
+          .then((response) => {
+            this.payments = response.data;
+          })
+          .catch((error) => {
+            console.error("Error al obtener pagos:", error);
+          });
+    }
+  }
+};
 </script>
 
 <template>
   <div class="dashboard-container">
     <h1 class="dashboard-title">Dashboard</h1>
-
+    <!-- Lista de inventario -->
     <div class="cards-bar">
-      <pv-card class="dashboard-card info-card">
+      <pv-card
+          v-for="item in inventory"
+          :key="item.material_id"
+          class="dashboard-card info-card"
+      >
         <template #content>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
+          <p>{{ item.material_name }}</p>
+          <p>Cantidad: {{ item.quantity }}</p>
+          <p>Precio Unitario: {{ item.unit_price }}</p>
+          <p>Última actualización: {{ item.last_updated }}</p>
         </template>
       </pv-card>
 
@@ -35,26 +83,32 @@ export default {
       <!-- Citas para Hoy -->
       <div class="appointments">
         <h2>Citas para hoy</h2>
-        <pv-card class="dashboard-card appointments-card">
+        <pv-card
+            v-for="appointment in appointments"
+            :key="appointment.appointment_id"
+            class="dashboard-card appointments-card"
+        >
           <template #content>
-            <p>Odontólogo: Lorem Ipsum</p>
-            <p>Paciente: Lorem Ipsum</p>
-            <p>Fecha: dd/mm/aa</p>
-            <p>Hora: hh/dd</p>
+            <p>Dentista: {{ appointment.dentist_dni }}</p>
+            <p>Fecha: {{ new Date(appointment.appointment_date).toLocaleDateString() }}</p>
+            <p>Hora: {{ new Date(appointment.appointment_date).toLocaleTimeString() }}</p>
+            <p>Razón: {{ appointment.reason }}</p>
           </template>
         </pv-card>
-
       </div>
 
       <!-- Pagos Recientes -->
       <div class="payments">
         <h2>Pagos recientes</h2>
-        <pv-card class="dashboard-card payments-card">
+        <pv-card
+            v-for="payment in payments"
+            :key="payment.payment_id"
+            class="dashboard-card payments-card"
+        >
           <template #content>
-            <p>Odontólogo: Lorem Ipsum</p>
-            <p>Paciente: Lorem Ipsum</p>
-            <p>Fecha: dd/mm/aa</p>
-            <p>Estado: Cancelado</p>
+            <p>ID de Pago: {{ payment.payment_id }}</p>
+            <p>Cantidad: {{ payment.amount }}</p>
+            <p>Fecha de Pago: {{ new Date(payment.payment_date).toLocaleDateString() }}</p>
           </template>
         </pv-card>
       </div>
@@ -97,6 +151,7 @@ export default {
 .dashboard-card.info-card {
   border-radius: 0;
 }
+
 /* Contenedor de Citas y Pagos */
 .appointments-payments-container {
   display: flex;
