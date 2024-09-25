@@ -22,5 +22,64 @@
     "SignIn":"Sign In",
     "ToLogin": "Already have an account?",
     "ToRegister": "Don't have an account yet?"
+  },
+  "Support": {
+    "Title": "Support",
+    "FormTitle": "Request Form",
+    "Name": "Name",
+    "NamePlaceholder": "Enter your name",
+    "Email": "Email",
+    "EmailPlaceholder": "Enter your email",
+    "Issue": "What is the issue?",
+    "IssuePlaceholder": "Describe the issue",
+    "AdditionalDetails": "Additional details",
+    "DetailsPlaceholder": "Additional details",
+    "SubmitButton": "Submit"
+  },
+  "Reservation": {
+    "Tittle": "Appointment Booking",
+    "SubTittle": "Appointment Record",
+    "Name": "Patient's name",
+    "LastName": "Patient's last name",
+    "DNI": "DNI",
+    "Date": "Date",
+    "Time": "Time",
+    "Appointment": "Type of appointment",
+    "Dentist": "Name of the dentist",
+    "Duration": "Duration",
+    "namePlaceholder": "Enter your name",
+    "lastNamePlaceholder": "Enter your last name",
+    "dniPlaceholder": "Enter the DNI",
+    "appointmentPlaceholder": "Select the type of appointment",
+    "dentistPlaceholder": "Select the name",
+    "durationPlaceholder": "Enter the estimated duration",
+    "reserveLabel": "Reserve appointment"
+  },
+  "Profile": {
+    "DentalCenter": "Dental Center",
+    "EditProfile": "Edit profile",
+    "gInformation": "General information",
+    "Name": "Name",
+    "Email": "Email",
+    "Settings": "Settings",
+    "egInformation": "Edit general information",
+    "cPassword": "Change password",
+    "cChanges": "Save changes",
+    "pName": "enter your name",
+    "pEmail": "enter your email",
+    "cuPassword": "Current password",
+    "nPassword": "New password",
+    "ccPassword": "Confirm new password",
+    "ecPassword": "enter your current password",
+    "enPassword": "enter your new password",
+    "rnPassword": "repeat your new password",
+    "cPassword": "Change password"
+  },
+  "Patients": {
+    "Personal_doc": "Personal doc",
+    "Misc_doc": "Misc doc",
+    "header": "Clinical Records",
+    "button": "New Patient"
+
   }
 }

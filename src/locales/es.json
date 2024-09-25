@@ -22,6 +22,63 @@
     "SignIn": "Registrarse",
     "ToLogin": "¿Ya tienes una cuenta?",
     "ToRegister": "¿Aún no tienes una cuenta?"
+  },
+  "Support": {
+    "Title": "Soporte",
+    "FormTitle": "Formulario de Solicitud",
+    "Name": "Nombre",
+    "NamePlaceholder": "Escriba su nombre",
+    "Email": "Correo",
+    "EmailPlaceholder": "Escriba su correo",
+    "Issue": "¿Cuál es el problema?",
+    "IssuePlaceholder": "Describa el problema",
+    "AdditionalDetails": "Detalles adicionales",
+    "DetailsPlaceholder": "Detalles adicionales",
+    "SubmitButton": "Enviar"
+  },
+  "Reservation": {
+    "Tittle": "Reserva de Citas",
+    "SubTittle": "Registro de Citas",
+    "Name": "Nombre del Paciente",
+    "LastName": "Apellido del Paciente",
+    "DNI": "DNI",
+    "Date": "Fecha",
+    "Time": "Tiempo",
+    "Appointment": "Tipo de cita",
+    "Dentist": "Nombre del odontologo",
+    "Duration": "Duracion",
+    "namePlaceholder": "Ingresa tu nombre",
+    "lastNamePlaceholder": "Ingresa tu apellido",
+    "dniPlaceholder": "Ingresa tu DNI",
+    "appointmentPlaceholder": "Seleccione el tipo de cita",
+    "dentistPlaceholder": "Seleccione el nombre",
+    "durationPlaceholder": "Ingrese la duracion estimada",
+    "reserveLabel": "Reservar cita"
+  },
+  "Profile": {
+    "DentalCenter": "Centro Dental",
+    "EditProfile": "Editar perfil",
+    "gInformation": "Información general",
+    "Name": "Nombre",
+    "Email": "Correo",
+    "Settings": "Configuración",
+    "egInformation": "Editar información general",
+    "cPassword": "Cambiar contraseña",
+    "cChanges": "Guardar cambios",
+    "pName": "escribe tu nombre",
+    "pEmail": "escribe tu correo",
+    "cuPassword": "Contraseña actual",
+    "nPassword": "Contraseña nueva",
+    "ccPassword": "Confirma contraseña nueva",
+    "ecPassword": "ingresa tu actual contraseña",
+    "enPassword": "ingresa tu nueva contraseña",
+    "rnPassword": "repite tu nueva contraseña",
+    "cPassword": "Cambiar contraseña"
+  },
+  "Patients": {
+    "Personal_doc": "Ficha Personal",
+    "Misc_doc": "Ficha de seguimiento",
+    "header": "Historial Clinico",
+    "button": "Nuevo Paciente"
   }
-
 }

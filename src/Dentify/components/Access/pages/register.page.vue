@@ -1,11 +1,52 @@
 <script>
-import changelangComponent from "../misc/changelang.component.vue";
+import changelangComponent from "../../../../public/changelang.component.vue";
+import {AuthenApiService} from "../services/authen-api.service.js";
 export default {
   name: "register.component",
   components:{changelangComponent},
+  data(){
+    return {
+      users: null,
+      username: '',
+      email:'',
+      password:'',
+      c_password:'',
+      errorMessage:null
+
+    };
+  },
+  mounted() {
+
+  },
   methods:{
     goToLogin(){
       this.$router.push("/login");
+    },
+    async register() {
+
+      if (!this.username || !this.password || !this.c_password) {
+        this.errorMessage = "All data are required.";
+        return;
+      }
+      else if (this.password !== this.c_password){
+        alert("Confirm both passwords");
+        return;
+      }
+
+      try {
+        const result = await AuthenApiService.register({username:this.username, email:this.email, password:this.password});
+        if (result.success) {
+          alert("Registration Successful");
+          this.$router.push('/login');
+
+        } else {
+          this.errorMessage = result.message;
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        this.errorMessage = "An error occurred during login.";
+      }
+
     }
   }
 }
@@ -28,21 +69,21 @@ export default {
         </div>
         <div class="flex flex-col gap-3">
           <label for="username" class="text-left">{{$t('Access.Username')}}</label>
-          <pv-inputtext id="username" class="custom-input cursor-text" v-model="value" type="text" size="small"
+          <pv-inputtext id="username" class="custom-input cursor-text" v-model="username" type="text" size="small"
                         placeholder="enter your username"/>
 
           <label for="email" class="text-left">E-mail</label>
-          <pv-inputtext type="password" id="email" class="custom-input cursor-text" v-model="value" size="small" toggleMask
+          <pv-inputtext type="text" id="email" class="custom-input cursor-text" v-model="email" size="small" toggleMask
                         placeholder="enter your email"/>
 
           <label for="password" class="text-left">{{$t('Access.Password')}}</label>
-          <pv-inputtext type="password" id="password" class="custom-input cursor-text" v-model="value" size="small" toggleMask
+          <pv-inputtext type="password" id="password" class="custom-input cursor-text" v-model="password" size="small" toggleMask
                         placeholder="enter your password"/>
           <label for="confirm-password" class="text-left">{{$t('Access.C_password')}}</label>
-          <pv-inputtext type="password" id="confirm-password" class="custom-input cursor-text" v-model="value" size="small" toggleMask
+          <pv-inputtext type="password" id="confirm-password" class="custom-input cursor-text" v-model="c_password" size="small" toggleMask
                         placeholder="confirm your password"/>
 
-          <pv-button class="mt-4 button">{{$t('Access.SignIn')}}</pv-button>
+          <pv-button class="mt-4 button" @click="register">{{$t('Access.SignIn')}}</pv-button>
 
           <a class="underline cursor-pointer text-1xl" @click="goToLogin">{{$t('Access.ToLogin')}}</a>
         </div>
