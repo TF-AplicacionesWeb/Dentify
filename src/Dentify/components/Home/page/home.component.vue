@@ -9,7 +9,7 @@ export default {
 <template>
   <toolbarHomeComponent>
   </toolbarHomeComponent>
-  <h1>home works</h1>
+
 
 
   <!-- MUESTRA TODOS LOS COMPONENTES que contiene este componente y que estan RELACIONADOS AL ROOT-->

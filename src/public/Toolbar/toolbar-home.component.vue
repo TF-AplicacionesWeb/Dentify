@@ -26,7 +26,7 @@ export default {
         <i class="pi pi-calendar-clock mx-1"></i>
         {{ $t('Toolbar.Appointments') }}
       </pv-button>
-      <pv-button class="mx-3">
+      <pv-button class="mx-3" @click="this.$router.push('/home/payments')">
         <i class="pi pi-dollar mx-1"></i>
         {{ $t('Toolbar.Payments') }}
       </pv-button>
