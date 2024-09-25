@@ -23,7 +23,7 @@ export default {
     }
   },
   methods: {
-    goToProfile(){
+    async goToProfile(){
       if (!this.currentPassword || !this.newPassword || !this.confirmPassword) {
         alert(this.$t('Fill all fields, please'));
         return;
@@ -38,7 +38,15 @@ export default {
         return;
       }
 
-      this.$router.push('/home/profile');
+      ProfileApiService.updatePassword(this.profile.id, this.newPassword)
+          .then(() => {
+            alert(this.$t('Password updated successfully'));
+            this.$router.push('/home/profile');
+          })
+          .catch(error => {
+            console.error("Error updating password:", error);
+            alert(this.$t('Error updating password'));
+          });
     }
   }
 }
