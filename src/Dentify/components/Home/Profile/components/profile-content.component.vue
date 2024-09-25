@@ -1,21 +1,26 @@
 <script>
-import {AuthenApiService} from "../../../Access/services/authen-api.service.js";
+import {ProfileApiService} from "../services/profile-api.service.js";
 
 export default {
   name: "profile-content.component",
   data() {
     return {
-      users: [],
-      user: null,
+      profiles: [],
+      profile: null,
     }
   },
   async mounted() {
     try {
-      const users = await AuthenApiService.getData();
-      this.users = users;
-      this.user = users[0];
+      const profiles = await ProfileApiService.getData();
+      this.profiles = profiles;
+      this.profile = profiles[0];
     } catch (error) {
-      console.error("Error fetching users:", error);
+      console.error("Error fetching profiles:", error);
+    }
+  },
+  methods: {
+    goToSettings(){
+      this.$router.push('/profileSettings');
     }
   }
 }
@@ -32,12 +37,12 @@ export default {
                   class="profile-logo" width="128px"></pv-Image>
       </div>
       <div class="dental-clinic-name-container">
-        <p class="name-clinic">{{user?.company}}</p>
+        <p class="name-clinic">{{profile?.company}}</p>
         <p class="dental-clinic">{{ $t('Profile.DentalCenter')}}</p>
       </div>
     </div>
     <div class="button-edit-profile-container">
-      <pv-button class="button-edit-profile">{{ $t('Profile.EditProfile')}}</pv-button>
+      <pv-button class="button-edit-profile" @click="goToSettings">{{ $t('Profile.EditProfile')}}</pv-button>
     </div>
 
 

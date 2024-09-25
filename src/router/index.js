@@ -8,6 +8,10 @@ import dashboardComponent from "../Dentify/components/Home/Dashboard/pages/dashb
 import supportComponent from "../Dentify/components/Home/Support/support.component.vue";
 import profileOverlayComponent from "../Dentify/components/Home/Profile/pages/profile-overlay.page.vue";
 import reservationComponent from "../Dentify/components/Home/Reservation/pages/reservation.page.vue";
+
+import profileOverlaySettingsPage from "../Dentify/components/Home/Profile/pages/profile-overlay-settings.page.vue";
+import profileOverlayEditInformationPage from "../Dentify/components/Home/Profile/pages/profile-overlay-edit-information.page.vue";
+import profileOverlayChangePasswordPage from "../Dentify/components/Home/Profile/pages/profile-overlay-change-password.page.vue";
 import patientsPage from "../Dentify/components/Home/Patients/pages/patients.page.vue";
 
 const router = createRouter({
@@ -44,6 +48,15 @@ const router = createRouter({
                     path:"patients", component: patientsPage
                 }
             ]
+        },
+        {
+            path: "/profileSettings", component: profileOverlaySettingsPage, name: "profileSettings",
+        },
+        {
+            path: "/profileEditInformation", component: profileOverlayEditInformationPage, name: "profileEditInformation",
+        },
+        {
+            path: "/profileChangePassword", component: profileOverlayChangePasswordPage, name: "profileChangePassword",
         },
         {
             path: "/:pathMatch(.*)*",
