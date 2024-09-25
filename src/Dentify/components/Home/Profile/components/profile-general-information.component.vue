@@ -1,12 +1,12 @@
 <script>
-import {AuthenApiService} from "../../../Access/services/authen-api.service.js";
+import {ProfileApiService} from "../services/profile-api.service.js";
 
 export default {
   name: "profile-general-information.component",
   data() {
     return {
-      users: [],
-      user: null,
+      profiles: [],
+      profile: null,
     }
   },
   created() {
@@ -14,9 +14,9 @@ export default {
   },
   methods: {
     getData() {
-      AuthenApiService.getData().then((users)=>{
-        this.users = users;
-        this.user = users[0];
+      ProfileApiService.getData().then((profiles)=>{
+        this.profiles = profiles;
+        this.profile = profiles[0];
       })
     }
   }
@@ -27,8 +27,8 @@ export default {
   <div class="profile-general-information-container">
     <p><b>{{ $t('Profile.gInformation')}}</b></p>
     <hr class="custom-line">
-    <p><b>{{ $t('Profile.Name')}}:</b> {{user?.name}} {{user?.lastname}}</p>
-    <p><b>{{ $t('Profile.Email')}}:</b> {{user?.email}}</p>
+    <p><b>{{ $t('Profile.Name')}}:</b> {{profile?.name}} {{profile?.lastname}}</p>
+    <p><b>{{ $t('Profile.Email')}}:</b> {{profile?.email}}</p>
   </div>
 </template>
 

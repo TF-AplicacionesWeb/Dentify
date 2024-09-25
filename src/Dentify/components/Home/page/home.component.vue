@@ -10,8 +10,6 @@ export default {
   <toolbarHomeComponent>
   </toolbarHomeComponent>
 
-
-
   <!-- MUESTRA TODOS LOS COMPONENTES que contiene este componente y que estan RELACIONADOS AL ROOT-->
   <router-view></router-view>
 </template>
