@@ -15,7 +15,17 @@ export default {
 </script>
 
 <template>
-    <pv-togglebutton v-model="isEnglish" onLabel="EN" offLabel="ES" @change="toggleLanguage" class="px-10"/>
+  <div class="flex items-center justify-center p-4 bg-gray-100 rounded-lg shadow-md w-20">
+    <pv-togglebutton
+        v-model="isEnglish"
+        onLabel="EN"
+        offLabel="ES"
+        @change="toggleLanguage"
+        class="text-xl"
+    />
+    <span class="ml-1 text-gray-700 font-semibold">
+    </span>
+  </div>
 </template>
 
 <style scoped>
