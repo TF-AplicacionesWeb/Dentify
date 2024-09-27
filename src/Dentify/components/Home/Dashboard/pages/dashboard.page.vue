@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-  <div class="dashboard-container">
+  <div class="dashboard-container mt-24">
     <h1 class="dashboard-title">Dashboard</h1>
     <!-- Lista de inventario -->
     <div class="cards-bar">
