@@ -1,12 +1,12 @@
 export class Profile {
-    constructor({user_id, username, first_name, last_name, email, phone, registration_date, company, password}) {
-        this.id = user_id;
+    constructor({id, username, first_name, last_name, email, phone, register_date, company, password}) {
+        this.id = id;
         this.username = username;
-        this.name = first_name;
-        this.lastname = last_name;
+        this.first_name = first_name;
+        this.last_name = last_name;
         this.email = email;
         this.phone = phone;
-        this.register_date = registration_date;
+        this.register_date = register_date;
         this.company = company;
         this.password = password;
     }

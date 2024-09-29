@@ -13,11 +13,14 @@ export default {
     this.getData();
   },
   methods: {
-    getData() {
-      ProfileApiService.getData().then((profiles)=>{
-        this.profiles = profiles;
-        this.profile = profiles[0];
-      })
+    async getData() {
+      try {
+        this.profiles = await ProfileApiService.getData();
+        this.profile = this.profiles[0];
+        console.log(this.profile);
+      } catch (error) {
+        console.error("Error loading profile:", error);
+      }
     }
   }
 }
@@ -27,7 +30,7 @@ export default {
   <div class="profile-general-information-container">
     <p><b>{{ $t('Profile.gInformation')}}</b></p>
     <hr class="custom-line">
-    <p><b>{{ $t('Profile.Name')}}:</b> {{profile?.name}} {{profile?.lastname}}</p>
+    <p><b>{{ $t('Profile.Name')}}:</b> {{profile?.first_name}} {{profile?.last_name}}</p>
     <p><b>{{ $t('Profile.Email')}}:</b> {{profile?.email}}</p>
   </div>
 </template>

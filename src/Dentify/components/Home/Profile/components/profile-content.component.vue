@@ -15,12 +15,12 @@ export default {
       this.profiles = profiles;
       this.profile = profiles[0];
     } catch (error) {
-      console.error("Error fetching profiles:", error);
+      console.error("Error loading profile:", error);
     }
   },
   methods: {
     goToSettings(){
-      this.$router.push('/profileSettings');
+      this.$router.push('/home/profileSettings');
     }
   }
 }
