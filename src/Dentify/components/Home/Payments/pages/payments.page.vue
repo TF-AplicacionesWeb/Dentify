@@ -1,98 +1,58 @@
 
 <script>
 export default {
-  name: "payments.vue"
+  name: "payments.vue",
+
+  methods: {
+    goToAppointments() {
+      this.$router.push('/home/payments/appointments');
+    },
+    goToInvoices() {
+      this.$router.push('/home/payments/invoices');
+    }
+  },
+
 }
 </script>
 <template>
-  <div class="payments-container">
-    <h1 class="title">Pagos</h1>
+  <div class="payments-container mx-auto mt-20 max-w-5xl p-5"  v-if="$route.path === '/home/payments'">
+    <h1 class="text-left text-4xl font-bold mb-5">Pagos</h1>
+    <h3 class="text-left text-2xl font-bold mb-4">Citas a pagar:</h3>
 
-    <!-- Barra de búsqueda y botones -->
-    <div class="toolbar">
-      <div class="search-container">
-        <div class="search-input-container">
-          <i class="pi pi-search"  />
-          <pv-inputtext placeholder="Buscar" class="search-input" />
-          <i class="pi pi-cog" @click="$emit('openSettings')" />
+    <div class="toolbar flex justify-between items-center gap-2 mb-5">
+      <div class="search-container w-full flex items-center justify-between">
+        <div class="search-input-container flex items-center bg-teal-100 rounded-full px-2 py-1 w-1/2">
+          <i class="pi pi-search mr-2"/>
+          <pv-inputtext placeholder="Buscar"
+                        class="search-input bg-teal-100 w-full outline-none border-b-2 border-teal-700 transition duration-300 ease-in-out"/>
+          <i class="pi pi-cog ml-2 cursor-pointer" @click="$emit('openSettings')"/>
         </div>
       </div>
-      <pv-button label="Citas a pagar" class="action-button" @click="this.$router.push('/home/payments/appointments')" />
-      <pv-button label="Facturas" class="action-button" />
+      <pv-button label="Citas a pagar" class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg whitespace-nowrap" @click="goToAppointments" />
+      <pv-button label="Facturas" class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg" @click="goToInvoices"/>
     </div>
 
   </div>
   <router-view></router-view>
+
 </template>
 
 <style scoped>
-
 .payments-container {
   padding: 20px;
   max-width: 1200px;
   margin: 0 auto;
+  margin-top: 80px;
 }
-
-.title {
-  text-align: left;
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  margin-left: 0;
-}
-
-.toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-
-
-.action-button {
-  background-color: #2C3E50;
-  color: white;
-  width: 15%;
-  padding: 5px;
-  border-radius: 25px;
-  font-size: 16px;
-  border: none;
-}
-
-.search-input{
-    background-color: #D1F2EB;
-
-    outline: none;
-    border-bottom: 2px solid #2C3E50;
-    transition: border-bottom 0.3s ease;
-  }
-
 .search-input-container {
-  display: flex;
-  align-items: center;
   background-color: #D1F2EB;
-  border-radius: 25px;
-  padding: 0.5em;
-  width: 100%;
 }
 
-.search-input-container > .pi-search {
-  margin-right: 0.5em;
-}
-
-.search-input-container > .pi-cog {
-  margin-left: 0.5em;
-  cursor: pointer;
-}
-
-.search-input-container > .pi-inputtext {
-  flex: 1;
-  border: none;
-  padding: 0;
-  margin: 0;
+.search-input {
+  background-color: #D1F2EB;
+  outline: none;
+  border-bottom: 2px solid #2C3E50;
+  transition: border-bottom 0.3s ease;
 }
 
 </style>

@@ -15,6 +15,7 @@ import profileOverlaySettingsPage from "../Dentify/components/Home/Profile/pages
 import profileOverlayEditInformationPage from "../Dentify/components/Home/Profile/pages/profile-overlay-edit-information.page.vue";
 import profileOverlayChangePasswordPage from "../Dentify/components/Home/Profile/pages/profile-overlay-change-password.page.vue";
 import patientsPage from "../Dentify/components/Home/Patients/pages/patients.page.vue";
+import paymentsInvoicePage from "../Dentify/components/Home/Payments/pages/payments-invoice.page.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -48,13 +49,16 @@ const router = createRouter({
                 },
                 {
 
-                    path: "payments",
+                    path: "/home/payments",
                     component: paymentsComponent,
                     children: [
                         {
                             path: "appointments",
                             component: paymentsAppointmentsComponent,
-
+                        },
+                        {
+                            path: "invoices",
+                            component:paymentsInvoicePage,
                         }
                     ]
                 },
