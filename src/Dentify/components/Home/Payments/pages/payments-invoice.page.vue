@@ -15,20 +15,25 @@ export default {
     };
   },
   methods: {
+
     goToAppointments() {
       this.$router.push('/home/payments/appointments');
     },
+
     openInvoice(payment) {
       this.selectedInvoice = {
-        firstName: payment.name,
+        name: payment.name,
         dni: payment.dni,
         email: payment.email,
         date: new Date(payment.appointment_date).toLocaleDateString(),
-        time: payment.time,
-        description: payment.reason
+        time: new Date(payment.appointment_date).toLocaleTimeString(),
+        description: payment.reason,
+        amount: payment.amount
       };
+
       this.showInvoiceCard = true;
     },
+
     closeInvoiceCard() {
       this.showInvoiceCard = false;
     }
@@ -54,7 +59,9 @@ export default {
           <i class="pi pi-cog ml-2 cursor-pointer" @click="$emit('openSettings')"/>
         </div>
       </div>
-      <pv-button label="Citas a pagar" class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg whitespace-nowrap" @click="goToAppointments" />
+      <pv-button label="Citas a pagar"
+                 class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg whitespace-nowrap"
+                 @click="goToAppointments"/>
     </div>
 
     <table class="payments-table w-full border-collapse">
@@ -72,14 +79,14 @@ export default {
       </tr>
       </thead>
       <tbody>
-      <tr v-for="payment in pendingPayments" :key="payment.appointment_id" class="border-t">
+      <tr v-for="payment in pendingPayments" :key="payment.id" class="border-t">
         <td class="p-3 text-center">{{ payment.name }}</td>
         <td class="p-3 text-center">{{ payment.dni }}</td>
         <td class="p-3 text-center">{{ new Date(payment.appointment_date).toLocaleDateString() }}</td>
-        <td class="p-3 text-center">{{ payment.time }}</td>
-        <td class="p-3 text-center">{{ payment.duration_minutes }}</td>
+        <td class="p-3 text-center">{{ new Date(payment.appointment_date).toLocaleTimeString() }}</td>
+        <td class="p-3 text-center">{{ payment.duration_minutes }} min</td>
         <td class="p-3 text-center">{{ payment.reason }}</td>
-        <td class="p-3 text-center">{{ payment.dentist }}</td>
+        <td class="p-3 text-center">{{ payment.dentist}}</td>
         <td class="p-3 text-center">{{ payment.payment_status ? 'Pagado' : 'Pendiente' }}</td>
         <td class="p-3 text-center">
           <i class="pi pi-file cursor-pointer" @click="openInvoice(payment)"></i>
@@ -100,7 +107,6 @@ export default {
 .payments-container {
   padding: 20px;
   max-width: 1200px;
-  margin: 0 auto;
   margin-top: 80px;
 }
 
@@ -124,4 +130,3 @@ export default {
   border: 1px solid #ccc;
 }
 </style>
-

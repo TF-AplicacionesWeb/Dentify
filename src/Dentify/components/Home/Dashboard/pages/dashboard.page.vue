@@ -63,24 +63,9 @@ export default {
           <p>Última actualización: {{ item.last_updated }}</p>
         </template>
       </pv-card>
-
-      <pv-card class="dashboard-card info-card">
-        <template #content>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-        </template>
-      </pv-card>
-
-      <pv-card class="dashboard-card info-card">
-        <template #content>
-          <p>Lorem ipsum</p>
-          <p>Lorem ipsum</p>
-        </template>
-      </pv-card>
     </div>
 
     <div class="appointments-payments-container">
-      <!-- Citas para Hoy -->
       <div class="appointments">
         <h2>Citas para hoy</h2>
         <pv-card
@@ -97,7 +82,7 @@ export default {
         </pv-card>
       </div>
 
-      <!-- Pagos Recientes -->
+
       <div class="payments">
         <h2>Pagos recientes</h2>
         <pv-card
@@ -106,7 +91,7 @@ export default {
             class="dashboard-card payments-card"
         >
           <template #content>
-            <p>ID de Pago: {{ payment.payment_id }}</p>
+            <p>ID de Pago: {{ payment.id }}</p>
             <p>Cantidad: {{ payment.amount }}</p>
             <p>Fecha de Pago: {{ new Date(payment.payment_date).toLocaleDateString() }}</p>
           </template>

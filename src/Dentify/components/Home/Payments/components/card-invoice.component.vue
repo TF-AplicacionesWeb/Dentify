@@ -4,16 +4,8 @@ export default {
   props: {
     invoice: Object
   },
-  data(){
+  data() {
     return {
-      firstName: '',
-      dni: '',
-      email: '',
-      date: '',
-      time: '',
-      description: '',
-      amount: '',
-
     };
   },
   methods: {
@@ -23,17 +15,19 @@ export default {
   }
 };
 </script>
+
 <template>
   <div class="overlay">
     <div class="invoice-card p-5 shadow-lg rounded-lg bg-light-blue">
       <h1 class="text-3xl font-bold mb-4 text-center text-black">Factura</h1>
 
       <div class="invoice-info mb-6">
-        <p><strong>Nombre:</strong> {{ invoice.firstName }}</p>
+
+        <p><strong>Nombre:</strong> {{ invoice.name }}</p>
         <p><strong>DNI:</strong> {{ invoice.dni }}</p>
         <p><strong>Correo electrónico:</strong> {{ invoice.email }}</p>
-        <p><strong>Fecha:</strong> {{ invoice.date }}</p>
-        <p><strong>Hora:</strong> {{ invoice.time }}</p>
+        <p><strong>Fecha:</strong> {{ new Date(invoice.date).toLocaleDateString() }}</p>
+        <p><strong>Hora:</strong> {{ new Date(invoice.date).toLocaleTimeString() }}</p>
       </div>
 
       <table class="w-full mb-4 table-fixed border-collapse border border-gray-300">
@@ -51,14 +45,14 @@ export default {
         </tbody>
       </table>
 
-      <div class=" actions flex justify-center mt-5">
-        <button @click.prevent="goBack" class="bg-sky-950 btn bg-dark-blue text-white px-4 py-2 rounded shadow">Regresar a Facturas</button>
+      <div class="actions flex justify-center mt-5">
+        <button @click.prevent="goBack" class="bg-sky-950 btn bg-dark-blue text-white px-4 py-2 rounded shadow">
+          Regresar a Facturas
+        </button>
       </div>
     </div>
   </div>
 </template>
-
-
 
 <style scoped>
 .overlay {

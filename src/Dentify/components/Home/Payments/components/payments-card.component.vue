@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     makePayment() {
-      this.$emit('confirmPayment', this.appointment.appointment_id);
+      this.$emit('confirmPayment', this.appointment.id);
       this.paymentConfirmed = true;
       this.$emit('close');
     },
@@ -33,16 +33,15 @@ export default {
 
       <h2 class="text-xl font-semibold mb-2 text-gray-800">Información de la cita</h2>
       <div class="details mb-4 text-black">
-        <p><strong>Nombre del paciente:</strong> {{ appointment.name.first_name }}</p>
-        <p><strong>Apellido del paciente:</strong> {{ appointment.name.last_name }}</p>
+        <p><strong>Nombre del paciente:</strong> {{ appointment.name }}</p>
         <p><strong>DNI del paciente:</strong> {{ appointment.dni }}</p>
         <p><strong>Fecha:</strong> {{ new Date(appointment.appointment_date).toLocaleDateString() }}</p>
-        <p><strong>Hora:</strong> {{ appointment.time }}</p>
+        <p><strong>Hora:</strong> {{ new Date(appointment.appointment_date).toLocaleTimeString() }}</p>
         <p><strong>Tipo de cita:</strong> {{ appointment.reason }}</p>
-        <p><strong>Nombre del odontólogo:</strong> {{ appointment.dentist.first_name }} {{
+        <p><strong>Nombre del odontólogo:</strong> {{ appointment.dentist }} {{
             appointment.dentist.last_name
           }}</p>
-        <p><strong>Duración de la cita:</strong> {{ appointment.duration }}</p>
+        <p><strong>Duración de la cita:</strong> {{ appointment.duration_minutes }} minutos</p>
       </div>
 
       <h2 class="text-xl font-semibold mb-2 text-gray-800">Datos del pago</h2>

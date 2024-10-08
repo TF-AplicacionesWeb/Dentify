@@ -36,23 +36,23 @@
   ],
   "subscriptions": [
     {
-      "subscription_id": 1,
+      "id": 1,
       "name": "Basic Subscription",
       "description": "Limited access"
     },
     {
-      "subscription_id": 2,
+      "id": 2,
       "name": "Premium Subscription",
       "description": "Full access"
     }
   ],
   "subscriptions_users": [
     {
-      "subscription_id": 1,
+      "id": 1,
       "user_id": 1
     },
     {
-      "subscription_id": 2,
+      "id": 2,
       "user_id": 1
     }
   ],
@@ -93,7 +93,7 @@
   ],
   "inventory": [
     {
-      "material_id": 1,
+      "id": 1,
       "material_name": "Gloves",
       "quantity": 100,
       "unit_price": 5.5,
@@ -101,7 +101,7 @@
       "user_id": 1
     },
     {
-      "material_id": 2,
+      "id": 2,
       "material_name": "Masks",
       "quantity": 200,
       "unit_price": 2.5,
@@ -112,7 +112,7 @@
   "patients": [
     {
       "dni": 123456789,
-      "clinical_record_id": 1,
+      "id": 1,
       "first_name": "Jane",
       "last_name": "Doe",
       "email": "jane@example.com",
@@ -124,7 +124,7 @@
     },
     {
       "dni": 7777777,
-      "clinical_record_id": 1,
+      "id": 1,
       "first_name": "Roman",
       "last_name": "Reigns",
       "email": "reigns@example.com",
@@ -136,7 +136,7 @@
     },
     {
       "dni": 98765432,
-      "clinical_record_id": 2,
+      "id": 2,
       "first_name": "Emily",
       "last_name": "Clark",
       "email": "emily@example.com",
@@ -148,7 +148,7 @@
     },
     {
       "dni": 24681357,
-      "clinical_record_id": 3,
+      "id": 3,
       "first_name": "Mark",
       "last_name": "Baker",
       "email": "mark@example.com",
@@ -158,12 +158,10 @@
       "appointment_id": 3,
       "user_id": 3
     }
-
-
   ],
   "clinical_records": [
     {
-      "clinical_record_id": 1,
+      "id": 1,
       "medical_history": "No allergies",
       "record_date": "2024-01-10",
       "diagnosis": "General check-up",
@@ -173,20 +171,20 @@
   ],
   "clinical_exam": [
     {
-      "clinical_record_id": 1,
+      "id": 1,
       "exam_id": 1
     }
   ],
   "exams": [
     {
-      "exam_id": 1,
+      "id": 1,
       "description": "Dental X-ray",
       "image_path": "/images/xray1.jpg"
     }
   ],
   "appointments": [
     {
-      "appointment_id": 1,
+      "id": 1,
       "dentist_dni": 12345678,
       "user_id": 1,
       "appointment_date": "2024-01-15T10:00:00",
@@ -198,7 +196,7 @@
       "payment_status": true
     },
     {
-      "appointment_id": 2,
+      "id": 2,
       "dentist_dni": 87654321,
       "user_id": 1,
       "appointment_date": "2024-09-30T09:00:00",
@@ -210,7 +208,7 @@
       "payment_status": false
     },
     {
-      "appointment_id": 3,
+      "id": 3,
       "dentist_dni": 13579246,
       "user_id": 1,
       "appointment_date": "2024-09-30T11:00:00",
@@ -221,54 +219,51 @@
       "payment_id": 3,
       "payment_status": false
     }
-
   ],
   "payments": [
     {
-      "payment_id": 1,
+      "id": 1,
       "amount": 50,
       "payment_date": "2024-01-10"
     },
     {
-      "payment_id": 2,
+      "id": 2,
       "amount": 150,
       "payment_date": "2024-09-30"
     },
     {
-      "payment_id": 3,
+      "id": 3,
       "amount": 120,
       "payment_date": "2024-09-30"
     }
-
   ],
   "payment_methods": [
     {
-      "payment_method_id": 1,
+      "id": 1,
       "name": "Credit Card"
     },
     {
-      "payment_method_id": 2,
+      "id": 2,
       "name": "PayPal"
     }
   ],
   "payment_method_relation": [
     {
-      "payment_id": 1,
+      "id": 1,
       "payment_method_id": 1
     },
     {
-      "payment_id": 2,
+      "id": 2,
       "payment_method_id": 1
     },
     {
-      "payment_id": 3,
+      "id": 3,
       "payment_method_id": 2
     }
-
   ],
   "schedules": [
     {
-      "schedule_id": 1,
+      "id": 1,
       "dentist_dni": 12345678,
       "weekday": "Monday",
       "start_time": "09:00",
@@ -278,7 +273,7 @@
   ],
   "support-message": [
     {
-      "message_id": 1,
+      "id": 1,
       "name": "Jose",
       "email": "example@gmail.com",
       "description": "",
