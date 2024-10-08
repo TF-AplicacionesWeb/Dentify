@@ -26,7 +26,7 @@ class BaseService {
     }
 
     async update(endpoint, id, data) {
-        const response = await this.client.put(`${endpoint}/${id}`, data);
+        const response = await this.client.patch(`${endpoint}/${id}`, data);
         return response.data;
     }
 
