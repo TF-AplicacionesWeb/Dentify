@@ -3,13 +3,13 @@
     {
       "id": "1",
       "username": "admin",
-      "first_name": "John",
-      "last_name": "Doe",
-      "email": "jdoe@example.com",
+      "first_name": "Javier",
+      "last_name": "Roque",
+      "email": "m@gmail.com",
       "phone": "1234567890",
       "register_date": "2024-01-01",
       "company": "Example Corp",
-      "password": "oli123456"
+      "password": "a12345678"
     },
     {
       "id": "6299",
@@ -38,14 +38,12 @@
     {
       "id": 1,
       "name": "Basic Subscription",
-      "description": "Limited access",
-      "id": "67d8"
+      "description": "Limited access"
     },
     {
       "id": 2,
       "name": "Premium Subscription",
-      "description": "Full access",
-      "id": "0949"
+      "description": "Full access"
     }
   ],
   "subscriptions_users": [
@@ -100,8 +98,7 @@
       "quantity": 100,
       "unit_price": 5.5,
       "last_updated": "2024-01-01",
-      "user_id": 1,
-      "id": "d98b"
+      "user_id": 1
     },
     {
       "id": 2,
@@ -109,8 +106,7 @@
       "quantity": 200,
       "unit_price": 2.5,
       "last_updated": "2024-01-05",
-      "user_id": 1,
-      "id": "1ebe"
+      "user_id": 1
     }
   ],
   "patients": [
@@ -124,8 +120,7 @@
       "medical_history": "None",
       "birth_date": "1994-05-15",
       "appointment_id": 1,
-      "user_id": 1,
-      "id": "ce0c"
+      "user_id": 1
     },
     {
       "dni": 7777777,
@@ -171,8 +166,7 @@
       "record_date": "2024-01-10",
       "diagnosis": "General check-up",
       "treatment": "None",
-      "user_id": 1,
-      "id": "76d9"
+      "user_id": 1
     }
   ],
   "clinical_exam": [
@@ -185,8 +179,7 @@
     {
       "id": 1,
       "description": "Dental X-ray",
-      "image_path": "/images/xray1.jpg",
-      "id": "e4f8"
+      "image_path": "/images/xray1.jpg"
     }
   ],
   "appointments": [
@@ -275,8 +268,8 @@
       "weekday": "Monday",
       "start_time": "09:00",
       "end_time": "17:00",
-      "user_id": 1,
-      "id": "b14b"
+      "user_id": 1
+
     }
   ],
   "support-message": [
@@ -285,8 +278,7 @@
       "name": "Jose",
       "email": "example@gmail.com",
       "description": "",
-      "user_id": "1",
-      "id": "93f3"
+      "user_id": "1"
     }
   ]
 }
