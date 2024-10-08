@@ -1,4 +1,5 @@
 <script>
+import {ProfileApiService} from "../services/profile-api.service.js";
 
 export default {
   name: "profile-edit-information",
@@ -6,14 +7,55 @@ export default {
     return {
       name: '',
       email: '',
+      profiles: [],
+      profile: null,
+    }
+  },
+  async mounted() {
+    try {
+      this.profiles = await ProfileApiService.getData();
+      this.profile = this.profiles[0];
+      console.log(this.profile);
+    } catch (error) {
+      console.error("Error loading profile:", error);
     }
   },
   methods: {
     goToProfile(){
-      if (!this.name || !this.email) {
+      if (!this.name && !this.email) {
         alert(this.$t('Fill all fields, please'));
         return;
       }
+
+      let profileUpdated = false;
+
+      if(this.name) {
+        const fullName = this.name.trim().split(/\s+/);
+        if (fullName.length < 2) {
+          alert(this.$t('Enter your first name and last name, please'));
+          return;
+        }
+
+        this.profile.first_name = fullName[0];
+        this.profile.last_name = fullName[1];
+        profileUpdated = true;
+      }
+
+      if(this.email) {
+        const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailFormat.test(this.email)) {
+          alert(this.$t('Invalid email format'));
+          return;
+        }
+
+        this.profile.email = this.email;
+        profileUpdated = true;
+      }
+
+      if (profileUpdated) {
+        ProfileApiService.updateProfile(this.profile.id, this.profile);
+      }
+
       this.$router.push('/home/profile');
     }
   }

@@ -19,11 +19,11 @@ export default {
       this.profile = profiles[0];
       console.log(this.profile);
     } catch (error) {
-      console.error("Error fetching profiles:", error);
+      console.error("Error loading profile:", error);
     }
   },
   methods: {
-    async goToProfile(){
+    goToProfile(){
       if (!this.currentPassword || !this.newPassword || !this.confirmPassword) {
         alert(this.$t('Fill all fields, please'));
         return;
@@ -38,15 +38,9 @@ export default {
         return;
       }
 
-      ProfileApiService.updatePassword(this.profile.id, this.newPassword)
-          .then(() => {
-            alert(this.$t('Password updated successfully'));
-            this.$router.push('/home/profile');
-          })
-          .catch(error => {
-            console.error("Error updating password:", error);
-            alert(this.$t('Error updating password'));
-          });
+      this.profile.password = this.newPassword;
+      ProfileApiService.updateProfile(this.profile.id, this.profile);
+      this.$router.push('/home/profile');
     }
   }
 }

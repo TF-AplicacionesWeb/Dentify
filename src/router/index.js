@@ -45,6 +45,15 @@ const router = createRouter({
                     component: profileOverlayComponent
                 },
                 {
+                    path: "profileSettings", component: profileOverlaySettingsPage, name: "profileSettings",
+                },
+                {
+                    path: "profileEditInformation", component: profileOverlayEditInformationPage, name: "profileEditInformation",
+                },
+                {
+                    path: "profileChangePassword", component: profileOverlayChangePasswordPage, name: "profileChangePassword",
+                },
+                {
                     path: "appointments", component: reservationComponent
                 },
                 {
@@ -68,15 +77,6 @@ const router = createRouter({
 
                 }
             ]
-        },
-        {
-            path: "/profileSettings", component: profileOverlaySettingsPage, name: "profileSettings",
-        },
-        {
-            path: "/profileEditInformation", component: profileOverlayEditInformationPage, name: "profileEditInformation",
-        },
-        {
-            path: "/profileChangePassword", component: profileOverlayChangePasswordPage, name: "profileChangePassword",
         },
         {
             path: "/:pathMatch(.*)*",
