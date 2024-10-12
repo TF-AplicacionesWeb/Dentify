@@ -81,7 +81,6 @@ export default {
   },
 };
 </script>
-
 <template>
   <div class="payments-container mx-auto mt-20 max-w-5xl p-5">
     <h1 class="text-left text-4xl font-bold mb-5">Pagos</h1>

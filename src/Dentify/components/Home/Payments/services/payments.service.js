@@ -12,8 +12,6 @@ export class PaymentsService extends BaseService {
         const patients = await this.getAll('patients');
         const dentists = await this.getAll('dentists');
 
-
-
         return appointments.map(appointment => {
             const patient = patients.find(p => p.appointment_id === appointment.id);
             const dentist = dentists.find(d => d.dni === appointment.dentist_dni);

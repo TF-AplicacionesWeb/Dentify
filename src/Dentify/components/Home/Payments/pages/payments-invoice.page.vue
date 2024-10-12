@@ -19,7 +19,6 @@ export default {
     goToAppointments() {
       this.$router.push('/home/payments/appointments');
     },
-
     openInvoice(payment) {
       this.selectedInvoice = {
         name: payment.name,

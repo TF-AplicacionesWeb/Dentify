@@ -25,7 +25,6 @@ export default {
 
         <p><strong>Nombre:</strong> {{ invoice.name }}</p>
         <p><strong>DNI:</strong> {{ invoice.dni }}</p>
-        <!--<p><strong>Correo electrónico:</strong> {{ invoice.email }}</p>-->
         <p><strong>Fecha:</strong> {{ new Date(invoice.date).toLocaleDateString() }}</p>
         <p><strong>Hora:</strong> {{ new Date(invoice.date).toLocaleTimeString() }}</p>
       </div>
