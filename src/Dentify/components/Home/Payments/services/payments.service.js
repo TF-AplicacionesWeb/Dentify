@@ -1,6 +1,7 @@
 import BaseService from "../../../../../shared/services/base.service.js";
 import { Pendingpay } from "../models/pendingpay.entity.js";
 
+
 export class PaymentsService extends BaseService {
     constructor() {
         super('http://localhost:3000/');
@@ -12,7 +13,7 @@ export class PaymentsService extends BaseService {
         const dentists = await this.getAll('dentists');
 
 
-        //poner un
+
         return appointments.map(appointment => {
             const patient = patients.find(p => p.appointment_id === appointment.id);
             const dentist = dentists.find(d => d.dni === appointment.dentist_dni);
@@ -46,6 +47,7 @@ export class PaymentsService extends BaseService {
             const dentist = dentists.find(d => d.dni === appointment.dentist_dni);
             const payment = payments.find(p => p.id === appointment.payment_id);
 
+
             return new Pendingpay({
                 id: appointment.id,
                 dni: patient ? patient.dni : '',
@@ -61,10 +63,14 @@ export class PaymentsService extends BaseService {
             });
         });
     }
-
     async updateAppointmentStatus(appointmentId, data)
     {
         console.log(data);
         return this.update('appointments', appointmentId, data);
     }
+    async createPayment(paymentData) {
+        const newPayment = await this.create('payments', paymentData);
+        return newPayment.id;
+    }
+
 }
