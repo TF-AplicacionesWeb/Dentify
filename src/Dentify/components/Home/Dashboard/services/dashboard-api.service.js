@@ -1,15 +1,21 @@
-import axios from 'axios';
-const API_URL = 'http://localhost:3000'; // Cambia la URL según la configuración de tu servidor
+import BaseService from "../../../../../shared/services/base.service.js";
 
-export const DashboardApiService = {
-    getInventory() {
-        return axios.get(`${API_URL}/inventory`);
-    },
-    getAppointments() {
 
-        return axios.get(`${API_URL}/appointments`);
-    },
-    getPayments() {
-        return axios.get(`${API_URL}/payments`);
+ export class DashboardApiService extends BaseService {
+    constructor() {
+        super('http://localhost:3000');
     }
-};
+
+    async getInventory() {
+        return await this.getAll('/inventory');
+    }
+
+    async getAppointments() {
+        return await this.getAll('/appointments');
+    }
+
+    async getPayments() {
+        return await this.getAll('/payments');
+    }
+}
+

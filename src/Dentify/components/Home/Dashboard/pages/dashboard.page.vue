@@ -7,93 +7,76 @@ export default {
     return {
       inventory: [],
       appointments: [],
-      payments: []
+      payments: [],
+      dashboardApiService: new DashboardApiService(),
     };
   },
   created() {
     this.fetchData();
   },
   methods: {
-    fetchData() {
-      // Obtener datos de inventario
-      DashboardApiService.getInventory()
-          .then((response) => {
-            this.inventory = response.data;
-          })
-          .catch((error) => {
-            console.error("Error al obtener inventario:", error);
-          });
-
-      // Obtener datos de citas
-      DashboardApiService.getAppointments()
-          .then((response) => {
-            this.appointments = response.data;
-          })
-          .catch((error) => {
-            console.error("Error al obtener citas:", error);
-          });
-
-      // Obtener datos de pagos
-      DashboardApiService.getPayments()
-          .then((response) => {
-            this.payments = response.data;
-          })
-          .catch((error) => {
-            console.error("Error al obtener pagos:", error);
-          });
+    async fetchData() {
+      try {
+        this.inventory = await this.dashboardApiService.getInventory();
+        this.appointments = await this.dashboardApiService.getAppointments();
+        this.payments = await this.dashboardApiService.getPayments();
+      } catch (error) {
+        console.error("Error al obtener datos:", error);
+      }
     }
   }
 };
 </script>
 
 <template>
-  <div class="dashboard-container mt-24">
-    <h1 class="dashboard-title">Dashboard</h1>
-    <!-- Lista de inventario -->
-    <div class="cards-bar">
-      <pv-card
-          v-for="item in inventory"
-          :key="item.material_id"
-          class="dashboard-card info-card"
-      >
-        <template #content>
-          <p>{{ item.material_name }}</p>
-          <p>Cantidad: {{ item.quantity }}</p>
-          <p>Precio Unitario: {{ item.unit_price }}</p>
-          <p>Última actualización: {{ item.last_updated }}</p>
-        </template>
-      </pv-card>
+  <div class="mt-24 p-6 max-w-5xl mx-auto">
+    <h1 class="text-left text-4xl font-bold mb-10">Dashboard</h1>
+
+    <div class="dashboard-container bg-green-200 p-4 rounded-lg mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 justify-center items-center">
+        <pv-card
+            v-for="item in inventory"
+            :key="item.material_id"
+            class="bg-green-200 p-4"
+        >
+          <template #content>
+            <p class="font-semibold text-lg">{{ item.material_name }}</p>
+            <p>Cantidad: <span class="font-medium">{{ item.quantity }}</span></p>
+            <p>Precio Unitario: <span class="font-medium">${{ item.unit_price }}</span></p>
+            <p>Última actualización: <span class="font-medium">{{ item.last_updated }}</span></p>
+          </template>
+        </pv-card>
+      </div>
     </div>
 
-    <div class="appointments-payments-container">
-      <div class="appointments">
-        <h2>Citas para hoy</h2>
+    <div class="flex flex-col md:flex-row gap-8">
+      <div class="w-full md:w-1/2 bg-green-50 p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4 text-left">Citas para hoy</h2>
         <pv-card
             v-for="appointment in appointments"
             :key="appointment.appointment_id"
-            class="dashboard-card appointments-card"
+            class="bg-green-200 mb-4 p-4 rounded-md shadow-md"
         >
           <template #content>
-            <p>Dentista: {{ appointment.dentist_dni }}</p>
-            <p>Fecha: {{ new Date(appointment.appointment_date).toLocaleDateString() }}</p>
-            <p>Hora: {{ new Date(appointment.appointment_date).toLocaleTimeString() }}</p>
-            <p>Razón: {{ appointment.reason }}</p>
+            <p>Dentista: <span class="font-medium">{{ appointment.dentist_dni }}</span></p>
+            <p>Fecha: <span class="font-medium">{{ new Date(appointment.appointment_date).toLocaleDateString() }}</span></p>
+            <p>Hora: <span class="font-medium">{{ new Date(appointment.appointment_date).toLocaleTimeString() }}</span></p>
+            <p>Razón: <span class="font-medium">{{ appointment.reason }}</span></p>
           </template>
         </pv-card>
       </div>
 
-
-      <div class="payments">
-        <h2>Pagos recientes</h2>
+      <div class="w-full md:w-1/2 bg-green-50 p-6 rounded-lg shadow-md">
+        <h2 class="text-2xl font-semibold mb-4 text-left">Pagos recientes</h2>
         <pv-card
             v-for="payment in payments"
             :key="payment.payment_id"
-            class="dashboard-card payments-card"
+            class="bg-green-200 mb-4 p-4 rounded-md shadow-md"
         >
           <template #content>
-            <p>ID de Pago: {{ payment.id }}</p>
-            <p>Cantidad: {{ payment.amount }}</p>
-            <p>Fecha de Pago: {{ new Date(payment.payment_date).toLocaleDateString() }}</p>
+            <p>ID de Pago: <span class="font-medium">{{ payment.id }}</span></p>
+            <p>Cantidad: <span class="font-medium">${{ payment.amount }}</span></p>
+            <p>Fecha de Pago: <span class="font-medium">{{ new Date(payment.payment_date).toLocaleDateString() }}</span></p>
           </template>
         </pv-card>
       </div>
@@ -102,69 +85,26 @@ export default {
 </template>
 
 <style scoped>
-/* Contenedor Principal del Dashboard */
 .dashboard-container {
-  padding: 20px;
-  width: 1200px;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
-/* Estilo del título */
-.dashboard-title {
-  text-align: left;
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  margin-left: 0;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  justify-items: center;
+  align-items: center;
+  gap: 1rem;
 }
 
-/* Barra de Cards */
-.cards-bar {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  width: 100%;
-}
-
-/* Estilo de las Cards */
-.dashboard-card {
-  width: 100%;
-  background-color: #D1F2EB;
-  padding: 20px;
-  border-radius: 8px;
+.pv-card {
+  box-shadow: none;
+  padding: 0.5rem;
   text-align: center;
 }
-.dashboard-card.info-card {
-  border-radius: 0;
-}
 
-/* Contenedor de Citas y Pagos */
-.appointments-payments-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-/* Sección de Citas */
-.appointments {
-  width: 48%;
-}
-
-/* Sección de Pagos */
-.payments {
-  width: 48%;
-}
-
-/* Estilo de las Cards de Citas y Pagos */
-.appointments-card,
-.payments-card {
-  margin-bottom: 20px;
-  background-color: #A9DFBF;
-  padding: 15px;
-}
-
-/* Estilo de los subtítulos */
-h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
+.pv-card p {
+  margin: 0.2rem 0;
 }
 </style>
