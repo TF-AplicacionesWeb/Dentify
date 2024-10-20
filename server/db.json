@@ -58,6 +58,7 @@
   ],
   "dentists": [
     {
+      "id": 1,
       "dni": 12345678,
       "first_name": "Dr. Smith",
       "last_name": "Johnson",
@@ -65,10 +66,10 @@
       "experience": 10,
       "phone": "987654321",
       "email": "drsmith@example.com",
-      "total_appointments": 100,
-      "user_id": 1
+      "total_appointments": 100
     },
     {
+      "id": 2,
       "dni": 87654321,
       "first_name": "Dr. Alice",
       "last_name": "Williams",
@@ -76,10 +77,10 @@
       "experience": 8,
       "phone": "123987654",
       "email": "dralice@example.com",
-      "total_appointments": 200,
-      "user_id": 2
+      "total_appointments": 200
     },
     {
+      "id": 3,
       "dni": 13579246,
       "first_name": "Dr. Bob",
       "last_name": "Harris",
@@ -87,8 +88,33 @@
       "experience": 5,
       "phone": "456789123",
       "email": "drbob@example.com",
-      "total_appointments": 150,
-      "user_id": 3
+      "total_appointments": 150
+    }
+  ],
+  "schedule_dentists": [
+    {
+      "id": 1,
+      "date": "2024-10-20",
+      "hour": "09:00",
+      "dentist_id": 1
+    },
+    {
+      "id": 2,
+      "date": "2024-10-20",
+      "hour": "11:00",
+      "dentist_id": 1
+    },
+    {
+      "id": 3,
+      "date": "2024-10-21",
+      "hour": "10:00",
+      "dentist_id": 2
+    },
+    {
+      "id": 4,
+      "date": "2024-10-21",
+      "hour": "14:00",
+      "dentist_id": 2
     }
   ],
   "inventory": [
@@ -269,7 +295,6 @@
       "start_time": "09:00",
       "end_time": "17:00",
       "user_id": 1
-
     }
   ],
   "support-message": [
