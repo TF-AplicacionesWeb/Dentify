@@ -81,5 +81,27 @@
     "Misc_doc": "Ficha de seguimiento",
     "header": "Historial Clinico",
     "button": "Nuevo Paciente"
+  },
+  "Specialists": {
+    "sSpecialists": "Especialistas",
+    "nSpecialist": "Nuevo Especialista",
+    "pProfile": "Perfil personal",
+    "aHours": "Horas disponibles",
+    "delete": "Eliminar",
+    "fName": "Nombre",
+    "lName": "Apellido",
+    "specialty": "Especialidad",
+    "id": "DNI",
+    "email": "Correo",
+    "experience": "Experiencia",
+    "phone": "Teléfono",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "date": "Fecha",
+    "hour": "Hora",
+    "add": "Agregar",
+    "raHours": "Horas disponibles registrados",
+    "ok": "OK",
+    "cDelete": "¿Estás seguro de eliminar"
   }
 }

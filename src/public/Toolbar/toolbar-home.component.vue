@@ -34,7 +34,7 @@ export default {
         <i class="pi pi-users mx-1"></i>
         {{ $t('Toolbar.Patients') }}
       </pv-button>
-      <pv-button class="mx-3">
+      <pv-button class="mx-3" @click="this.$router.push('/home/specialists')">
         <i class="pi pi-briefcase mx-1"></i>
         {{ $t('Toolbar.Specialists') }}
       </pv-button>
