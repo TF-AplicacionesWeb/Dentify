@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000'; // Cambia la URL según la configuración de tu servidor
+const API_URL = 'http://localhost:3000';
 
 export const DashboardApiService = {
     getInventory(id) {
