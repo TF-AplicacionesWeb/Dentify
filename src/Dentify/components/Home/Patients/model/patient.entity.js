@@ -1,7 +1,7 @@
 
 export class Patient {
     constructor({
-                    dni,
+                    id,
                     clinical_record_id,
                     first_name,
                     last_name,
@@ -12,7 +12,7 @@ export class Patient {
                     appointment_id,
                     user_id
                 }) {
-        this.dni = dni;
+        this.id = id;
         this.clinical_record_id = clinical_record_id;
         this.first_name = first_name;
         this.last_name = last_name;

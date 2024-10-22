@@ -1,5 +1,6 @@
 <script>
 import {PatientsService} from "../services/patients.service.js";
+import { mapGetters } from 'vuex';
 
 export default {
   name: "card-patients.component",
@@ -9,10 +10,17 @@ export default {
       errorMessage: null,
     };
   },
+  computed: {
+    ...mapGetters(['getUser']),
+
+    userLogged(){
+      return this.getUser;
+    }
+  },
   async mounted(){
     const sInstance = new PatientsService();
     try {
-      this.patients = await sInstance.getData();
+      this.patients = await sInstance.getData(this.userLogged.id);
       console.log(this.patients);
 
       }catch(error){
@@ -26,7 +34,7 @@ export default {
 
 <template>
 <div v-if="patients.length">
-  <pv-card v-for="patient in patients" :key="patient.dni" class="mt-12 w-full">
+  <pv-card v-for="patient in patients" :key="patient.id" class="mt-12 w-full">
     <template #header>
       <div class="bg-[#2C3E50] flex justify-items-start items-center rounded-t-2xl">
         <i class="pi pi-user py-12  px-5 text-white"></i>

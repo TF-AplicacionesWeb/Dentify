@@ -1,8 +1,16 @@
 <script>
 import {ProfileApiService} from "../services/profile-api.service.js";
+import { mapGetters } from 'vuex';
 
 export default {
   name: "profile-edit-information",
+  computed: {
+    ...mapGetters(['getUser']),
+
+    userLogged(){
+      return this.getUser;
+    }
+  },
   data() {
     return {
       name: '',
@@ -13,9 +21,7 @@ export default {
   },
   async mounted() {
     try {
-      this.profiles = await ProfileApiService.getData();
-      this.profile = this.profiles[0];
-      console.log(this.profile);
+      this.profile = this.userLogged;
     } catch (error) {
       console.error("Error loading profile:", error);
     }

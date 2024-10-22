@@ -1,8 +1,16 @@
 <script>
 import {ProfileApiService} from "../services/profile-api.service.js";
+import { mapGetters } from 'vuex';
 
 export default {
   name: "profile-change-password",
+  computed: {
+    ...mapGetters(['getUser']),
+
+    userLogged(){
+      return this.getUser;
+    }
+  },
   data() {
     return {
       currentPassword: '',
@@ -14,10 +22,8 @@ export default {
   },
   async mounted() {
     try {
-      const profiles = await ProfileApiService.getData();
-      this.profiles = profiles;
-      this.profile = profiles[0];
-      console.log(this.profile);
+      this.profile = this.userLogged;
+
     } catch (error) {
       console.error("Error loading profile:", error);
     }
