@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const API_URL = 'http://localhost:3000'; // Cambia la URL según la configuración de tu servidor
 
 export const DashboardApiService = {
@@ -29,9 +30,7 @@ export const DashboardApiService = {
             const userAppointments = await this.getAppointments(user_id);
             const paymentIds = userAppointments.map(appointment => appointment.payment_id);
             const paymentsResponse = await axios.get(`${API_URL}/payments`);
-            const userPayments = paymentsResponse.data.filter(payment => paymentIds.includes(payment.id));
-
-            return userPayments;
+            return paymentsResponse.data.filter(payment => paymentIds.includes(payment.id));
         } catch (error) {
             console.error("Error fetching payments:", error);
             throw error;

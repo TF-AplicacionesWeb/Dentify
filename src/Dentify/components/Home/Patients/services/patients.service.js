@@ -27,9 +27,7 @@ export class PatientsService extends BaseService {
             const patients = await sInstance.getAll('');
 
             if (Array.isArray(patients)){
-                const only_name = patients.map(patient => patient.first_name);
-
-                return only_name;
+                return patients.map(patient => patient.first_name);
             }
             else{
                 return {success:false, message: 'No Patients'}

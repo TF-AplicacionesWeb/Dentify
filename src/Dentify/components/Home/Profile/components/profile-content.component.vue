@@ -1,5 +1,5 @@
 <script>
-import {ProfileApiService} from "../services/profile-api.service.js";
+
 import { mapGetters } from 'vuex';
 
 export default {
