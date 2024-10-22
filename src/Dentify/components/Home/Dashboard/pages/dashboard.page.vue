@@ -1,8 +1,16 @@
 <script>
 import { DashboardApiService } from "../services/dashboard-api.service.js";
+import { mapGetters } from 'vuex';
 
 export default {
   name: "dashboard",
+  computed: {
+    ...mapGetters(['getUser']),
+
+    username(){
+      return this.getUser;
+    }
+  },
   data() {
     return {
       inventory: [],
@@ -12,31 +20,33 @@ export default {
   },
   created() {
     this.fetchData();
+    console.log(this.username);
+
   },
   methods: {
     fetchData() {
-      // Obtener datos de inventario
-      DashboardApiService.getInventory()
+
+      DashboardApiService.getInventory(this.username.id)
           .then((response) => {
-            this.inventory = response.data;
+            this.inventory = response;
+
           })
           .catch((error) => {
             console.error("Error al obtener inventario:", error);
           });
 
-      // Obtener datos de citas
-      DashboardApiService.getAppointments()
+      DashboardApiService.getAppointments(this.username.id)
           .then((response) => {
-            this.appointments = response.data;
+            this.appointments = response;
           })
           .catch((error) => {
             console.error("Error al obtener citas:", error);
           });
 
-      // Obtener datos de pagos
-      DashboardApiService.getPayments()
+      DashboardApiService.getPayments(this.username.id)
           .then((response) => {
-            this.payments = response.data;
+            this.payments = response;
+            console.log(response);
           })
           .catch((error) => {
             console.error("Error al obtener pagos:", error);
@@ -49,7 +59,7 @@ export default {
 <template>
   <div class="dashboard-container mt-24">
     <h1 class="dashboard-title">Dashboard</h1>
-    <!-- Lista de inventario -->
+
     <div class="cards-bar">
       <pv-card
           v-for="item in inventory"

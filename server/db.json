@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "username": "admin",
       "first_name": "Javier",
       "last_name": "Roque",
@@ -12,18 +12,18 @@
       "password": "a12345678"
     },
     {
-      "id": "6299",
+      "id": 2,
       "username": "hola",
-      "first_name": "default",
-      "last_name": "default",
-      "email": "aha",
+      "first_name": "Jesus",
+      "last_name": "Uribe",
+      "email": "jesus@gmail.com",
       "phone": "default",
       "register_date": "default",
       "company": "default",
       "password": "123"
     },
     {
-      "id": "1598",
+      "id": 3,
       "username": "b",
       "first_name": "default",
       "last_name": "default",
@@ -81,29 +81,17 @@
     },
     {
       "id": 3,
-      "dni": 13579246,
-      "first_name": "Dr. Bob",
-      "last_name": "Harris",
-      "specialty": "Periodontics",
-      "experience": 5,
-      "phone": "456789123",
-      "email": "drbob@example.com",
-      "total_appointments": 150
+      "dni": 33329888,
+      "first_name": "Gregory",
+      "last_name": "House",
+      "specialty": "Dentist",
+      "experience": 10,
+      "phone": "111111888",
+      "email": "example@a.com",
+      "total_appointments": 0
     }
   ],
   "schedule_dentists": [
-    {
-      "id": 1,
-      "date": "2024-10-20",
-      "hour": "09:00",
-      "dentist_id": 1
-    },
-    {
-      "id": 2,
-      "date": "2024-10-20",
-      "hour": "11:00",
-      "dentist_id": 1
-    },
     {
       "id": 3,
       "date": "2024-10-21",
@@ -115,6 +103,12 @@
       "date": "2024-10-21",
       "hour": "14:00",
       "dentist_id": 2
+    },
+    {
+      "id": 5,
+      "date": "2000-01-01",
+      "hour": "12:12",
+      "dentist_id": 3
     }
   ],
   "inventory": [
@@ -132,13 +126,13 @@
       "quantity": 200,
       "unit_price": 2.5,
       "last_updated": "2024-01-05",
-      "user_id": 1
+      "user_id": 2
     }
   ],
   "patients": [
     {
-      "dni": 123456789,
-      "id": 1,
+      "id": 123456789,
+      "clinical_record_id": 1,
       "first_name": "Jane",
       "last_name": "Doe",
       "email": "jane@example.com",
@@ -149,8 +143,8 @@
       "user_id": 1
     },
     {
-      "dni": 7777777,
-      "id": 1,
+      "id": 7777777,
+      "clinical_record_id": 1,
       "first_name": "Roman",
       "last_name": "Reigns",
       "email": "reigns@example.com",
@@ -161,8 +155,8 @@
       "user_id": 1
     },
     {
-      "dni": 98765432,
-      "id": 2,
+      "id": 98765432,
+      "clinical_record_id": 2,
       "first_name": "Emily",
       "last_name": "Clark",
       "email": "emily@example.com",
@@ -173,8 +167,8 @@
       "user_id": 2
     },
     {
-      "dni": 24681357,
-      "id": 3,
+      "id": 24681357,
+      "clinical_record_id": 3,
       "first_name": "Mark",
       "last_name": "Baker",
       "email": "mark@example.com",
@@ -224,7 +218,7 @@
     {
       "id": 2,
       "dentist_dni": 87654321,
-      "user_id": 1,
+      "user_id": 2,
       "appointment_date": "2024-09-30T09:00:00",
       "reason": "Root Canal Treatment",
       "completed": false,
@@ -236,7 +230,7 @@
     {
       "id": 3,
       "dentist_dni": 13579246,
-      "user_id": 1,
+      "user_id": 2,
       "appointment_date": "2024-09-30T11:00:00",
       "reason": "Gum Disease Treatment",
       "completed": false,

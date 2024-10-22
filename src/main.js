@@ -14,12 +14,13 @@ import ToggleButton from "primevue/togglebutton";
 import 'primeicons/primeicons.css'
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
-
+import store from "./shared/stores/validation-store.js";
 const app = createApp(App);
 
 app.use(PrimeVue, {unstyled: true});
 app.use(Router);
 app.use(i18n);
+app.use(store);
 
 
 app.component('pv-card', Card)
