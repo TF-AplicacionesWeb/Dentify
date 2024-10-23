@@ -58,57 +58,75 @@
   ],
   "dentists": [
     {
-      "id": 1,
-      "dni": 12345678,
-      "first_name": "Dr. Smith",
+      "id": 12345678,
+      "first_name": "Smith",
       "last_name": "Johnson",
       "specialty": "Orthodontics",
       "experience": 10,
       "phone": "987654321",
       "email": "drsmith@example.com",
-      "total_appointments": 100
+      "total_appointments": 100,
+      "user_id": 1
     },
     {
-      "id": 2,
-      "dni": 87654321,
-      "first_name": "Dr. Alice",
+      "id": 87654321,
+      "first_name": "Alice",
       "last_name": "Williams",
       "specialty": "Endodontics",
       "experience": 8,
       "phone": "123987654",
       "email": "dralice@example.com",
-      "total_appointments": 200
+      "total_appointments": 200,
+      "user_id": 1
     },
     {
-      "id": 3,
-      "dni": 33329888,
+      "id": 33329888,
       "first_name": "Gregory",
       "last_name": "House",
       "specialty": "Dentist",
       "experience": 10,
       "phone": "111111888",
       "email": "example@a.com",
-      "total_appointments": 0
+      "total_appointments": 0,
+      "user_id": 2
     }
   ],
   "schedule_dentists": [
     {
-      "id": 3,
+      "id": 1,
+      "dentist_id": 12345678,
+      "weekday": "Monday",
+      "start_time": "10:00",
+      "end_time": "11:00",
       "date": "2024-10-21",
-      "hour": "10:00",
-      "dentist_id": 2
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "dentist_id": 12345678,
+      "weekday": "Monday",
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "date": "2024-10-21",
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "dentist_id": 87654321,
+      "weekday": "Monday",
+      "start_time": "16:00",
+      "end_time": "17:00",
+      "date": "2024-10-21",
+      "user_id": 1
     },
     {
       "id": 4,
-      "date": "2024-10-21",
-      "hour": "14:00",
-      "dentist_id": 2
-    },
-    {
-      "id": 5,
-      "date": "2000-01-01",
-      "hour": "12:12",
-      "dentist_id": 3
+      "dentist_id": 87654321,
+      "weekday": "Friday",
+      "start_time": "9:00",
+      "end_time": "11:00",
+      "date": "2024-10-25",
+      "user_id": 1
     }
   ],
   "inventory": [
@@ -279,16 +297,6 @@
     {
       "id": 3,
       "payment_method_id": 2
-    }
-  ],
-  "schedules": [
-    {
-      "id": 1,
-      "dentist_dni": 12345678,
-      "weekday": "Monday",
-      "start_time": "09:00",
-      "end_time": "17:00",
-      "user_id": 1
     }
   ],
   "support-message": [

@@ -1,5 +1,4 @@
 <script>
-
 import {DentistApiService} from "../services/dentist-api.service.js";
 import {Dentist} from "../model/Dentist.entity.js";
 
@@ -21,11 +20,15 @@ export default {
     isVisible: {
       type: Boolean,
       required: true
+    },
+    userId: {
+      type: Number,
+      required: true
     }
   },
   data() {
     return {
-      dni: null,
+      dentistId: null,
       firstName: "",
       lastName: "",
       specialty: "",
@@ -48,8 +51,7 @@ export default {
   },
   methods: {
     createDentist() {
-      this.dentist.id = null;
-      this.dentist.dni = Number(this.dni);
+      this.dentist.id = Number(this.dentistId);
       this.dentist.first_name = this.firstName;
       this.dentist.last_name = this.lastName;
       this.dentist.specialty = this.specialty;
@@ -57,9 +59,9 @@ export default {
       this.dentist.phone = this.phone;
       this.dentist.email = this.email;
       this.dentist.total_appointments = 0;
+      this.dentist.user_id = Number(this.userId);
     },
     updateDentist() {
-      this.dentist.dni = Number(this.dni);
       this.dentist.first_name = this.firstName;
       this.dentist.last_name = this.lastName;
       this.dentist.specialty = this.specialty;
@@ -68,7 +70,7 @@ export default {
       this.dentist.email = this.email;
     },
     loadDentist() {
-      this.dni = this.dentist.dni;
+      this.dentistId = this.id;
       this.firstName = this.dentist.first_name;
       this.lastName = this.dentist.last_name;
       this.specialty = this.dentist.specialty;
@@ -106,13 +108,13 @@ export default {
       this.$emit('cancel');
     },
     validateForm() {
-      if (!this.firstName || !this.lastName || !this.specialty || !this.dni || !this.email || !this.experience || !this.phone) {
+      if (!this.firstName || !this.lastName || !this.specialty || !this.dentistId || !this.email || !this.experience || !this.phone) {
         alert('All fields must be filled.');
         return false;
       }
 
-      if (this.dni.length !== 8 || isNaN(this.dni)) {
-        alert('DNI must be exactly 8 digits.');
+      if (this.dentistId.toString().length !== 8) {
+        alert('ID must be exactly 8 digits.');
         return false;
       }
 
@@ -145,7 +147,7 @@ export default {
         <div class="bg-[#2C3E50] flex justify-items-start items-center rounded-t-2xl sticky top-0 z-10">
           <i class="pi pi-id-card py-8 px-5 text-white" style="font-size: 1rem;"></i>
           <p class="text-white px-5" style="font-weight: bold;" v-if="isCreating">{{ $t('Specialists.pProfile') }}</p>
-          <p class="text-white px-5" style="font-weight: bold;" v-if="isEditing">{{ $t('Specialists.pProfile') }}: {{dentist?.first_name}} {{dentist?.last_name}}</p>
+          <p class="text-white px-5" style="font-weight: bold;" v-if="isEditing">{{ $t('Specialists.pProfile') }}: Dr. {{dentist?.first_name}} {{dentist?.last_name}}</p>
         </div>
       </template>
       <template #content>
@@ -168,7 +170,8 @@ export default {
 
             <div class="form-group w-full">
               <label for="dni" class="block mb-1"><b>{{ $t('Specialists.id') }}</b></label>
-              <pv-inputtext id="dni" v-model="dni" type="number" class="input-field w-full rounded-xl p-2 shadow" :placeholder="$t('Specialists.id')" maxlength="8"/>
+              <pv-inputtext v-if="isCreating" id="dni" v-model="dentistId" type="number" class="input-field w-full rounded-xl p-2 shadow" :placeholder="$t('Specialists.id')" maxlength="8"/>
+              <pv-inputtext v-if="isEditing" id="dni" v-model="dentistId" type="number" class="input-field w-full rounded-xl p-2 shadow" :placeholder="$t('Specialists.id')" maxlength="8" disabled/>
             </div>
 
             <div class="form-group w-full">
