@@ -98,10 +98,12 @@
     "save": "Save",
     "cancel": "Cancel",
     "date": "Date",
-    "hour": "Hour",
+    "sTime": "Start time",
+    "eTime": "End time",
     "add": "Add",
     "raHours": "Registered available hours",
     "ok": "OK",
-    "cDelete": "Are you sure you want to remove"
+    "cDelete": " Are you sure you want to remove Dr.",
+    "days": "Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday"
   }
 }

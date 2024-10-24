@@ -7,10 +7,11 @@ export class DentistApiService extends BaseService{
         super('http://localhost:3000/dentists');
     }
 
-    static async getData() {
+    static async getData(user_id) {
         const serviceInstance = new DentistApiService();
         const dentistsData = await serviceInstance.getAll('');
-        return dentistsData.map(dentistData => new Dentist(dentistData));
+        const filteredDentists = dentistsData.filter(dentistData => Number(dentistData.user_id) === Number(user_id));
+        return filteredDentists.map(dentistData => new Dentist(dentistData));
     }
 
     static async deleteDentist(id) {

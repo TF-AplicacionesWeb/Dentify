@@ -98,10 +98,12 @@
     "save": "Guardar",
     "cancel": "Cancelar",
     "date": "Fecha",
-    "hour": "Hora",
+    "sTime": "Hora de inicio",
+    "eTime": "Hora de fin",
     "add": "Agregar",
     "raHours": "Horas disponibles registrados",
     "ok": "OK",
-    "cDelete": "¿Estás seguro de eliminar"
+    "cDelete": "¿Estas seguro de eliminar a Dr.",
+    "days": "Lunes | Martes | Miércoles | Jueves | Viernes | Sábado | Domingo"
   }
 }

@@ -3,6 +3,7 @@ import {DentistApiService} from "../services/dentist-api.service.js";
 import ConfirmationDialogComponent from "../components/confirmation-dialog.component.vue";
 import PersonalProfileComponent from "../components/personal-profile.component.vue";
 import AvailableHoursComponent from "../components/available-hours.component.vue";
+import { mapGetters } from 'vuex';
 
 export default {
   name: "dentists-list.component",
@@ -17,7 +18,15 @@ export default {
       isCreating: false,
       dentistId: null,
       showAvailableHours: false,
-      dentistFullName: null
+      dentistFullName: null,
+      userId: null
+    }
+  },
+  computed: {
+    ...mapGetters(['getUser']),
+
+    userLogged(){
+      return this.getUser;
     }
   },
   created() {
@@ -26,7 +35,8 @@ export default {
   methods: {
     async getData() {
       try {
-        this.dentists = await DentistApiService.getData();
+        this.dentists = await DentistApiService.getData(this.userLogged.id);
+        this.userId = this.userLogged.id;
         console.log(this.dentists);
       } catch (error) {
         console.error("Error loading dentists:", error);
@@ -65,6 +75,8 @@ export default {
     closePersonalProfile() {
       this.getData();
       this.showPersonalProfile = false;
+      this.isEditing = false;
+      this.isCreating = false;
     },
     openAvailableHours(dentist) {
       this.selectedDentist = dentist;
@@ -90,7 +102,7 @@ export default {
     <template #header>
       <div class="bg-[#2C3E50] flex justify-items-start items-center rounded-t-2xl">
         <i class="pi pi-id-card py-12  px-5 text-white" style="font-size: 1rem;"></i>
-        <p class="text-white px-5" style="font-weight: bold;">{{dentist.first_name}} {{dentist.last_name}}</p>
+        <p class="text-white px-5" style="font-weight: bold;">Dr. {{dentist.first_name}} {{dentist.last_name}}</p>
       </div>
     </template>
     <template #content>
@@ -116,7 +128,7 @@ export default {
 
   <div v-if="showPersonalProfile">
     <personal-profile-component :id="this.dentistId" :isEditing="isEditing" :isCreating="isCreating"
-                                :isVisible="showPersonalProfile" @confirm="closePersonalProfile"
+                                :isVisible="showPersonalProfile" :userId="this.userId" @confirm="closePersonalProfile"
                                 @cancel="closePersonalProfile">
 
     </personal-profile-component>
@@ -124,7 +136,7 @@ export default {
 
   <div v-if="showAvailableHours">
     <available-hours-component :isVisible="showAvailableHours" :dentistId="this.dentistId"
-                               :dentistFullName="this.dentistFullName" @close="closeAvailableHours">
+                               :dentistFullName="this.dentistFullName" :userId="this.userId" @close="closeAvailableHours">
 
     </available-hours-component>
   </div>
