@@ -19,6 +19,7 @@ import paymentsInvoicePage from "../Dentify/components/Home/Payments/pages/payme
 
 
 import dentistsPage from "../Dentify/components/Home/Dentists/pages/dentists-page.vue";
+import inventoryComponent from "../Dentify/components/Home/Inventory/page/inventory.page.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -58,6 +59,9 @@ const router = createRouter({
                 },
                 {
                     path: "appointments", component: reservationComponent
+                },
+                {
+                    path: "inventory", component: inventoryComponent
                 },
                 {
 
