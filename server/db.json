@@ -89,6 +89,17 @@
       "email": "example@a.com",
       "total_appointments": 0,
       "user_id": 2
+    },
+    {
+      "id": 21212121,
+      "first_name": "Juan",
+      "last_name": "Perez",
+      "specialty": "Odontologia",
+      "experience": 2,
+      "phone": "912567892",
+      "email": "juan@gmail.com",
+      "total_appointments": 0,
+      "user_id": 1
     }
   ],
   "schedule_dentists": [
@@ -169,7 +180,7 @@
       "age": 40,
       "medical_history": "None",
       "birth_date": "1970-08-15",
-      "appointment_id": 2,
+      "appointment_id": 658322,
       "user_id": 1
     },
     {
@@ -195,6 +206,30 @@
       "birth_date": "1989-11-02",
       "appointment_id": 4,
       "user_id": 3
+    },
+    {
+      "id": 844739,
+      "clinical_record_id": 767596,
+      "first_name": "Enzo",
+      "last_name": "Fernandez",
+      "email": "enzo",
+      "age": "24",
+      "medical_history": "None",
+      "birth_date": "2024-10-08T17:47",
+      "appointment_id": null,
+      "user_id": 1
+    },
+    {
+      "id": 968869,
+      "clinical_record_id": 872445,
+      "first_name": "Enzo",
+      "last_name": "Fernandez",
+      "email": "enzo@gmail.com",
+      "age": "24",
+      "medical_history": "None",
+      "birth_date": "2024-10-07T17:50",
+      "appointment_id": null,
+      "user_id": 1
     }
   ],
   "clinical_records": [
@@ -203,6 +238,22 @@
       "medical_history": "No allergies",
       "record_date": "2024-01-10",
       "diagnosis": "General check-up",
+      "treatment": "None",
+      "user_id": 1
+    },
+    {
+      "id": 767596,
+      "medical_history": "None",
+      "record_date": "2024-10-23T17:47",
+      "diagnosis": "None",
+      "treatment": "None",
+      "user_id": 1
+    },
+    {
+      "id": 872445,
+      "medical_history": "None",
+      "record_date": "2024-11-01T17:50",
+      "diagnosis": "None",
       "treatment": "None",
       "user_id": 1
     }
@@ -242,8 +293,8 @@
       "completed": false,
       "reminder_sent": false,
       "duration_minutes": 60,
-      "payment_id": null,
-      "payment_status": false
+      "payment_id": 3,
+      "payment_status": true
     },
     {
       "id": 3,
@@ -256,6 +307,18 @@
       "duration_minutes": 45,
       "payment_id": null,
       "payment_status": false
+    },
+    {
+      "id": 658322,
+      "dentist_dni": 21212121,
+      "user_id": 1,
+      "appointment_date": "2024-10-10T17:43",
+      "reason": "CheckUp",
+      "completed": false,
+      "reminder_sent": false,
+      "duration_minutes": 15,
+      "payment_id": null,
+      "payment_status": false
     }
   ],
   "payments": [
@@ -263,7 +326,16 @@
       "amount": "",
       "payment_date": "2024-10-12T18:11:10.714Z",
       "id": 1
-
+    },
+    {
+      "amount": "",
+      "payment_date": "2024-10-26T20:11:52.195Z",
+      "id": 2
+    },
+    {
+      "amount": null,
+      "payment_date": "2024-10-26T20:18:00.572Z",
+      "id": 3
     }
   ],
   "payment_methods": [

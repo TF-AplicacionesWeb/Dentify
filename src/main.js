@@ -10,6 +10,8 @@ import Image from "primevue/image";
 import Router from "./router/index.js";
 import Toolbar from "primevue/toolbar";
 import i18n from "./i18n.js";
+import Calendar from "primevue/calendar";
+import Dialog from "primevue/dialog";
 import ToggleButton from "primevue/togglebutton";
 import 'primeicons/primeicons.css'
 import IconField from "primevue/iconfield";
@@ -31,6 +33,8 @@ app.component('pv-card', Card)
     .component('pv-toolbar', Toolbar)
     .component('pv-togglebutton', ToggleButton)
     .component('pv-iconfield', IconField)
+    .component('pv-calendar', Calendar)
+    .component('pv-dialog', Dialog)
     .component('pv-inputicon', InputIcon);
 
 

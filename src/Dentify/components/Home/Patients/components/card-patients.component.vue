@@ -21,7 +21,6 @@ export default {
     const sInstance = new PatientsService();
     try {
       this.patients = await sInstance.getData(this.userLogged.id);
-      console.log(this.patients);
 
       }catch(error){
       console.error("Error", error);
