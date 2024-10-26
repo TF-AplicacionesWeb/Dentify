@@ -1,4 +1,6 @@
+
 <script>
+import { mapActions } from 'vuex';
 import { AuthenApiService } from "../services/authen-api.service.js";
 import changelangComponent from "../../../../public/changelang.component.vue";
 
@@ -13,25 +15,21 @@ export default {
       errorMessage: null,
     };
   },
-  created() {
-    // this.getData();
-  },
   methods: {
-    goToRegister() {
-      this.$router.push('/register');
-    },
+    ...mapActions(['loginStore']),
     async login() {
       this.errorMessage = null;
-
       if (!this.username || !this.password) {
         this.errorMessage = "Username and password are required.";
         return;
       }
-
       try {
         const result = await AuthenApiService.login(this.username, this.password);
         if (result.success) {
-          this.$router.push('/home');
+
+          this.loginStore(result.user);
+
+          this.$router.push('/home/dashboard');
         } else {
           this.errorMessage = result.message;
         }
@@ -39,6 +37,9 @@ export default {
         console.error("Error during login:", error);
         this.errorMessage = "An error occurred during login.";
       }
+    }
+    ,goToRegister() {
+      this.$router.push('/register');
     }
   }
 }

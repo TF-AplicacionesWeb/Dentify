@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": "1",
+      "id": 1,
       "username": "admin",
       "first_name": "Javier",
       "last_name": "Roque",
@@ -9,21 +9,21 @@
       "phone": "1234567890",
       "register_date": "2024-01-01",
       "company": "Example Corp",
-      "password": "a12345678"
+      "password": "admin"
     },
     {
-      "id": "6299",
+      "id": 2,
       "username": "hola",
-      "first_name": "default",
-      "last_name": "default",
-      "email": "aha",
+      "first_name": "Jesus",
+      "last_name": "Uribe",
+      "email": "jesus@gmail.com",
       "phone": "default",
       "register_date": "default",
       "company": "default",
       "password": "123"
     },
     {
-      "id": "1598",
+      "id": 3,
       "username": "b",
       "first_name": "default",
       "last_name": "default",
@@ -58,8 +58,8 @@
   ],
   "dentists": [
     {
-      "dni": 12345678,
-      "first_name": "Dr. Smith",
+      "id": 12345678,
+      "first_name": "Smith",
       "last_name": "Johnson",
       "specialty": "Orthodontics",
       "experience": 10,
@@ -69,26 +69,64 @@
       "user_id": 1
     },
     {
-      "dni": 87654321,
-      "first_name": "Dr. Alice",
+      "id": 87654321,
+      "first_name": "Alice",
       "last_name": "Williams",
       "specialty": "Endodontics",
       "experience": 8,
       "phone": "123987654",
       "email": "dralice@example.com",
       "total_appointments": 200,
-      "user_id": 2
+      "user_id": 1
     },
     {
-      "dni": 13579246,
-      "first_name": "Dr. Bob",
-      "last_name": "Harris",
-      "specialty": "Periodontics",
-      "experience": 5,
-      "phone": "456789123",
-      "email": "drbob@example.com",
-      "total_appointments": 150,
-      "user_id": 3
+      "id": 13579246,
+      "first_name": "Gregory",
+      "last_name": "House",
+      "specialty": "Dentist",
+      "experience": 10,
+      "phone": "111111888",
+      "email": "example@a.com",
+      "total_appointments": 0,
+      "user_id": 2
+    }
+  ],
+  "schedule_dentists": [
+    {
+      "id": 1,
+      "dentist_id": 12345678,
+      "weekday": "Monday",
+      "start_time": "10:00",
+      "end_time": "11:00",
+      "date": "2024-10-21",
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "dentist_id": 12345678,
+      "weekday": "Monday",
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "date": "2024-10-21",
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "dentist_id": 87654321,
+      "weekday": "Monday",
+      "start_time": "16:00",
+      "end_time": "17:00",
+      "date": "2024-10-21",
+      "user_id": 1
+    },
+    {
+      "id": 4,
+      "dentist_id": 87654321,
+      "weekday": "Friday",
+      "start_time": "9:00",
+      "end_time": "11:00",
+      "date": "2024-10-25",
+      "user_id": 1
     }
   ],
   "inventory": [
@@ -106,13 +144,13 @@
       "quantity": 200,
       "unit_price": 2.5,
       "last_updated": "2024-01-05",
-      "user_id": 1
+      "user_id": 2
     }
   ],
   "patients": [
     {
-      "dni": 123456789,
-      "id": 1,
+      "id": 123456789,
+      "clinical_record_id": 1,
       "first_name": "Jane",
       "last_name": "Doe",
       "email": "jane@example.com",
@@ -123,39 +161,39 @@
       "user_id": 1
     },
     {
-      "dni": 7777777,
-      "id": 1,
+      "id": 7777777,
+      "clinical_record_id": 1,
       "first_name": "Roman",
       "last_name": "Reigns",
       "email": "reigns@example.com",
       "age": 40,
       "medical_history": "None",
       "birth_date": "1970-08-15",
-      "appointment_id": 1,
+      "appointment_id": 2,
       "user_id": 1
     },
     {
-      "dni": 98765432,
-      "id": 2,
+      "id": 98765432,
+      "clinical_record_id": 2,
       "first_name": "Emily",
       "last_name": "Clark",
       "email": "emily@example.com",
       "age": 25,
       "medical_history": "None",
       "birth_date": "1998-02-20",
-      "appointment_id": 2,
+      "appointment_id": 3,
       "user_id": 2
     },
     {
-      "dni": 24681357,
-      "id": 3,
+      "id": 24681357,
+      "clinical_record_id": 3,
       "first_name": "Mark",
       "last_name": "Baker",
       "email": "mark@example.com",
       "age": 35,
       "medical_history": "Diabetes",
       "birth_date": "1989-11-02",
-      "appointment_id": 3,
+      "appointment_id": 4,
       "user_id": 3
     }
   ],
@@ -210,7 +248,7 @@
     {
       "id": 3,
       "dentist_dni": 13579246,
-      "user_id": 1,
+      "user_id": 2,
       "appointment_date": "2024-09-30T11:00:00",
       "reason": "Gum Disease Treatment",
       "completed": false,

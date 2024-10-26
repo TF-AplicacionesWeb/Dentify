@@ -1,9 +1,18 @@
 <script>
 import { PaymentsService } from "../services/payments.service.js";
 import PaymentCardComponent from "../components/payments-card.component.vue";
+import {mapGetters} from "vuex";
 
 export default {
   name: "appointments",
+  computed: {
+    ...mapGetters(['getUser']),
+
+    userLogged(){
+      console.log(this.getUser);
+      return this.getUser;
+    }
+  },
   components: {
     PaymentCardComponent,
   },
@@ -75,7 +84,7 @@ export default {
   },
   async created() {
     const paymentsService = new PaymentsService()
-    this.allPayments = await paymentsService.getDataForAppointments();
+    this.allPayments = await paymentsService.getDataForAppointments(this.userLogged.id);
     this.pendingPayments = this.allPayments.filter(payment => payment.payment_status === false);
 
   },

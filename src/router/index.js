@@ -17,6 +17,9 @@ import profileOverlayChangePasswordPage from "../Dentify/components/Home/Profile
 import patientsPage from "../Dentify/components/Home/Patients/pages/patients.page.vue";
 import paymentsInvoicePage from "../Dentify/components/Home/Payments/pages/payments-invoice.page.vue";
 
+
+import dentistsPage from "../Dentify/components/Home/Dentists/pages/dentists-page.vue";
+
 const router = createRouter({
     history: createWebHistory(),
     routes: [
@@ -75,6 +78,9 @@ const router = createRouter({
 
                     path:"patients", component: patientsPage
 
+               },
+                {
+                    path:"specialists", component: dentistsPage
                 }
             ]
         },
