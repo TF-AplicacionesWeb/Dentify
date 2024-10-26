@@ -46,19 +46,7 @@ export default {
 
       <h2 class="text-xl font-semibold mb-2 text-gray-800">Datos del pago</h2>
       <form @submit.prevent="makePayment">
-        <div class="mb-4">
-          <label for="email" class="block text-black">Correo electrónico:</label>
-          <input id="email" v-model="email" type="email" class="input border-2 border-gray-300 rounded px-3 py-2"/>
-        </div>
-        <div class="mb-4">
-          <label for="firstName" class="block text-black">Nombres:</label>
-          <input id="firstName" v-model="firstName" type="text"
-                 class="input border-2 border-gray-300 rounded px-3 py-2"/>
-        </div>
-        <div class="mb-4">
-          <label for="lastName" class="block text-black">Apellidos:</label>
-          <input id="lastName" v-model="lastName" type="text" class="input border-2 border-gray-300 rounded px-3 py-2"/>
-        </div>
+
         <div class="mb-4">
           <label for="amount" class="block text-black">Monto:</label>
           <input id="amount" v-model="amount" type="number" class="input border-2 border-gray-300 rounded px-3 py-2"/>

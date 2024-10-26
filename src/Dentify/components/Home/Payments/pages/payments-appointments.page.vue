@@ -40,15 +40,34 @@ export default {
       this.showPaymentCard = false;
     },
     async confirmPayment(appointmentId) {
-      const appointment = this.pendingPayments.find((p) => p.id === appointmentId);
-      if (appointment) {
-        //codigo comentado para no poner en true un pago
-        //generar una funcionalidad para la confirmacion de pago sincronizando con la fakeapi
+      const paymentsService = new PaymentsService();
 
-        //appointment.payment_status = true;
-        await this.selectAppointment(appointment);
+      try {
+        const paymentData = {
+          amount: this.amount,
+          payment_date: new Date().toISOString()
+        };
+
+        const paymentId = await paymentsService.createPayment(paymentData);
+
+        await paymentsService.updateAppointmentStatus(appointmentId, {
+          payment_status: true,
+          payment_id: paymentId
+        });
+
+        const appointmentIndex = this.pendingPayments.findIndex(p => p.id === appointmentId);
+        if (appointmentIndex !== -1) {
+          this.pendingPayments.splice(appointmentIndex, 1);
+        }
+
+        alert('El pago ha sido confirmado con éxito.');
+
+      } catch (error) {
+        console.error("Error actualizando el estado del pago:", error);
+        alert('Hubo un error al confirmar el pago.');
+      } finally {
+        this.closePaymentCard();
       }
-      this.closePaymentCard();
     },
     goToInvoice() {
       this.$router.push("/home/payments/invoices");
@@ -56,6 +75,7 @@ export default {
   },
   data() {
     return {
+      amount: '',
       pendingPayments: [],
       selectedAppointment: null,
       showPaymentCard: false,
@@ -70,7 +90,6 @@ export default {
   },
 };
 </script>
-
 <template>
   <div class="payments-container mx-auto mt-20 max-w-5xl p-5">
     <h1 class="text-left text-4xl font-bold mb-5">Pagos</h1>

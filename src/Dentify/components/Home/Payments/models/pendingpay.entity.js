@@ -10,5 +10,6 @@ export class Pendingpay {
       this.dentist = `${dentist.first_name} ${dentist.last_name}`;
       this.payment_status = payment_status;
       this.amount = amount;
+
    }
 }
