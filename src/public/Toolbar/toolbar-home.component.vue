@@ -12,8 +12,8 @@ export default {
 
   <pv-toolbar class="w-full bg-[#D1F2EB] shadow-md fixed top-0 left-0 flex items-center justify-between p-4 pv-toolbar">
     <template #start>
-      <pv-button class="text-black rounded-lg text-lg px-6 py-3" @click="this.$router.push('/home')">
-        LOGO
+      <pv-button class="text-black rounded-lg text-lg px-6 py-3" @click="this.$router.push('/home/dashboard')">
+        <img src="../../assets/img/logoDentify.png" style="width: 60px" alt="logo">
       </pv-button>
     </template>
     <template #center class="toolbar-content">

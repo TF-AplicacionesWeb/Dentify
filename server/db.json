@@ -9,7 +9,7 @@
       "phone": "1234567890",
       "register_date": "2024-01-01",
       "company": "Example Corp",
-      "password": "a12345678"
+      "password": "admin"
     },
     {
       "id": 2,
@@ -80,7 +80,7 @@
       "user_id": 1
     },
     {
-      "id": 33329888,
+      "id": 13579246,
       "first_name": "Gregory",
       "last_name": "House",
       "specialty": "Dentist",
@@ -169,7 +169,7 @@
       "age": 40,
       "medical_history": "None",
       "birth_date": "1970-08-15",
-      "appointment_id": 1,
+      "appointment_id": 2,
       "user_id": 1
     },
     {
@@ -181,7 +181,7 @@
       "age": 25,
       "medical_history": "None",
       "birth_date": "1998-02-20",
-      "appointment_id": 2,
+      "appointment_id": 3,
       "user_id": 2
     },
     {
@@ -193,7 +193,7 @@
       "age": 35,
       "medical_history": "Diabetes",
       "birth_date": "1989-11-02",
-      "appointment_id": 3,
+      "appointment_id": 4,
       "user_id": 3
     }
   ],
@@ -236,7 +236,7 @@
     {
       "id": 2,
       "dentist_dni": 87654321,
-      "user_id": 2,
+      "user_id": 1,
       "appointment_date": "2024-09-30T09:00:00",
       "reason": "Root Canal Treatment",
       "completed": false,
