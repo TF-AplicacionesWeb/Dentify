@@ -44,7 +44,7 @@ export default {
 
       try {
         const paymentData = {
-          amount: this.amount,
+          amount: parseInt(this.amount),
           payment_date: new Date().toISOString()
         };
 
