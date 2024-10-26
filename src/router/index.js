@@ -15,6 +15,10 @@ import profileOverlaySettingsPage from "../Dentify/components/Home/Profile/pages
 import profileOverlayEditInformationPage from "../Dentify/components/Home/Profile/pages/profile-overlay-edit-information.page.vue";
 import profileOverlayChangePasswordPage from "../Dentify/components/Home/Profile/pages/profile-overlay-change-password.page.vue";
 import patientsPage from "../Dentify/components/Home/Patients/pages/patients.page.vue";
+import paymentsInvoicePage from "../Dentify/components/Home/Payments/pages/payments-invoice.page.vue";
+
+
+import dentistsPage from "../Dentify/components/Home/Dentists/pages/dentists-page.vue";
 
 const router = createRouter({
     history: createWebHistory(),
@@ -44,17 +48,29 @@ const router = createRouter({
                     component: profileOverlayComponent
                 },
                 {
+                    path: "profileSettings", component: profileOverlaySettingsPage, name: "profileSettings",
+                },
+                {
+                    path: "profileEditInformation", component: profileOverlayEditInformationPage, name: "profileEditInformation",
+                },
+                {
+                    path: "profileChangePassword", component: profileOverlayChangePasswordPage, name: "profileChangePassword",
+                },
+                {
                     path: "appointments", component: reservationComponent
                 },
                 {
 
-                    path: "payments",
+                    path: "/home/payments",
                     component: paymentsComponent,
                     children: [
                         {
                             path: "appointments",
                             component: paymentsAppointmentsComponent,
-
+                        },
+                        {
+                            path: "invoices",
+                            component:paymentsInvoicePage,
                         }
                     ]
                 },
@@ -62,17 +78,11 @@ const router = createRouter({
 
                     path:"patients", component: patientsPage
 
+               },
+                {
+                    path:"specialists", component: dentistsPage
                 }
             ]
-        },
-        {
-            path: "/profileSettings", component: profileOverlaySettingsPage, name: "profileSettings",
-        },
-        {
-            path: "/profileEditInformation", component: profileOverlayEditInformationPage, name: "profileEditInformation",
-        },
-        {
-            path: "/profileChangePassword", component: profileOverlayChangePasswordPage, name: "profileChangePassword",
         },
         {
             path: "/:pathMatch(.*)*",

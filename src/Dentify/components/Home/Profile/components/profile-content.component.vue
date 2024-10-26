@@ -1,8 +1,16 @@
 <script>
-import {ProfileApiService} from "../services/profile-api.service.js";
+
+import { mapGetters } from 'vuex';
 
 export default {
   name: "profile-content.component",
+  computed: {
+    ...mapGetters(['getUser']),
+
+    userLogged(){
+      return this.getUser;
+    }
+  },
   data() {
     return {
       profiles: [],
@@ -11,16 +19,14 @@ export default {
   },
   async mounted() {
     try {
-      const profiles = await ProfileApiService.getData();
-      this.profiles = profiles;
-      this.profile = profiles[0];
+      this.profile = this.userLogged;
     } catch (error) {
-      console.error("Error fetching profiles:", error);
+      console.error("Error loading profile:", error);
     }
   },
   methods: {
     goToSettings(){
-      this.$router.push('/profileSettings');
+      this.$router.push('/home/profileSettings');
     }
   }
 }

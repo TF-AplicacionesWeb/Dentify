@@ -3,10 +3,10 @@ export default {
   name: "profile-settings.component",
   methods: {
     goToEditInformation(){
-      this.$router.push('/profileEditInformation');
+      this.$router.push('/home/profileEditInformation');
     },
     goToChangePassword(){
-      this.$router.push('/profileChangePassword');
+      this.$router.push('/home/profileChangePassword');
     }
   }
 }

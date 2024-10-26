@@ -56,6 +56,7 @@
     "reserveLabel": "Reserve appointment"
   },
   "Profile": {
+    "Profile": "Profile",
     "DentalCenter": "Dental Center",
     "EditProfile": "Edit profile",
     "gInformation": "General information",
@@ -72,8 +73,7 @@
     "ccPassword": "Confirm new password",
     "ecPassword": "enter your current password",
     "enPassword": "enter your new password",
-    "rnPassword": "repeat your new password",
-    "cPassword": "Change password"
+    "rnPassword": "repeat your new password"
   },
   "Patients": {
     "Personal_doc": "Personal doc",
@@ -81,5 +81,29 @@
     "header": "Clinical Records",
     "button": "New Patient"
 
+  },
+  "Specialists": {
+    "sSpecialists": "Specialists",
+    "nSpecialist": "New Specialist",
+    "pProfile": "Personal profile",
+    "aHours": "Available hours",
+    "delete": "Delete",
+    "fName": "First name",
+    "lName": "Last name",
+    "specialty": "Specialty",
+    "id": "ID",
+    "email": "Email",
+    "experience": "Experience",
+    "phone": "Phone",
+    "save": "Save",
+    "cancel": "Cancel",
+    "date": "Date",
+    "sTime": "Start time",
+    "eTime": "End time",
+    "add": "Add",
+    "raHours": "Registered available hours",
+    "ok": "OK",
+    "cDelete": " Are you sure you want to remove Dr.",
+    "days": "Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday"
   }
 }

@@ -1,42 +1,26 @@
-import axios from "axios";
-import {Profile} from "../model/Profile.entity.js";
 
-export class ProfileApiService {
+import {User} from "../../../Access/model/User.entity.js"
+import BaseService from "../../../../../shared/services/base.service.js";
 
+export class ProfileApiService extends BaseService{
 
-    static getData() {
-
-        return axios.get("http://localhost:3000/users")
-            .then((response) => {
-                return response.data.map(profiledata => new Profile(profiledata));
-            });
+    constructor() {
+        super('http://localhost:3000/users');
     }
 
-    static updatePassword(userId, newPassword) {
-        return axios.get(`http://localhost:3000/users?user_id=${userId}`)
-            .then(response => {
-                console.log("Response from GET user:", response.data);
+    static async getData() {
+        const serviceInstance = new ProfileApiService();
+        const profilesData = await serviceInstance.getAll('');
+        return profilesData.map(profiledata => new User(profiledata));
+    }
 
-                const user = response.data[0];
-
-                if (!user) {
-                    throw new Error('User not found');
-                }
-
-                user.password = newPassword;
-
-                console.log("User after password update:", user);
-
-                return axios.put(`http://localhost:3000/users/${user.id}`, user);
-            })
-            .then(response => {
-                console.log("Response from PUT request:", response.data);
-                return response;
-            })
-            .catch(error => {
-                console.error("Error updating password:", error);
-                throw error;
-            });
+    static async updateProfile(id, updatedProfile) {
+        try {
+            const serviceInstance = new ProfileApiService();
+            return await serviceInstance.update('', id, updatedProfile);
+        } catch (error) {
+            console.error("Error updating profile", error);
+        }
     }
 
 }

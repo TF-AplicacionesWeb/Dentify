@@ -11,7 +11,7 @@ export default {
 
 <template>
 
-  <h1 class="support">{{ $t('Reservation.Tittle') }}</h1>
+  <h1 class="support mt-24">{{ $t('Reservation.Tittle') }}</h1>
   <div class="content-wrapper">
     <div class="support-form-container">
       <div class="form-card">

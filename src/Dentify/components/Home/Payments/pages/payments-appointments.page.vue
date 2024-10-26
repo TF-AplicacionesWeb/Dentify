@@ -1,72 +1,148 @@
-
 <script>
-export default {
-  name: "appointments.vue"
-}
-</script>
-<template>
-  <div class="payments-container">
-    <h1 class="title">Pagos</h1>
+import { PaymentsService } from "../services/payments.service.js";
+import PaymentCardComponent from "../components/payments-card.component.vue";
+import {mapGetters} from "vuex";
 
-    <!-- Barra de búsqueda y botones -->
-    <div class="toolbar">
-      <div class="search-container">
-        <div class="search-input-container">
-          <i class="pi pi-search"  />
-          <pv-inputtext placeholder="Buscar" class="search-input" />
-          <i class="pi pi-cog" @click="$emit('openSettings')" />
+export default {
+  name: "appointments",
+  computed: {
+    ...mapGetters(['getUser']),
+
+    userLogged(){
+      console.log(this.getUser);
+      return this.getUser;
+    }
+  },
+  components: {
+    PaymentCardComponent,
+  },
+  methods: {
+    async selectAppointment(appointment) {
+      this.selectedAppointment = appointment;
+
+      //codigo comentado
+      //esta funcionalidad no va acá, va cuando se confirme el pago
+
+      //const paymentsService = new PaymentsService();
+      /*
+      await paymentsService.updateAppointmentStatus(appointment.id, {
+        payment_status: true
+      });*/
+    },
+    openPaymentCard() {
+      if (this.selectedAppointment) {
+        this.showPaymentCard = true;
+      } else {
+        alert("Selecciona una cita para registrar el pago.");
+      }
+    },
+    closePaymentCard() {
+      this.showPaymentCard = false;
+    },
+    async confirmPayment(appointmentId) {
+      const appointment = this.pendingPayments.find((p) => p.id === appointmentId);
+      if (appointment) {
+        //codigo comentado para no poner en true un pago
+        //generar una funcionalidad para la confirmacion de pago sincronizando con la fakeapi
+
+        //appointment.payment_status = true;
+        await this.selectAppointment(appointment);
+      }
+      this.closePaymentCard();
+    },
+    goToInvoice() {
+      this.$router.push("/home/payments/invoices");
+    },
+  },
+  data() {
+    return {
+      pendingPayments: [],
+      selectedAppointment: null,
+      showPaymentCard: false,
+      allPayments: [],
+    };
+  },
+  async created() {
+    const paymentsService = new PaymentsService()
+    this.allPayments = await paymentsService.getDataForAppointments(this.userLogged.id);
+    this.pendingPayments = this.allPayments.filter(payment => payment.payment_status === false);
+
+  },
+};
+</script>
+
+<template>
+  <div class="payments-container mx-auto mt-20 max-w-5xl p-5">
+    <h1 class="text-left text-4xl font-bold mb-5">Pagos</h1>
+    <h3 class="text-left text-2xl font-bold mb-4">Citas a pagar:</h3>
+
+    <div class="toolbar flex justify-between items-center gap-2 mb-5">
+      <div class="search-container w-full flex items-center justify-between">
+        <div class="search-input-container flex items-center bg-teal-100 rounded-full px-2 py-1 w-1/2">
+          <i class="pi pi-search mr-2"/>
+          <pv-inputtext
+              placeholder="Buscar"
+              class="search-input bg-teal-100 w-full outline-none border-b-2 border-teal-700 transition duration-300 ease-in-out"
+          />
+          <i class="pi pi-cog ml-2 cursor-pointer" @click="$emit('openSettings')"/>
         </div>
       </div>
-      <pv-button label="Citas a pagar" class="action-button" />
-      <pv-button label="Facturas" class="action-button" />
+      <pv-button
+          label="Facturas"
+          class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg"
+          @click="goToInvoice"
+      />
     </div>
 
-    <!-- Tabla de citas a pagar -->
-    <table class="payments-table">
+    <table class="payments-table w-full border-collapse">
       <thead>
-      <tr>
-        <th><input type="checkbox" /></th>
-        <th>Paciente</th>
-        <th>DNI</th>
-        <th>Fecha</th>
-        <th>Hora</th>
-        <th>Duración</th>
-        <th>Tipo de cita</th>
-        <th>Odontólogo</th>
-        <th>Estado</th>
+      <tr class="bg-sky-950 text-white">
+        <th class="p-3"></th>
+        <th class="p-3">Paciente</th>
+        <th class="p-3">DNI</th>
+        <th class="p-3">Fecha</th>
+        <th class="p-3">Hora</th>
+        <th class="p-3">Duración</th>
+        <th class="p-3">Tipo de cita</th>
+        <th class="p-3">Odontólogo</th>
+        <th class="p-3">Estado</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>Lorem ipsum dolor sit</td>
-        <td>XXXXXXXX</td>
-        <td>dd/mm/aa</td>
-        <td>hh/mm</td>
-        <td>hh/mm</td>
-        <td>Lorem</td>
-        <td>Lorem ipsum dolor sit</td>
-        <td>Lorem</td>
-      </tr>
-      <tr>
-        <td><input type="checkbox" /></td>
-        <td>Lorem ipsum dolor sit</td>
-        <td>XXXXXXXX</td>
-        <td>dd/mm/aa</td>
-        <td>hh/mm</td>
-        <td>hh/mm</td>
-        <td>Lorem</td>
-        <td>Lorem ipsum dolor sit</td>
-        <td>Lorem</td>
-      </tr>
 
+      <tr v-for="payment in pendingPayments" :key="payment.id" class="border-t">
+        <td class="p-3 text-center">
+          <input
+              type="checkbox"
+              @change="selectAppointment(payment)"
+              :checked="payment.payment_status"
+          />
+        </td>
+        <td class="p-3 text-center">{{ payment.name }}</td>
+        <td class="p-3 text-center">{{ payment.dni }}</td>
+        <td class="p-3 text-center">{{ new Date(payment.appointment_date).toLocaleDateString() }}</td>
+        <td class="p-3 text-center">{{ new Date(payment.appointment_date).toLocaleTimeString() }}</td>
+        <td class="p-3 text-center">{{ payment.duration_minutes }}</td>
+        <td class="p-3 text-center">{{ payment.reason }}</td>
+        <td class="p-3 text-center">{{ payment.dentist}}</td>
+        <td class="p-3 text-center">{{ payment.payment_status ? 'Pagado' : 'Pendiente' }}</td>
+      </tr>
       </tbody>
     </table>
 
-    <!-- Botón de registrar pago -->
-    <div class="actions">
-      <pv-button label="Registrar pago" class="register-button" />
+    <div class="actions mt-5 flex justify-center">
+      <pv-button
+          label="Registrar pago"
+          class="register-button bg-sky-950 text-white px-5 py-2 rounded-full text-lg"
+          @click="openPaymentCard"
+      />
     </div>
+    <PaymentCardComponent
+        v-if="showPaymentCard"
+        :appointment="selectedAppointment"
+        @close="closePaymentCard"
+        @confirmPayment="confirmPayment"
+    />
   </div>
 </template>
 
@@ -74,91 +150,26 @@ export default {
 .payments-container {
   padding: 20px;
   max-width: 1200px;
-  margin: 0 auto;
-}
-
-.title {
-  text-align: left;
-  font-size: 36px;
-  font-weight: bold;
-  margin-bottom: 20px;
-  margin-left: 0;
-}
-
-.toolbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.payments-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.payments-table th,
-.payments-table td {
-  padding: 10px;
-  text-align: center;
-  border: 1px solid #ccc;
-}
-
-.payments-table th {
-  background-color: #2C3E50;
-  color: #ffffff;
-  font-weight: bold;
-}
-.action-button {
-  background-color: #2C3E50;
-  color: white;
-  width: 15%;
-  padding: 5px;
-  border-radius: 25px;
-  font-size: 16px;
-  border: none;
-}
-.register-button {
-  background-color: #2C3E50;
-  color: white;
-  width: 20%;
-  padding: 8px;
-  margin: 10px 0;
-  border-radius: 25px;
-  font-size: 16px;
-  border: none;
-}
-.search-input{
-  background-color: #D1F2EB;
-
-  outline: none;
-  border-bottom: 2px solid #2C3E50;
-  transition: border-bottom 0.3s ease;
+  margin-top: 80px;
 }
 
 .search-input-container {
-  display: flex;
-  align-items: center;
-  background-color: #D1F2EB;
-  border-radius: 25px;
-  padding: 0.5em;
-  width: 100%;
+  background-color: #d1f2eb;
 }
 
-.search-input-container > .pi-search {
-  margin-right: 0.5em;
+.search-input {
+  background-color: #d1f2eb;
+  outline: none;
+  border-bottom: 2px solid #2c3e50;
+  transition: border-bottom 0.3s ease;
 }
 
-.search-input-container > .pi-cog {
-  margin-left: 0.5em;
-  cursor: pointer;
+.payments-table {
+  border: 1px solid #ccc;
 }
 
-.search-input-container > .pi-inputtext {
-  flex: 1;
-  border: none;
-  padding: 0;
-  margin: 0;
+.payments-table th,
+.payments-table td {
+  border: 1px solid #ccc;
 }
-
 </style>

@@ -3,30 +3,30 @@
     {
       "id": 1,
       "username": "admin",
-      "first_name": "John",
-      "last_name": "Doe",
-      "email": "jdoe@example.com",
+      "first_name": "Javier",
+      "last_name": "Roque",
+      "email": "m@gmail.com",
       "phone": "1234567890",
       "register_date": "2024-01-01",
       "company": "Example Corp",
-      "password": "admin123"
+      "password": "admin"
     },
     {
-      "id": 6299,
+      "id": 2,
       "username": "hola",
-      "name": "default",
-      "lastname": "default",
-      "email": "aha",
+      "first_name": "Jesus",
+      "last_name": "Uribe",
+      "email": "jesus@gmail.com",
       "phone": "default",
       "register_date": "default",
       "company": "default",
       "password": "123"
     },
     {
-      "id": 1598,
+      "id": 3,
       "username": "b",
-      "name": "default",
-      "lastname": "default",
+      "first_name": "default",
+      "last_name": "default",
       "email": "b",
       "phone": "default",
       "register_date": "default",
@@ -36,30 +36,30 @@
   ],
   "subscriptions": [
     {
-      "subscription_id": 1,
+      "id": 1,
       "name": "Basic Subscription",
       "description": "Limited access"
     },
     {
-      "subscription_id": 2,
+      "id": 2,
       "name": "Premium Subscription",
       "description": "Full access"
     }
   ],
   "subscriptions_users": [
     {
-      "subscription_id": 1,
+      "id": 1,
       "user_id": 1
     },
     {
-      "subscription_id": 2,
+      "id": 2,
       "user_id": 1
     }
   ],
   "dentists": [
     {
-      "dni": 12345678,
-      "first_name": "Dr. Smith",
+      "id": 12345678,
+      "first_name": "Smith",
       "last_name": "Johnson",
       "specialty": "Orthodontics",
       "experience": 10,
@@ -67,11 +67,71 @@
       "email": "drsmith@example.com",
       "total_appointments": 100,
       "user_id": 1
+    },
+    {
+      "id": 87654321,
+      "first_name": "Alice",
+      "last_name": "Williams",
+      "specialty": "Endodontics",
+      "experience": 8,
+      "phone": "123987654",
+      "email": "dralice@example.com",
+      "total_appointments": 200,
+      "user_id": 1
+    },
+    {
+      "id": 13579246,
+      "first_name": "Gregory",
+      "last_name": "House",
+      "specialty": "Dentist",
+      "experience": 10,
+      "phone": "111111888",
+      "email": "example@a.com",
+      "total_appointments": 0,
+      "user_id": 2
+    }
+  ],
+  "schedule_dentists": [
+    {
+      "id": 1,
+      "dentist_id": 12345678,
+      "weekday": "Monday",
+      "start_time": "10:00",
+      "end_time": "11:00",
+      "date": "2024-10-21",
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "dentist_id": 12345678,
+      "weekday": "Monday",
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "date": "2024-10-21",
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "dentist_id": 87654321,
+      "weekday": "Monday",
+      "start_time": "16:00",
+      "end_time": "17:00",
+      "date": "2024-10-21",
+      "user_id": 1
+    },
+    {
+      "id": 4,
+      "dentist_id": 87654321,
+      "weekday": "Friday",
+      "start_time": "9:00",
+      "end_time": "11:00",
+      "date": "2024-10-25",
+      "user_id": 1
     }
   ],
   "inventory": [
     {
-      "material_id": 1,
+      "id": 1,
       "material_name": "Gloves",
       "quantity": 100,
       "unit_price": 5.5,
@@ -79,17 +139,17 @@
       "user_id": 1
     },
     {
-      "material_id": 2,
+      "id": 2,
       "material_name": "Masks",
       "quantity": 200,
       "unit_price": 2.5,
       "last_updated": "2024-01-05",
-      "user_id": 1
+      "user_id": 2
     }
   ],
   "patients": [
     {
-      "dni": 123456789,
+      "id": 123456789,
       "clinical_record_id": 1,
       "first_name": "Jane",
       "last_name": "Doe",
@@ -101,7 +161,7 @@
       "user_id": 1
     },
     {
-      "dni": 7777777,
+      "id": 7777777,
       "clinical_record_id": 1,
       "first_name": "Roman",
       "last_name": "Reigns",
@@ -109,25 +169,37 @@
       "age": 40,
       "medical_history": "None",
       "birth_date": "1970-08-15",
-      "appointment_id": 1,
+      "appointment_id": 2,
       "user_id": 1
     },
     {
-      "dni": 33333,
-      "clinical_record_id": 98,
-      "first_name": "Christian",
-      "last_name": "Cueva",
-      "email": "edinson-elpapi@example.com",
-      "age": 32,
+      "id": 98765432,
+      "clinical_record_id": 2,
+      "first_name": "Emily",
+      "last_name": "Clark",
+      "email": "emily@example.com",
+      "age": 25,
       "medical_history": "None",
-      "birth_date": "1988-08-15",
-      "appointment_id": 1,
-      "user_id": 1
+      "birth_date": "1998-02-20",
+      "appointment_id": 3,
+      "user_id": 2
+    },
+    {
+      "id": 24681357,
+      "clinical_record_id": 3,
+      "first_name": "Mark",
+      "last_name": "Baker",
+      "email": "mark@example.com",
+      "age": 35,
+      "medical_history": "Diabetes",
+      "birth_date": "1989-11-02",
+      "appointment_id": 4,
+      "user_id": 3
     }
   ],
   "clinical_records": [
     {
-      "clinical_record_id": 1,
+      "id": 1,
       "medical_history": "No allergies",
       "record_date": "2024-01-10",
       "diagnosis": "General check-up",
@@ -137,20 +209,20 @@
   ],
   "clinical_exam": [
     {
-      "clinical_record_id": 1,
+      "id": 1,
       "exam_id": 1
     }
   ],
   "exams": [
     {
-      "exam_id": 1,
+      "id": 1,
       "description": "Dental X-ray",
       "image_path": "/images/xray1.jpg"
     }
   ],
   "appointments": [
     {
-      "appointment_id": 1,
+      "id": 1,
       "dentist_dni": 12345678,
       "user_id": 1,
       "appointment_date": "2024-01-15T10:00:00",
@@ -160,44 +232,76 @@
       "duration_minutes": 30,
       "payment_id": 1,
       "payment_status": true
+    },
+    {
+      "id": 2,
+      "dentist_dni": 87654321,
+      "user_id": 1,
+      "appointment_date": "2024-09-30T09:00:00",
+      "reason": "Root Canal Treatment",
+      "completed": false,
+      "reminder_sent": false,
+      "duration_minutes": 60,
+      "payment_id": 2,
+      "payment_status": false
+    },
+    {
+      "id": 3,
+      "dentist_dni": 13579246,
+      "user_id": 2,
+      "appointment_date": "2024-09-30T11:00:00",
+      "reason": "Gum Disease Treatment",
+      "completed": false,
+      "reminder_sent": false,
+      "duration_minutes": 45,
+      "payment_id": 3,
+      "payment_status": false
     }
   ],
   "payments": [
     {
-      "payment_id": 1,
+      "id": 1,
       "amount": 50,
       "payment_date": "2024-01-10"
+    },
+    {
+      "id": 2,
+      "amount": 150,
+      "payment_date": "2024-09-30"
+    },
+    {
+      "id": 3,
+      "amount": 120,
+      "payment_date": "2024-09-30"
     }
   ],
   "payment_methods": [
     {
-      "payment_method_id": 1,
+      "id": 1,
       "name": "Credit Card"
     },
     {
-      "payment_method_id": 2,
+      "id": 2,
       "name": "PayPal"
     }
   ],
   "payment_method_relation": [
     {
-      "payment_id": 1,
+      "id": 1,
       "payment_method_id": 1
-    }
-  ],
-  "schedules": [
+    },
     {
-      "schedule_id": 1,
-      "dentist_dni": 12345678,
-      "weekday": "Monday",
-      "start_time": "09:00",
-      "end_time": "17:00",
-      "user_id": 1
+      "id": 2,
+      "payment_method_id": 1
+    },
+    {
+      "id": 3,
+      "payment_method_id": 2
     }
   ],
   "support-message": [
     {
-      "message_id": 1,
+      "id": 1,
       "name": "Jose",
       "email": "example@gmail.com",
       "description": "",
