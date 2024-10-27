@@ -9,6 +9,7 @@ import supportComponent from "../Dentify/components/Home/Support/support.compone
 import profileOverlayComponent from "../Dentify/components/Home/Profile/pages/profile-overlay.page.vue";
 import paymentsComponent from "../Dentify/components/Home/Payments/pages/payments.page.vue";
 import paymentsAppointmentsComponent from "../Dentify/components/Home/Payments/pages/payments-appointments.page.vue";
+import metricsComponent from "../Dentify/components/Home/Metrics/pages/metrics.page.vue";
 
 import profileOverlaySettingsPage from "../Dentify/components/Home/Profile/pages/profile-overlay-settings.page.vue";
 import profileOverlayEditInformationPage from "../Dentify/components/Home/Profile/pages/profile-overlay-edit-information.page.vue";
@@ -82,6 +83,10 @@ const router = createRouter({
                },
                 {
                     path:"specialists", component: dentistsPage
+                },
+                {
+                    path: "metrics",
+                    component: metricsComponent
                 }
             ]
         },

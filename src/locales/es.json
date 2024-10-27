@@ -105,5 +105,10 @@
     "ok": "OK",
     "cDelete": "¿Estas seguro de eliminar a Dr.",
     "days": "Lunes | Martes | Miércoles | Jueves | Viernes | Sábado | Domingo"
+  },
+  "Metrics": {
+    "header": "Métricas",
+    "dropdown": "Elegir tipo de métricas",
+    "button": "Generar métricas"
   }
 }
