@@ -9,7 +9,7 @@
       "phone": "1234567890",
       "register_date": "2024-01-01",
       "company": "Example Corp",
-      "password": "a12345678"
+      "password": "admin"
     },
     {
       "id": 2,
@@ -58,57 +58,86 @@
   ],
   "dentists": [
     {
-      "id": 1,
-      "dni": 12345678,
-      "first_name": "Dr. Smith",
+      "id": 12345678,
+      "first_name": "Smith",
       "last_name": "Johnson",
       "specialty": "Orthodontics",
       "experience": 10,
       "phone": "987654321",
       "email": "drsmith@example.com",
-      "total_appointments": 100
+      "total_appointments": 100,
+      "user_id": 1
     },
     {
-      "id": 2,
-      "dni": 87654321,
-      "first_name": "Dr. Alice",
+      "id": 87654321,
+      "first_name": "Alice",
       "last_name": "Williams",
       "specialty": "Endodontics",
       "experience": 8,
       "phone": "123987654",
       "email": "dralice@example.com",
-      "total_appointments": 200
+      "total_appointments": 200,
+      "user_id": 1
     },
     {
-      "id": 3,
-      "dni": 33329888,
+      "id": 13579246,
       "first_name": "Gregory",
       "last_name": "House",
       "specialty": "Dentist",
       "experience": 10,
       "phone": "111111888",
       "email": "example@a.com",
-      "total_appointments": 0
+      "total_appointments": 0,
+      "user_id": 2
+    },
+    {
+      "id": 21212121,
+      "first_name": "Juan",
+      "last_name": "Perez",
+      "specialty": "Odontologia",
+      "experience": 2,
+      "phone": "912567892",
+      "email": "juan@gmail.com",
+      "total_appointments": 0,
+      "user_id": 1
     }
   ],
   "schedule_dentists": [
     {
-      "id": 3,
+      "id": 1,
+      "dentist_id": 12345678,
+      "weekday": "Monday",
+      "start_time": "10:00",
+      "end_time": "11:00",
       "date": "2024-10-21",
-      "hour": "10:00",
-      "dentist_id": 2
+      "user_id": 1
+    },
+    {
+      "id": 2,
+      "dentist_id": 12345678,
+      "weekday": "Monday",
+      "start_time": "14:00",
+      "end_time": "15:00",
+      "date": "2024-10-21",
+      "user_id": 1
+    },
+    {
+      "id": 3,
+      "dentist_id": 87654321,
+      "weekday": "Monday",
+      "start_time": "16:00",
+      "end_time": "17:00",
+      "date": "2024-10-21",
+      "user_id": 1
     },
     {
       "id": 4,
-      "date": "2024-10-21",
-      "hour": "14:00",
-      "dentist_id": 2
-    },
-    {
-      "id": 5,
-      "date": "2000-01-01",
-      "hour": "12:12",
-      "dentist_id": 3
+      "dentist_id": 87654321,
+      "weekday": "Friday",
+      "start_time": "9:00",
+      "end_time": "11:00",
+      "date": "2024-10-25",
+      "user_id": 1
     }
   ],
   "inventory": [
@@ -151,7 +180,7 @@
       "age": 40,
       "medical_history": "None",
       "birth_date": "1970-08-15",
-      "appointment_id": 1,
+      "appointment_id": 658322,
       "user_id": 1
     },
     {
@@ -163,7 +192,7 @@
       "age": 25,
       "medical_history": "None",
       "birth_date": "1998-02-20",
-      "appointment_id": 2,
+      "appointment_id": 3,
       "user_id": 2
     },
     {
@@ -175,8 +204,32 @@
       "age": 35,
       "medical_history": "Diabetes",
       "birth_date": "1989-11-02",
-      "appointment_id": 3,
+      "appointment_id": 4,
       "user_id": 3
+    },
+    {
+      "id": 844739,
+      "clinical_record_id": 767596,
+      "first_name": "Enzo",
+      "last_name": "Fernandez",
+      "email": "enzo",
+      "age": "24",
+      "medical_history": "None",
+      "birth_date": "2024-10-08T17:47",
+      "appointment_id": null,
+      "user_id": 1
+    },
+    {
+      "id": 968869,
+      "clinical_record_id": 872445,
+      "first_name": "Enzo",
+      "last_name": "Fernandez",
+      "email": "enzo@gmail.com",
+      "age": "24",
+      "medical_history": "None",
+      "birth_date": "2024-10-07T17:50",
+      "appointment_id": null,
+      "user_id": 1
     }
   ],
   "clinical_records": [
@@ -185,6 +238,22 @@
       "medical_history": "No allergies",
       "record_date": "2024-01-10",
       "diagnosis": "General check-up",
+      "treatment": "None",
+      "user_id": 1
+    },
+    {
+      "id": 767596,
+      "medical_history": "None",
+      "record_date": "2024-10-23T17:47",
+      "diagnosis": "None",
+      "treatment": "None",
+      "user_id": 1
+    },
+    {
+      "id": 872445,
+      "medical_history": "None",
+      "record_date": "2024-11-01T17:50",
+      "diagnosis": "None",
       "treatment": "None",
       "user_id": 1
     }
@@ -218,14 +287,14 @@
     {
       "id": 2,
       "dentist_dni": 87654321,
-      "user_id": 2,
+      "user_id": 1,
       "appointment_date": "2024-09-30T09:00:00",
       "reason": "Root Canal Treatment",
       "completed": false,
       "reminder_sent": false,
       "duration_minutes": 60,
-      "payment_id": 2,
-      "payment_status": false
+      "payment_id": 3,
+      "payment_status": true
     },
     {
       "id": 3,
@@ -236,25 +305,37 @@
       "completed": false,
       "reminder_sent": false,
       "duration_minutes": 45,
-      "payment_id": 3,
+      "payment_id": null,
+      "payment_status": false
+    },
+    {
+      "id": 658322,
+      "dentist_dni": 21212121,
+      "user_id": 1,
+      "appointment_date": "2024-10-10T17:43",
+      "reason": "CheckUp",
+      "completed": false,
+      "reminder_sent": false,
+      "duration_minutes": 15,
+      "payment_id": null,
       "payment_status": false
     }
   ],
   "payments": [
     {
-      "id": 1,
-      "amount": 50,
-      "payment_date": "2024-01-10"
+      "amount": "",
+      "payment_date": "2024-10-12T18:11:10.714Z",
+      "id": 1
     },
     {
-      "id": 2,
-      "amount": 150,
-      "payment_date": "2024-09-30"
+      "amount": "",
+      "payment_date": "2024-10-26T20:11:52.195Z",
+      "id": 2
     },
     {
-      "id": 3,
-      "amount": 120,
-      "payment_date": "2024-09-30"
+      "amount": null,
+      "payment_date": "2024-10-26T20:18:00.572Z",
+      "id": 3
     }
   ],
   "payment_methods": [

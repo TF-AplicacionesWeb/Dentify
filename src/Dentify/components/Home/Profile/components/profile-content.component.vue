@@ -38,10 +38,6 @@ export default {
       <p>{{ $t('Profile.Profile')}}</p>
     </div>
     <div class="header-profile-container">
-      <div class="profile-logo-container">
-        <pv-Image src="src/assets/img/dental-clinic-logo.png" alt="Logo"
-                  class="profile-logo" width="128px"></pv-Image>
-      </div>
       <div class="dental-clinic-name-container">
         <p class="name-clinic">{{profile?.company}}</p>
         <p class="dental-clinic">{{ $t('Profile.DentalCenter')}}</p>
@@ -56,14 +52,7 @@ export default {
 </template>
 
 <style scoped>
-.profile-logo {
-  width: 20vw;
-  height: 20vw;
-  max-width: 200vw;
-  max-height: 200px;
-  object-fit: cover;
-  margin: auto;
-}
+
 
 .header-profile-container {
   background-color: #D1F2EB;
@@ -88,9 +77,6 @@ export default {
   margin-top: 1.5em;
 }
 
-.profile-logo-container {
-  margin-right: 1em;
-}
 
 .dental-clinic-name-container {
   margin-left: 1em;

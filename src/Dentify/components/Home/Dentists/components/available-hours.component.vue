@@ -17,12 +17,19 @@ export default {
     dentistFullName: {
       type: String,
       required: true
+    },
+    userId: {
+      type: Number,
+      required: true
     }
   },
   data() {
     return {
       date: null,
-      hour: null,
+      startTime: null,
+      endTime: null,
+      day: null,
+      indexDay: null,
       schedules: [],
       newSchedule: new Schedule({}),
       selectedSchedule: new Schedule({})
@@ -43,11 +50,25 @@ export default {
     close() {
       this.$emit('close');
     },
+    getIndexDayToTranslate(weekday) {
+      const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      console.log(days.indexOf(weekday));
+      return days.indexOf(weekday);
+    },
+    getWeekDay() {
+      let dateObject = new Date(this.date);
+      const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+      this.indexDay = dateObject.getDay();
+      return days[this.indexDay];
+    },
     async insertSchedule() {
       this.newSchedule.id = null;
-      this.newSchedule.date = this.date;
-      this.newSchedule.hour = this.hour;
       this.newSchedule.dentist_id = this.dentistId;
+      this.newSchedule.weekday = this.getWeekDay();
+      this.newSchedule.start_time = this.startTime;
+      this.newSchedule.end_time = this.endTime;
+      this.newSchedule.date = this.date;
+      this.newSchedule.user_id = this.userId;
       try {
         await ScheduleApiService.insertSchedule(this.newSchedule);
         await this.getData();
@@ -87,8 +108,13 @@ export default {
             </div>
 
             <div class="form-group w-full">
-              <label for="hour" class="block mb-1"><b>{{ $t('Specialists.hour') }}</b></label>
-              <pv-inputtext id="hour" v-model="hour" type="time" class="input-field w-full rounded-xl p-2 shadow" :placeholder="$t('Specialists.hour')"/>
+              <label for="startTime" class="block mb-1"><b>{{ $t('Specialists.sTime') }}</b></label>
+              <pv-inputtext id="startTime" v-model="startTime" type="time" class="input-field w-full rounded-xl p-2 shadow" :placeholder="$t('Specialists.sTime')"/>
+            </div>
+
+            <div class="form-group w-full">
+              <label for="endTime" class="block mb-1"><b>{{ $t('Specialists.eTime') }}</b></label>
+              <pv-inputtext id="endTime" v-model="endTime" type="time" class="input-field w-full rounded-xl p-2 shadow" :placeholder="$t('Specialists.eTime')"/>
             </div>
 
             <div class="form-group">
@@ -96,7 +122,7 @@ export default {
             </div>
           </form>
         </div>
-        <div class="h-[30vh] overflow-y-auto bg-[#D1F2EB] py-2 px-6">
+        <div class="h-[30vh] overflow-y-auto bg-[#D1F2EB] py-1 px-6">
           <b class="ml-1">{{ $t('Specialists.raHours') }}:</b>
           <div v-for="schedule in schedules" :key="schedule.id" class="grid grid-cols-2 gap-6">
             <div class="schedule-container mb-1.5 mt-1.5 flex items-center">
@@ -104,8 +130,9 @@ export default {
                 <i class="pi pi pi-trash text-[#2C3E50]"></i>
               </pv-button>
               <div class="ml-2">
+                <p>{{ schedule.weekday }}</p>
                 <p>{{ schedule.date }}</p>
-                <p>{{ schedule.hour }}</p>
+                <p>{{ schedule.start_time }} - {{ schedule.end_time }}</p>
               </div>
             </div>
           </div>

@@ -7,7 +7,6 @@ import notFoundComponent from "../public/not-found.component.vue";
 import dashboardComponent from "../Dentify/components/Home/Dashboard/pages/dashboard.page.vue";
 import supportComponent from "../Dentify/components/Home/Support/support.component.vue";
 import profileOverlayComponent from "../Dentify/components/Home/Profile/pages/profile-overlay.page.vue";
-import reservationComponent from "../Dentify/components/Home/Reservation/pages/reservation.page.vue";
 import paymentsComponent from "../Dentify/components/Home/Payments/pages/payments.page.vue";
 import paymentsAppointmentsComponent from "../Dentify/components/Home/Payments/pages/payments-appointments.page.vue";
 
@@ -19,7 +18,11 @@ import paymentsInvoicePage from "../Dentify/components/Home/Payments/pages/payme
 
 
 import dentistsPage from "../Dentify/components/Home/Dentists/pages/dentists-page.vue";
+
 import inventoryComponent from "../Dentify/components/Home/Inventory/page/inventory.page.vue";
+
+import appointmentCardComponent from "../Dentify/components/Home/Appointments/components/appointment-card.component.vue";
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -58,7 +61,7 @@ const router = createRouter({
                     path: "profileChangePassword", component: profileOverlayChangePasswordPage, name: "profileChangePassword",
                 },
                 {
-                    path: "appointments", component: reservationComponent
+                    path: "appointments", component: appointmentCardComponent
                 },
                 {
                     path: "inventory", component: inventoryComponent

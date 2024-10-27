@@ -1,9 +1,18 @@
 <script>
 import { PaymentsService } from "../services/payments.service.js";
 import cardInvoiceComponent from "../components/card-invoice.component.vue";
+import {mapGetters} from "vuex";
 
 export default {
   name: "invoice.vue",
+  computed: {
+    ...mapGetters(['getUser']),
+
+    userLogged(){
+      console.log(this.getUser);
+      return this.getUser;
+    }
+  },
   components: {
     cardInvoiceComponent
   },
@@ -19,12 +28,10 @@ export default {
     goToAppointments() {
       this.$router.push('/home/payments/appointments');
     },
-
     openInvoice(payment) {
       this.selectedInvoice = {
         name: payment.name,
         dni: payment.dni,
-        email: payment.email,
         date: new Date(payment.appointment_date).toLocaleDateString(),
         time: new Date(payment.appointment_date).toLocaleTimeString(),
         description: payment.reason,
@@ -40,7 +47,7 @@ export default {
   },
   async created() {
     const paymentsService = new PaymentsService();
-    this.pendingPayments = await paymentsService.getDataForInvoice();
+    this.pendingPayments = await paymentsService.getDataForInvoice(this.userLogged.id);
   }
 };
 </script>
