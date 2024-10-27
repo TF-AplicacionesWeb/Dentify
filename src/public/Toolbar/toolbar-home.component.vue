@@ -42,7 +42,7 @@ export default {
         <i class="pi pi-wrench mx-1"></i>
         {{ $t('Toolbar.Support') }}
       </pv-button>
-      <pv-button class="mx-3">
+      <pv-button class="mx-3" @click="this.$router.push('/home/inventory')">
         <i class="pi pi-box mx-1"></i>
         {{ $t('Toolbar.Inventory') }}
       </pv-button>
