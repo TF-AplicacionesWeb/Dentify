@@ -27,8 +27,8 @@ export default {
         const result = await AuthenApiService.login(this.username, this.password);
         if (result.success) {
 
-          this.loginStore(result.user);
-
+          //this.loginStore(result.user);
+          this.$store.dispatch('loginStore', result.user);
           this.$router.push('/home/dashboard');
         } else {
           this.errorMessage = result.message;

@@ -1,8 +1,15 @@
 <script>
 import {InventoryService} from "../services/inventory.service.js";
+import {mapGetters} from "vuex";
 
 export default {
   name: "inventory.page",
+  computed: {
+    ...mapGetters(['getUser']),
+    username() {
+      return this.getUser;
+    }
+  },
   data() {
     return {
       allProducts: [],
@@ -13,7 +20,7 @@ export default {
   async created() {
     try {
       const inventoryService = new InventoryService();
-      this.allProducts = await inventoryService.getInventory();
+      this.allProducts = await inventoryService.getInventory(this.username.id);
       console.log("Inventario cargado:", this.allProducts);
     } catch (error) {
       console.error("Error al cargar productos:", error);

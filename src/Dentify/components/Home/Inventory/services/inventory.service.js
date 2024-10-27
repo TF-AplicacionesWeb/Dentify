@@ -6,18 +6,19 @@ export class InventoryService extends BaseService {
         super('http://localhost:3000/');
     }
 
-    async getInventory() {
+    async getInventory(userId = null) {
         const products = await this.getAll('inventory');
 
-        return products.map(product => {
-            return new Product(
+        return products
+            .filter(product => !userId || product.user_id === userId)
+            .map(product => new Product(
                 product.id,
                 product.material_name,
                 product.quantity,
                 product.unit_price
-            );
-        });
+            ));
     }
+
 
 
     async addProduct(product) {
