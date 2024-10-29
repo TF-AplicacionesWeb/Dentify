@@ -114,5 +114,10 @@
     "to": "To",
     "close": "Close report",
     "button": "Generate reports"
+    },
+  "Metrics": {
+    "header": "Metrics",
+    "dropdown": "Choose type of metrics",
+    "button": "Generate metrics"
   }
 }
