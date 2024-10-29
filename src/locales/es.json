@@ -114,8 +114,7 @@
   "to": "a",
   "close": "Cerrar informe",
   "button": "Generar informe"
-}
-
+},
   "Metrics": {
     "header": "Métricas",
     "dropdown": "Elegir tipo de métricas",

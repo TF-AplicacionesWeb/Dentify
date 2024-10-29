@@ -92,7 +92,8 @@ const router = createRouter({
 
                     path: "reports",
                     component: reportsComponent
-
+                },
+                {
                     path: "metrics",
                     component: metricsComponent
 
