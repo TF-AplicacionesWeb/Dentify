@@ -106,6 +106,16 @@
     "cDelete": "¿Estas seguro de eliminar a Dr.",
     "days": "Lunes | Martes | Miércoles | Jueves | Viernes | Sábado | Domingo"
   },
+  "Reports": {
+  "header": "Informes",
+  "dropdown": "Elegir tipo de informes",
+  "date": "Dia",
+  "from": "De",
+  "to": "a",
+  "close": "Cerrar informe",
+  "button": "Generar informe"
+}
+
   "Metrics": {
     "header": "Métricas",
     "dropdown": "Elegir tipo de métricas",

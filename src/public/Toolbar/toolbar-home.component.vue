@@ -46,7 +46,7 @@ export default {
         <i class="pi pi-box mx-1"></i>
         {{ $t('Toolbar.Inventory') }}
       </pv-button>
-      <pv-button class ="mx-3">
+      <pv-button class ="mx-3" @click="this.$router.push('/home/reports')">
         <i class="pi pi-file mx-1"></i>
         {{ $t('Toolbar.Reports') }}
       </pv-button>
