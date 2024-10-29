@@ -1,6 +1,7 @@
 import BaseService from "../../../../../shared/services/base.service.js";
 import { Pendingpay } from "../models/pendingpay.entity.js";
 
+
 export class PaymentsService extends BaseService {
     constructor() {
         super('http://localhost:3000/');
@@ -10,6 +11,7 @@ export class PaymentsService extends BaseService {
         const appointments = await this.getAll('appointments');
         const patients = await this.getAll('patients');
         const dentists = await this.getAll('dentists');
+
 
         return appointments
             .filter(appointment => appointment.user_id === userId)
@@ -61,9 +63,13 @@ export class PaymentsService extends BaseService {
                 });
             });
     }
-
     async updateAppointmentStatus(appointmentId, data)
     {
         return this.update('appointments', appointmentId, data);
     }
+    async createPayment(paymentData) {
+        const newPayment = await this.create('payments', paymentData);
+        return newPayment.id;
+    }
+
 }

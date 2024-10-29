@@ -28,12 +28,10 @@ export default {
     goToAppointments() {
       this.$router.push('/home/payments/appointments');
     },
-
     openInvoice(payment) {
       this.selectedInvoice = {
         name: payment.name,
         dni: payment.dni,
-        email: payment.email,
         date: new Date(payment.appointment_date).toLocaleDateString(),
         time: new Date(payment.appointment_date).toLocaleTimeString(),
         description: payment.reason,
