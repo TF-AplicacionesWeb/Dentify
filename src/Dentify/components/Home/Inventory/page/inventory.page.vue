@@ -1,9 +1,17 @@
 <script>
 import {InventoryService} from "../services/inventory.service.js";
+import NewProductCardComponent from "../Components/newproduct-card.component.vue";
+import UpdateProductCardComponent from "../Components/updateproduct-card.component.vue";
+import DeleteProductCardComponent from "../Components/deleteproduct-card.component.vue";
 import {mapGetters} from "vuex";
 
 export default {
   name: "inventory.page",
+  components:{
+    NewProductCardComponent,
+    UpdateProductCardComponent,
+    DeleteProductCardComponent
+  },
   computed: {
     ...mapGetters(['getUser']),
     username() {
@@ -15,6 +23,8 @@ export default {
       allProducts: [],
       productSelection: null,
       showAddCard: false,
+      showUpdateCard: false,
+      showDeleteCard: false,
     }
   },
   async created() {
@@ -29,23 +39,54 @@ export default {
   methods: {
 
     setProductSelection(product) {
-      this.productSelection = product;
-    }/*,
-    goToAddProduct() {
-      this.$router.push('/home/inventory/add-product');
+      this.productSelection = this.productSelection === product ? null : product;
     },
-    openUpdateCard() {
-      if (this.selectedProduct) {
-        this.$router.push(`/home/inventory/update-product/${this.selectedProduct.id}`);
+    async addProductToInventory(product) {
+      try {
+        const inventoryService = new InventoryService();
+        await inventoryService.addProduct(product);
+        this.allProducts = await inventoryService.getInventory();
+        this.productSelection = product;
+        this.showAddCard = false;
+      } catch (error) {
+        console.error("Error al agregar producto:", error);
       }
     },
-
-    openDeleteCard() {
-      if (this.selectedProduct) {
-        this.$router.push(`/home/inventory/delete-product/${this.selectedProduct.id}`);
+    async updateProductInInventory(updatedProduct) {
+      try {
+        const inventoryService = new InventoryService();
+        await inventoryService.updateProduct(updatedProduct.id, updatedProduct);
+        const index = this.allProducts.findIndex((p) => p.id === updatedProduct.id);
+        if (index !== -1) {
+          this.allProducts.splice(index, 1, updatedProduct);
+        }
+        this.showUpdateCard = false;
+      } catch (error) {
+        console.error("Error al actualizar producto:", error);
       }
-    }
-*/
+    },
+    showUpdateForm() {
+      if (this.productSelection) {
+        this.showUpdateCard = true;
+      }
+    },
+    confirmDelete() {
+      if (this.productSelection) {
+        this.showDeleteCard = true;
+      }
+    },
+    async deleteProductFromInventory() {
+      if (!this.productSelection) return;
+      try {
+        const inventoryService = new InventoryService();
+        await inventoryService.deleteProduct(this.productSelection.id);
+        this.allProducts = this.allProducts.filter(p => p.id !== this.productSelection.id);
+        this.productSelection = null;
+        this.showDeleteCard = false;
+      } catch (error) {
+        console.error("Error al eliminar producto:", error);
+      }
+    },
   }
 }
 </script>
@@ -59,7 +100,7 @@ export default {
       <pv-button
           label="Add new product"
           class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg"
-          @click=""
+          @click="showAddCard = true"
       />
     </div>
 
@@ -82,27 +123,47 @@ export default {
               :checked="productSelection === product"
           />
         </td>
-        <td class="p-3 text-center">{{ product.name }}</td>
+        <td class="p-3 text-center">{{ product.material_name }}</td>
         <td class="p-3 text-center">{{ product.quantity }}</td>
-        <td class="p-3 text-center">{{ product.price}}</td>
+        <td class="p-3 text-center">{{ product.unit_price}}</td>
       </tr>
       </tbody>
     </table>
-
+    <NewProductCardComponent
+        v-if="showAddCard"
+        @confirmProduct="addProductToInventory"
+        @close="showAddCard = false"
+    />
+    <UpdateProductCardComponent
+        v-if="showUpdateCard"
+        :product="productSelection"
+        @confirmUpdate="updateProductInInventory"
+        @close="showUpdateCard = false"
+    />
     <div class="actions mt-5 flex justify-center">
       <pv-button
           label="Update product"
           class="register-button bg-sky-950 text-white px-5 py-2 rounded-full text-lg"
-          @click=""
+          @click="showUpdateForm"
       />
     </div>
     <div class="actions mt-5 flex justify-center">
       <pv-button
           label="Delete product"
           class="register-button bg-sky-950 text-white px-5 py-2 rounded-full text-lg"
-          @click=""
+          @click="confirmDelete"
       />
     </div>
+
+    <DeleteProductCardComponent
+        v-if="showDeleteCard"
+        :product="productSelection"
+        @confirmDelete="deleteProductFromInventory"
+        @close="showDeleteCard = false"
+
+
+    />
+
   </div>
 </template>
 
