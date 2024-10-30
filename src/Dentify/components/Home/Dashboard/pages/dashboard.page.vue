@@ -1,61 +1,3 @@
-<script>
-import { DashboardApiService } from "../services/dashboard-api.service.js";
-import { mapGetters } from 'vuex';
-
-export default {
-  name: "dashboard",
-  computed: {
-    ...mapGetters(['getUser']),
-
-    username(){
-      return this.getUser;
-    }
-  },
-  data() {
-    return {
-      inventory: [],
-      appointments: [],
-      payments: []
-    };
-  },
-  created() {
-    this.fetchData();
-    console.log(this.username);
-
-  },
-  methods: {
-    fetchData() {
-
-      DashboardApiService.getInventory(this.username.id)
-          .then((response) => {
-            this.inventory = response;
-
-          })
-          .catch((error) => {
-            console.error("Error al obtener inventario:", error);
-          });
-
-      DashboardApiService.getAppointments(this.username.id)
-          .then((response) => {
-            this.appointments = response;
-          })
-          .catch((error) => {
-            console.error("Error al obtener citas:", error);
-          });
-
-      DashboardApiService.getPayments(this.username.id)
-          .then((response) => {
-            this.payments = response;
-            console.log(response);
-          })
-          .catch((error) => {
-            console.error("Error al obtener pagos:", error);
-          });
-    }
-  }
-};
-</script>
-
 <template>
   <div class="dashboard-container mt-24">
     <h1 class="dashboard-title">Dashboard</h1>
@@ -92,7 +34,6 @@ export default {
         </pv-card>
       </div>
 
-
       <div class="payments">
         <h2>Pagos recientes</h2>
         <pv-card
@@ -111,14 +52,51 @@ export default {
   </div>
 </template>
 
+<script>
+import DashboardApiService from '../services/dashboard-api.service.js';
+import { mapGetters } from 'vuex';
+
+export default {
+  name: "dashboard",
+  computed: {
+    ...mapGetters(['getUser']),
+    username() {
+      return this.getUser;
+    }
+  },
+  data() {
+    return {
+      inventory: [],
+      appointments: [],
+      payments: []
+    };
+  },
+  async created() {
+    await this.fetchData();
+    console.log(this.username);
+  },
+  methods: {
+    async fetchData() {
+      try {
+        this.inventory = await DashboardApiService.getInventory(this.username.id);
+        this.appointments = await DashboardApiService.getAppointments(this.username.id);
+        this.payments = await DashboardApiService.getPayments(this.username.id);
+      } catch (error) {
+        console.error("Error fetching dashboard data:", error);
+      }
+    }
+  }
+};
+</script>
+
 <style scoped>
-/* Contenedor Principal del Dashboard */
+
 .dashboard-container {
   padding: 20px;
   width: 1200px;
 }
 
-/* Estilo del título */
+
 .dashboard-title {
   text-align: left;
   font-size: 36px;
@@ -127,7 +105,6 @@ export default {
   margin-left: 0;
 }
 
-/* Barra de Cards */
 .cards-bar {
   display: flex;
   justify-content: space-between;
@@ -135,7 +112,6 @@ export default {
   width: 100%;
 }
 
-/* Estilo de las Cards */
 .dashboard-card {
   width: 100%;
   background-color: #D1F2EB;
@@ -147,24 +123,23 @@ export default {
   border-radius: 0;
 }
 
-/* Contenedor de Citas y Pagos */
+
 .appointments-payments-container {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-/* Sección de Citas */
+
 .appointments {
   width: 48%;
 }
 
-/* Sección de Pagos */
+
 .payments {
   width: 48%;
 }
 
-/* Estilo de las Cards de Citas y Pagos */
 .appointments-card,
 .payments-card {
   margin-bottom: 20px;
@@ -172,7 +147,7 @@ export default {
   padding: 15px;
 }
 
-/* Estilo de los subtítulos */
+
 h2 {
   font-size: 20px;
   margin-bottom: 10px;

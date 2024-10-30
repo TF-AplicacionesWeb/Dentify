@@ -32,6 +32,17 @@
       "register_date": "default",
       "company": "default",
       "password": "321"
+    },
+    {
+      "id": 4,
+      "username": "test",
+      "first_name": "default",
+      "last_name": "default",
+      "email": "test@g.com",
+      "phone": "default",
+      "register_date": "default",
+      "company": "default",
+      "password": "12345678"
     }
   ],
   "subscriptions": [
