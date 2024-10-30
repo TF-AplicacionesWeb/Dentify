@@ -1,27 +1,41 @@
 <script>
+import {Product} from "../models/product.entity.js";
+import {InventoryService} from "../services/inventory.service.js";
+
 export default {
   name: "newproduct.component",
+  props:{
+    userId:{
+      type: Number,
+      required: true
+    }
+  },
   data() {
     return {
       material_name: "",
       unit_price: "",
       quantity: "",
-      registerConfirmed: false
+      registerConfirmed: false,
+      product: new Product({}),
+      inventoryService: new InventoryService()
     };
   },
   methods: {
-    registerProduct() {
-      if (this.material_name && this.unit_price && this.quantity) {
-        const product = {
-          material_name: this.material_name,
-          unit_price: Number(this.unit_price),
-          quantity: Number(this.quantity)
-        };
-        this.$emit('confirmProduct', product);
+
+    setProduct(){
+      this.product.material_name=this.material_name;
+      this.product.quantity=this.quantity;
+      this.product.unit_price= parseFloat(this.unit_price);
+      this.product.user_id=this.userId;
+
+    },
+    async registerProduct() {
+      this.setProduct();
+      try {
+        await this.inventoryService.addProduct(this.product);
         this.registerConfirmed = true;
-        this.material_name = "";
-        this.unit_price = "";
-        this.quantity = "";
+      } catch (error) {
+        console.error("Error al registrar el producto:", error);
       }
     },
     goBack() {
@@ -35,7 +49,7 @@ export default {
   <div class="overlay">
     <div class="payment-card p-5 shadow-lg rounded-lg bg-light-blue">
       <h1 class="text-xl font-semibold mb-2 text-gray-800">Registrar Producto</h1>
-      <form @submit.prevent="registerProduct">
+      <form>
         <div class="mb-4">
           <label for="material_name" class="block text-black">Nombre:</label>
           <input id="material_name" v-model="material_name" type="text"
@@ -43,7 +57,7 @@ export default {
         </div>
         <div class="mb-4">
           <label for="unit_price" class="block text-black">Precio:</label>
-          <input id="unit_price" v-model="unit_price" type="number"
+          <input id="unit_price" v-model="unit_price" type="text"
                  class="input border-2 border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
@@ -53,7 +67,7 @@ export default {
         </div>
 
         <div class="flex justify-center">
-          <button type="submit" class="btn bg-dark-blue text-white px-4 py-2 rounded shadow">Registrar</button>
+          <button type="submit"  @click="registerProduct" class="btn bg-dark-blue text-white px-4 py-2 rounded shadow">Registrar</button>
         </div>
         <div class="mt-4 text-center">
           <a href="#" @click.prevent="goBack" class="text-sm text-dark-blue">Regresar</a>

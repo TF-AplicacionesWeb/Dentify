@@ -1,27 +1,41 @@
 <script>
+import {InventoryService} from "../services/inventory.service.js";
+
 export default {
   name: "UpdateProductCardComponent",
-  props: ["product"],
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       material_name: this.product.material_name || "",
       unit_price: this.product.unit_price || "",
       quantity: this.product.quantity || "",
-      updateConfirmed: false
+      last_updated: this.product.last_updated || "",
+      updateConfirmed: false,
     };
   },
   methods: {
-    updateProduct() {
+    async updateProduct() {
+      const inventoryService = new InventoryService();
       if (this.material_name && this.unit_price && this.quantity) {
         const updatedProduct = {
           ...this.product,
           material_name: this.material_name,
-          unit_price: Number(this.unit_price),
+          unit_price: parseFloat(this.unit_price),
           quantity: Number(this.quantity),
           last_updated: new Date().toISOString().split('T')[0]
         };
-        this.$emit("confirmUpdate", updatedProduct);
-        this.updateConfirmed = true;
+        try {
+          await inventoryService.updateProduct(updatedProduct.id, updatedProduct);
+          this.$emit("confirmUpdate", updatedProduct);
+          this.updateConfirmed = true;
+        } catch (error) {
+          console.error("Error al actualizar el producto:", error);
+        }
       }
     },
     goBack() {
@@ -43,7 +57,7 @@ export default {
         </div>
         <div class="mb-4">
           <label for="unit_price" class="block text-black">Precio:</label>
-          <input id="unit_price" v-model="unit_price" type="number"
+          <input id="unit_price" v-model="unit_price" type="text"
                  class="input border-2 border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
