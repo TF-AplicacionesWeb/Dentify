@@ -3,7 +3,7 @@ import {Patient} from "../model/patient.entity.js";
 
 export class PatientsService extends BaseService {
     constructor() {
-        super('http://localhost:3000/');
+        super();
     }
 
     async getData(user_id){

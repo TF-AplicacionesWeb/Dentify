@@ -4,7 +4,7 @@ import { Pendingpay } from "../models/pendingpay.entity.js";
 
 export class PaymentsService extends BaseService {
     constructor() {
-        super('http://localhost:3000/');
+        super();
     }
 
     async getDataForAppointments(userId) {
