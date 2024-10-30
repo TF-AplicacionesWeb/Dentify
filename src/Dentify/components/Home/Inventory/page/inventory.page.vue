@@ -14,8 +14,11 @@ export default {
   },
   computed: {
     ...mapGetters(['getUser']),
-    username() {
+    userLogged() {
       return this.getUser;
+    },
+    username() {
+      return this.userLogged?.username || '';
     }
   },
   data() {
@@ -30,7 +33,11 @@ export default {
   async created() {
     try {
       const inventoryService = new InventoryService();
-      this.allProducts = await inventoryService.getInventory(this.username.id);
+      if (!this.userLogged || !this.userLogged.id) {
+        console.error("El usuario no está definido o no tiene un ID.");
+        return;
+      }
+      this.allProducts = await inventoryService.getInventory(this.userLogged.id);
       console.log("Inventario cargado:", this.allProducts);
     } catch (error) {
       console.error("Error al cargar productos:", error);
@@ -41,29 +48,12 @@ export default {
     setProductSelection(product) {
       this.productSelection = this.productSelection === product ? null : product;
     },
-    async addProductToInventory(product) {
-      try {
-        const inventoryService = new InventoryService();
-        await inventoryService.addProduct(product);
-        this.allProducts = await inventoryService.getInventory();
-        this.productSelection = product;
-        this.showAddCard = false;
-      } catch (error) {
-        console.error("Error al agregar producto:", error);
+    updateProductInInventory(updatedProduct) {
+      const index = this.allProducts.findIndex((p) => p.id === updatedProduct.id);
+      if (index !== -1) {
+        this.allProducts.splice(index, 1, updatedProduct);
       }
-    },
-    async updateProductInInventory(updatedProduct) {
-      try {
-        const inventoryService = new InventoryService();
-        await inventoryService.updateProduct(updatedProduct.id, updatedProduct);
-        const index = this.allProducts.findIndex((p) => p.id === updatedProduct.id);
-        if (index !== -1) {
-          this.allProducts.splice(index, 1, updatedProduct);
-        }
-        this.showUpdateCard = false;
-      } catch (error) {
-        console.error("Error al actualizar producto:", error);
-      }
+      this.showUpdateCard = false;
     },
     showUpdateForm() {
       if (this.productSelection) {
@@ -129,11 +119,13 @@ export default {
       </tr>
       </tbody>
     </table>
-    <NewProductCardComponent
-        v-if="showAddCard"
-        @confirmProduct="addProductToInventory"
-        @close="showAddCard = false"
-    />
+    <div v-if="showAddCard">
+      <NewProductCardComponent
+          :userId="this.userLogged.id"
+          v-if="showAddCard"
+          @close="showAddCard = false"
+      />
+    </div>
     <UpdateProductCardComponent
         v-if="showUpdateCard"
         :product="productSelection"
@@ -160,9 +152,8 @@ export default {
         :product="productSelection"
         @confirmDelete="deleteProductFromInventory"
         @close="showDeleteCard = false"
-
-
     />
+
 
   </div>
 </template>
