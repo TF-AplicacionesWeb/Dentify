@@ -10,13 +10,8 @@ export class InventoryService extends BaseService {
         const products = await this.getAll('inventory');
 
         return products
-            .filter(product => !userId || product.user_id === userId)
-            .map(product => new Product(
-                product.id,
-                product.material_name,
-                product.quantity,
-                product.unit_price
-            ));
+            .filter(product => product && (!userId || product.user_id === userId))
+            .map(product => new Product(product.data || product));
     }
     async addProduct(product) {
         return await this.create('inventory', product);

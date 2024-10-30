@@ -1,8 +1,16 @@
 <script>
 import changelangComponent from "../../../../public/changelang.component.vue";
+import {SupportService} from "./services/support-api.service.js";
+import {mapGetters} from "vuex";
 
 export default {
   name: "support.component.vue",
+  computed: {
+    ...mapGetters(['getUser']),
+    username() {
+      return this.getUser;
+    }
+  },
   components: { changelangComponent },
   data() {
     return {
@@ -13,9 +21,20 @@ export default {
     };
   },
   methods: {
-    enviarSolicitud() {
-      // Aquí iría la lógica para enviar la solicitud
-      console.log('Solicitud enviada');
+    async enviarSolicitud() {
+      const service = new SupportService();
+      const randomId = Math.floor(Math.random() * 1000000);
+
+      const messageData = {
+        id: randomId,
+        name: this.name,
+        email: this.email,
+        description: this.problem + ' ' + this.additionalDetails,
+        user_id: this.username.id
+      }
+
+      await service.AddMessage(messageData);
+
     }
   }
 }
