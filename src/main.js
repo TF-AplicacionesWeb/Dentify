@@ -17,6 +17,7 @@ import 'primeicons/primeicons.css'
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import store from "./shared/stores/validation-store.js";
+import Dropdown from 'primevue/dropdown';
 const app = createApp(App);
 
 app.use(PrimeVue, {unstyled: true});
@@ -35,7 +36,8 @@ app.component('pv-card', Card)
     .component('pv-iconfield', IconField)
     .component('pv-calendar', Calendar)
     .component('pv-dialog', Dialog)
-    .component('pv-inputicon', InputIcon);
+    .component('pv-inputicon', InputIcon)
+    .component('pv-Dropdown', Dropdown);
 
 
 app.mount('#app');
