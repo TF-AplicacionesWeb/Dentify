@@ -1,39 +1,41 @@
-import axios from 'axios';
+import BaseService from '../../../../../shared/services/base.service.js'
 
-const API_URL = 'http://localhost:3000';
+class DashboardApiService extends BaseService {
+    constructor() {
+        super();
+    }
 
-export const DashboardApiService = {
-    getInventory(id) {
-        return axios.get(`${API_URL}/inventory`)
-            .then(response => {
-                return response.data.filter(item => item.user_id === id);
-            })
-            .catch(error => {
-                console.error("Error fetching inventory:", error);
-                throw error;
-            });
-    },
-    getAppointments(id) {
-        return axios.get(`${API_URL}/appointments`)
-            .then(response => {
-
-                return response.data.filter(appointment => appointment.user_id === id);
-            })
-            .catch(error => {
-                console.error("Error fetching appointments:", error);
-                throw error;
-            });
-    },
-    async getPayments(user_id) {
+    async getInventory(userId) {
         try {
+            const inventoryData = await this.getAll('/inventory');
+            return inventoryData.filter(item => item.user_id === userId);
+        } catch (error) {
+            console.error("Error fetching inventory:", error);
+            throw error;
+        }
+    }
 
-            const userAppointments = await this.getAppointments(user_id);
+    async getAppointments(userId) {
+        try {
+            const appointmentsData = await this.getAll('/appointments');
+            return appointmentsData.filter(appointment => appointment.user_id === userId);
+        } catch (error) {
+            console.error("Error fetching appointments:", error);
+            throw error;
+        }
+    }
+
+    async getPayments(userId) {
+        try {
+            const userAppointments = await this.getAppointments(userId);
             const paymentIds = userAppointments.map(appointment => appointment.payment_id);
-            const paymentsResponse = await axios.get(`${API_URL}/payments`);
-            return paymentsResponse.data.filter(payment => paymentIds.includes(payment.id));
+            const paymentsData = await this.getAll('/payments');
+            return paymentsData.filter(payment => paymentIds.includes(payment.id));
         } catch (error) {
             console.error("Error fetching payments:", error);
             throw error;
         }
     }
-};
+}
+
+export default new DashboardApiService();

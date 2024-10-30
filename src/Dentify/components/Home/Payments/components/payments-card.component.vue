@@ -9,7 +9,7 @@ export default {
       email: '',
       firstName: '',
       lastName: '',
-      amount: '',
+      amount: null,
       paymentConfirmed: false
     };
   },

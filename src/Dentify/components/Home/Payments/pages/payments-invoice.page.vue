@@ -48,6 +48,9 @@ export default {
   async created() {
     const paymentsService = new PaymentsService();
     this.pendingPayments = await paymentsService.getDataForInvoice(this.userLogged.id);
+    console.log("FALTA PAGAR: ");
+    console.log(this.pendingPayments);
+
   }
 };
 </script>

@@ -4,12 +4,12 @@ import BaseService from "../../../../shared/services/base.service.js";
 
 export class AuthenApiService extends BaseService {
     constructor() {
-        super('http://localhost:3000/users');
+        super();
     }
 
     static async getData() {
         const serviceInstance = new AuthenApiService();
-        const usersData = await serviceInstance.getAll('');
+        const usersData = await serviceInstance.getAll('users');
         return usersData.map(userdata => new User(userdata));
     }
 
@@ -17,7 +17,7 @@ export class AuthenApiService extends BaseService {
     static async login(username, password) {
         const serviceInstance = new AuthenApiService();
         try {
-            const users = await serviceInstance.getAll('');
+            const users = await serviceInstance.getAll('users');
             const user = users.find(u => u.username === username && u.password === password);
 
             if (user) {
@@ -44,7 +44,7 @@ export class AuthenApiService extends BaseService {
 
                 });
 
-            const createdUser = await serviceInstance.create('', newUser);
+            const createdUser = await serviceInstance.create('users', newUser);
             return { success: true, user: new User(createdUser) };
 
 

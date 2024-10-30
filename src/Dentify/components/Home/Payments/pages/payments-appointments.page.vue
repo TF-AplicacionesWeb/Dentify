@@ -20,14 +20,6 @@ export default {
     async selectAppointment(appointment) {
       this.selectedAppointment = appointment;
 
-      //codigo comentado
-      //esta funcionalidad no va acá, va cuando se confirme el pago
-
-      //const paymentsService = new PaymentsService();
-      /*
-      await paymentsService.updateAppointmentStatus(appointment.id, {
-        payment_status: true
-      });*/
     },
     openPaymentCard() {
       if (this.selectedAppointment) {
@@ -46,13 +38,15 @@ export default {
         const paymentData = {
           amount: parseInt(this.amount),
           payment_date: new Date().toISOString()
+
         };
 
         const paymentId = await paymentsService.createPayment(paymentData);
 
         await paymentsService.updateAppointmentStatus(appointmentId, {
           payment_status: true,
-          payment_id: paymentId
+          payment_id: paymentId,
+
         });
 
         const appointmentIndex = this.pendingPayments.findIndex(p => p.id === appointmentId);
@@ -75,7 +69,7 @@ export default {
   },
   data() {
     return {
-      amount: '',
+      amount: null,
       pendingPayments: [],
       selectedAppointment: null,
       showPaymentCard: false,

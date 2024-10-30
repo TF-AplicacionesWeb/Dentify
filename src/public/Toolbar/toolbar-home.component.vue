@@ -42,10 +42,12 @@ export default {
         <i class="pi pi-wrench mx-1"></i>
         {{ $t('Toolbar.Support') }}
       </pv-button>
-      <pv-button class="mx-3">
+      <pv-button class="mx-3" @click="this.$router.push('/home/inventory')">
         <i class="pi pi-box mx-1"></i>
         {{ $t('Toolbar.Inventory') }}
       </pv-button>
+      <!--
+      
       <pv-button class ="mx-3" @click="this.$router.push('/home/reports')">
         <i class="pi pi-file mx-1"></i>
         {{ $t('Toolbar.Reports') }}
@@ -54,6 +56,9 @@ export default {
         <i class="pi pi-chart-bar mx-1"></i>
         {{ $t('Toolbar.Metrics') }}
       </pv-button>
+
+      -->
+
     </template>
     <template #end>
       <div class="flex items-center space-x-1">
