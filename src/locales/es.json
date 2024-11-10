@@ -7,8 +7,7 @@
     "Specialists": "Especialistas",
     "Support": "Soporte",
     "Inventory": "Inventario",
-    "Reports": "Informes",
-    "Metrics": "Métricas"
+    "Reports": "Informes y Métricas"
   },
   "Access": {
     "Login": "Iniciar Sesión",
@@ -64,6 +63,7 @@
     "Email": "Correo",
     "Settings": "Configuración",
     "egInformation": "Editar información general",
+    "egPersonal" : "Editar informacion personal",
     "cPassword": "Cambiar contraseña",
     "cChanges": "Guardar cambios",
     "pName": "escribe tu nombre",

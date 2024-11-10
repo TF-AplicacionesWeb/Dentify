@@ -15,6 +15,7 @@ export default {
   },
   methods: {
     makePayment() {
+      this.$emit('setAmount', this.amount);
       this.$emit('confirmPayment', this.appointment.id);
       this.paymentConfirmed = true;
       this.$emit('close');

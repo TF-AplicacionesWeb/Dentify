@@ -9,7 +9,7 @@ export default {
     ...mapGetters(['getUser']),
 
     userLogged(){
-      console.log(this.getUser);
+
       return this.getUser;
     }
   },
@@ -30,6 +30,7 @@ export default {
     },
     openInvoice(payment) {
       this.selectedInvoice = {
+        id: payment.id,
         name: payment.name,
         dni: payment.dni,
         date: new Date(payment.appointment_date).toLocaleDateString(),
@@ -48,8 +49,15 @@ export default {
   async created() {
     const paymentsService = new PaymentsService();
     this.pendingPayments = await paymentsService.getDataForInvoice(this.userLogged.id);
-    console.log("FALTA PAGAR: ");
-    console.log(this.pendingPayments);
+
+    for (const payment of this.pendingPayments) {
+
+      let response = await paymentsService.getPaymentForAppointment(this.userLogged.id, payment.id);
+
+      payment.amount = response.amount;
+
+    }
+
 
   }
 };
