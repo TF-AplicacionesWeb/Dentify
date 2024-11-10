@@ -7,11 +7,33 @@ export class AppointmentsService extends BaseService {
     }
 
 
+    async deleteAppointmentByUserId(userId, appointmentId) {
+
+        const appointments = await this.getAll('appointments');
+
+        console.log(appointments);
+        console.log(userId);
+        const appointmentToDelete = appointments.find(appointment => appointment.user_id === userId && appointment.id === appointmentId);
+
+        console.log(appointmentToDelete);
+
+        if (!appointmentToDelete) {
+            throw new Error("Cita no encontrada o no pertenece a este usuario.");
+        }
+
+
+        await this.delete('appointments', appointmentId);
+
+
+        return appointmentToDelete;
+    }
+
     async getAppointmentsByUserId(userId) {
         const appointments = await this.getAll('appointments');
 
         return appointments.filter(appointment => appointment.user_id === userId);
     }
+
 
     async getDentists() {
         return this.getAll('dentists');
@@ -25,7 +47,9 @@ export class AppointmentsService extends BaseService {
         const dentistExists = dentists.some(dentist => dentist.id === appointmentData.dentist_dni);
 
         if (!dentistExists) {
+            alert(`Dentist with DNI ${appointmentData.dentist_dni} does not exist for the specified user.`);
             throw new Error(`Dentist with DNI ${appointmentData.dentist_dni} does not exist for the specified user.`);
+
         }
 
         const allPatients = await this.getPatients();
@@ -34,6 +58,7 @@ export class AppointmentsService extends BaseService {
         const patientExists = patients.some(patient => patient.id === patientDni); // Aquí se verifica con el DNI
 
         if (!patientExists) {
+            alert(`Patient with DNI ${patientDni} does not exist for the specified user.`);
             throw new Error(`Patient with DNI ${patientDni} does not exist for the specified user.`);
         }
 
