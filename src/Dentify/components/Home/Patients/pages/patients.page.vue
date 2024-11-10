@@ -20,6 +20,12 @@
     >
       Add Patient
     </button>
+    <button
+        @click="showDeletePatientModal = true"
+        class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33] transition-colors"
+    >
+      Delete Patient
+    </button>
   </div>
 
   <card-patients-component></card-patients-component>
@@ -88,11 +94,42 @@
           <pv-button type="submit" class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33]">
             Add Patient
           </pv-button>
+
         </div>
       </form>
     </div>
   </div>
 
+
+
+  <div
+      v-if="showDeletePatientModal"
+      class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+  >
+    <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+      <h2 class="text-2xl font-semibold text-[#082f49] mb-4">Delete Patient</h2>
+
+      <form @submit.prevent="deletePatient">
+        <div class="mb-4">
+          <label class="block text-[#082f49] mb-1">Insert DNI Patient </label>
+          <input v-model="dniPatient" type="text"
+                 class="w-full border border-gray-300 rounded px-3 py-2" required/>
+        </div>
+        <div class="flex justify-end">
+          <button
+              type="button"
+              @click="showDeletePatientModal = false"
+              class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2"
+          >
+            Cancel
+          </button>
+          <button type="submit" class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33]">
+            Delete
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 </template>
 
@@ -113,6 +150,8 @@ export default {
   data() {
     return {
       showAddPatientModal: false,
+      showDeletePatientModal: false,
+      dniPatient: null,
       newPatient: {
         first_name: "",
         last_name: "",
@@ -178,6 +217,23 @@ export default {
         treatment: ""
       };
     },
+
+    async deletePatient() {
+      try {
+        const service = new PatientsService();
+
+        this.dniPatient = parseInt(this.dniPatient);
+        console.log(this.dniPatient);
+
+        await service.deletePatientByUserId(this.username.id, this.dniPatient);
+
+
+        this.showDeletePatientModal = false;
+      } catch (error) {
+        console.error("Error en deletePatient:", error);
+
+      }
+    }
   },
 };
 </script>

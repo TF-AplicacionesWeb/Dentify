@@ -7,8 +7,8 @@
     "Specialists": "Specialists",
     "Support": "Support",
     "Inventory": "Inventory",
-    "Reports": "Reports",
-    "Metrics": "Metrics"
+    "Reports": "Reports and Metrics"
+
   },
   "Access": {
     "Login": "Log In",
@@ -60,6 +60,7 @@
     "DentalCenter": "Dental Center",
     "EditProfile": "Edit profile",
     "gInformation": "General information",
+    "egPersonal": "Edit Personal information",
     "Name": "Name",
     "Email": "Email",
     "Settings": "Settings",

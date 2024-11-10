@@ -53,4 +53,28 @@ export class PatientsService extends BaseService {
         return record;
     }
 
+    async deletePatientByUserId(userId, patientId) {
+        try {
+
+            const patients = await this.getAll('patients');
+
+
+            const patientToDelete = patients.find(patient => patient.user_id === userId && patient.id === patientId);
+
+
+            if (!patientToDelete) {
+                throw new Error("Patient not found or is not linked to the user Id");
+            }
+
+            await this.delete('patients', patientId);
+
+
+            return patientToDelete;
+        } catch (error) {
+            console.error("Error en deletePatientByUserId:", error);
+            throw error;
+        }
+    }
+
+
 }
