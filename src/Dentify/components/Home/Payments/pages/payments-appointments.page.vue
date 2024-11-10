@@ -9,7 +9,6 @@ export default {
     ...mapGetters(['getUser']),
 
     userLogged(){
-      console.log(this.getUser);
       return this.getUser;
     }
   },
@@ -31,6 +30,9 @@ export default {
     closePaymentCard() {
       this.showPaymentCard = false;
     },
+    async setAmount(amount = null){
+      this.amount = amount;
+    },
     async confirmPayment(appointmentId) {
       const paymentsService = new PaymentsService();
 
@@ -46,6 +48,7 @@ export default {
         await paymentsService.updateAppointmentStatus(appointmentId, {
           payment_status: true,
           payment_id: paymentId,
+          completed: true
 
         });
 
@@ -155,6 +158,7 @@ export default {
         :appointment="selectedAppointment"
         @close="closePaymentCard"
         @confirmPayment="confirmPayment"
+        @setAmount="setAmount"
     />
   </div>
 </template>

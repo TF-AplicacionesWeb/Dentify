@@ -65,6 +65,36 @@ export class PaymentsService extends BaseService {
                 });
             });
     }
+
+
+    async getPaymentForAppointment(userId, appointmentId) {
+        try {
+
+            const Response = await this.getAll('appointments');
+
+            const filteredResponse = Response.filter(appointment => appointment.payment_status === true && appointment.user_id === userId)
+
+            const appointment = filteredResponse.find(app => app.id === appointmentId);
+
+            if (appointment && appointment.payment_id) {
+
+                const paymentsResponse = await this.getAll('payments');
+
+                const payment = paymentsResponse.find(pay => pay.id === appointment.payment_id);
+
+                return payment || null;
+            } else {
+
+                return null;
+            }
+        } catch (error) {
+            console.error('Error fetching payment for appointment:', error);
+            throw error;
+        }
+    }
+
+
+
     async updateAppointmentStatus(appointmentId, data)
     {
         return this.update('appointments', appointmentId, data);
