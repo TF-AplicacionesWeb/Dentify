@@ -24,6 +24,9 @@ import inventoryComponent from "../Dentify/components/Home/Inventory/page/invent
 import appointmentCardComponent from "../Dentify/components/Home/Appointments/components/appointment-card.component.vue";
 import reportsPage from "../Dentify/components/Home/Reports/pages/reports.page.vue";
 
+import validationStore from "../shared/stores/validation-store.js";
+
+
 
 const router = createRouter({
     history: createWebHistory(),
@@ -46,7 +49,15 @@ const router = createRouter({
                 },
                 {
                     path:"reports",
-                    component: reportsPage
+                    component: reportsPage,
+                    beforeEnter: (to, from, next) => {
+
+                        if (validationStore.getters.isTrialUser) {
+                            next("/home/dashboard");
+                        } else {
+                            next();
+                        }
+                    },
                 },
                 {
                     path: "support",

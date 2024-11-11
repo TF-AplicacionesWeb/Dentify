@@ -43,7 +43,7 @@ export class AuthenApiService extends BaseService {
         return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
     }
 
-    static async register({username, email, password}){
+    static async register({username, email, password, trial}){
         const serviceInstance = new AuthenApiService();
         const user_id = Math.floor(Math.random()*10000)
 
@@ -55,6 +55,7 @@ export class AuthenApiService extends BaseService {
                 email: email,
                 password: password,
                 register_date: dateTime,
+                trial: trial,
 
                 });
 

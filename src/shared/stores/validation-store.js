@@ -30,6 +30,7 @@ const store = createStore({
     getters: {
         isAuthenticated: state => !!state.user,
         getUser: state => state.user,
+        isTrialUser: state => state.user?.trial || false,
     }
 });
 
