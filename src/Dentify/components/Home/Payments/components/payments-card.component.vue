@@ -30,38 +30,35 @@ export default {
 <template>
   <div class="overlay">
     <div class="payment-card p-5 shadow-lg rounded-lg bg-light-blue">
-      <h1 class="text-3xl font-bold mb-4 text-center text-black">Registrar Pago</h1>
+      <h1 class="text-3xl font-bold mb-4 text-center text-black">{{ $t('payment.title') }}</h1>
 
-      <h2 class="text-xl font-semibold mb-2 text-gray-800">Información de la cita</h2>
+      <h2 class="text-xl font-semibold mb-2 text-gray-800">{{ $t('payment.appointmentInfo') }}</h2>
       <div class="details mb-4 text-black">
-        <p><strong>Nombre del paciente:</strong> {{ appointment.name }}</p>
-        <p><strong>DNI del paciente:</strong> {{ appointment.dni }}</p>
-        <p><strong>Fecha:</strong> {{ new Date(appointment.appointment_date).toLocaleDateString() }}</p>
-        <p><strong>Hora:</strong> {{ new Date(appointment.appointment_date).toLocaleTimeString() }}</p>
-        <p><strong>Tipo de cita:</strong> {{ appointment.reason }}</p>
-        <p><strong>Nombre del odontólogo:</strong> {{ appointment.dentist }} {{
-            appointment.dentist.last_name
-          }}</p>
-        <p><strong>Duración de la cita:</strong> {{ appointment.duration_minutes }} minutos</p>
+        <p><strong>{{ $t('payment.patientName') }}:</strong> {{ appointment.name }}</p>
+        <p><strong>{{ $t('payment.patientDni') }}:</strong> {{ appointment.dni }}</p>
+        <p><strong>{{ $t('payment.date') }}:</strong> {{ new Date(appointment.appointment_date).toLocaleDateString() }}</p>
+        <p><strong>{{ $t('payment.time') }}:</strong> {{ new Date(appointment.appointment_date).toLocaleTimeString() }}</p>
+        <p><strong>{{ $t('payment.appointmentType') }}:</strong> {{ appointment.reason }}</p>
+        <p><strong>{{ $t('payment.dentistName') }}:</strong> {{ appointment.dentist }} {{ appointment.dentist.last_name }}</p>
+        <p><strong>{{ $t('payment.duration') }}:</strong> {{ appointment.duration_minutes }} {{ $t('payment.minutes') }}</p>
       </div>
 
-      <h2 class="text-xl font-semibold mb-2 text-gray-800">Datos del pago</h2>
+      <h2 class="text-xl font-semibold mb-2 text-gray-800">{{ $t('payment.paymentData') }}</h2>
       <form @submit.prevent="makePayment">
-
         <div class="mb-4">
-          <label for="amount" class="block text-black">Monto:</label>
+          <label for="amount" class="block text-black">{{ $t('payment.amount') }}:</label>
           <input id="amount" v-model="amount" type="number" class="input border-2 border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="flex justify-center">
-          <button type="submit" class="btn bg-dark-blue text-white px-4 py-2 rounded shadow">Pagar</button>
+          <button type="submit" class="btn bg-dark-blue text-white px-4 py-2 rounded shadow">{{ $t('payment.pay') }}</button>
         </div>
         <div class="mt-4 text-center">
-          <a href="#" @click.prevent="goBack" class="text-sm text-dark-blue">Regresar a citas a pagar</a>
+          <a href="#" @click.prevent="goBack" class="text-sm text-dark-blue">{{ $t('payment.goBack') }}</a>
         </div>
       </form>
 
       <div v-if="paymentConfirmed" class="mt-4 p-4 bg-green-100 text-green-700 rounded">
-        <p>¡Pago confirmado!</p>
+        <p>{{ $t('payment.confirmation') }}</p>
       </div>
     </div>
   </div>

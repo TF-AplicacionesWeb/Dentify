@@ -89,22 +89,13 @@ export default {
 </script>
 <template>
   <div class="payments-container mx-auto mt-20 max-w-5xl p-5">
-    <h1 class="text-left text-4xl font-bold mb-5">Pagos</h1>
-    <h3 class="text-left text-2xl font-bold mb-4">Citas a pagar:</h3>
+    <h1 class="text-left text-4xl font-bold mb-5">{{ $t('payments.title') }}</h1>
+    <h3 class="text-left text-2xl font-bold mb-4">{{ $t('payments.pendingAppointments') }}</h3>
 
     <div class="toolbar flex justify-between items-center gap-2 mb-5">
-      <div class="search-container w-full flex items-center justify-between">
-        <div class="search-input-container flex items-center bg-teal-100 rounded-full px-2 py-1 w-1/2">
-          <i class="pi pi-search mr-2"/>
-          <pv-inputtext
-              placeholder="Buscar"
-              class="search-input bg-teal-100 w-full outline-none border-b-2 border-teal-700 transition duration-300 ease-in-out"
-          />
-          <i class="pi pi-cog ml-2 cursor-pointer" @click="$emit('openSettings')"/>
-        </div>
-      </div>
+
       <pv-button
-          label="Facturas"
+          :label="$t('payments.invoicesButton')"
           class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg"
           @click="goToInvoice"
       />
@@ -114,14 +105,14 @@ export default {
       <thead>
       <tr class="bg-sky-950 text-white">
         <th class="p-3"></th>
-        <th class="p-3">Paciente</th>
-        <th class="p-3">DNI</th>
-        <th class="p-3">Fecha</th>
-        <th class="p-3">Hora</th>
-        <th class="p-3">Duración</th>
-        <th class="p-3">Tipo de cita</th>
-        <th class="p-3">Odontólogo</th>
-        <th class="p-3">Estado</th>
+        <th class="p-3">{{ $t('payments.patient') }}</th>
+        <th class="p-3">{{ $t('payments.dni') }}</th>
+        <th class="p-3">{{ $t('payments.date') }}</th>
+        <th class="p-3">{{ $t('payments.time') }}</th>
+        <th class="p-3">{{ $t('payments.duration') }}</th>
+        <th class="p-3">{{ $t('payments.appointmentType') }}</th>
+        <th class="p-3">{{ $t('payments.dentist') }}</th>
+        <th class="p-3">{{ $t('payments.status') }}</th>
       </tr>
       </thead>
       <tbody>
@@ -141,14 +132,14 @@ export default {
         <td class="p-3 text-center">{{ payment.duration_minutes }}</td>
         <td class="p-3 text-center">{{ payment.reason }}</td>
         <td class="p-3 text-center">{{ payment.dentist}}</td>
-        <td class="p-3 text-center">{{ payment.payment_status ? 'Pagado' : 'Pendiente' }}</td>
+        <td class="p-3 text-center">{{ payment.payment_status ? $t('payments.paid') : $t('payments.pending') }}</td>
       </tr>
       </tbody>
     </table>
 
     <div class="actions mt-5 flex justify-center">
       <pv-button
-          label="Registrar pago"
+          :label="$t('payments.registerPayment')"
           class="register-button bg-sky-950 text-white px-5 py-2 rounded-full text-lg"
           @click="openPaymentCard"
       />
@@ -163,6 +154,7 @@ export default {
   </div>
 </template>
 
+
 <style scoped>
 .payments-container {
   padding: 20px;
@@ -170,16 +162,6 @@ export default {
   margin-top: 80px;
 }
 
-.search-input-container {
-  background-color: #d1f2eb;
-}
-
-.search-input {
-  background-color: #d1f2eb;
-  outline: none;
-  border-bottom: 2px solid #2c3e50;
-  transition: border-bottom 0.3s ease;
-}
 
 .payments-table {
   border: 1px solid #ccc;

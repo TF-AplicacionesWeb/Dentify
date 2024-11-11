@@ -119,5 +119,201 @@
     "header": "Métricas",
     "dropdown": "Elegir tipo de métricas",
     "button": "Generar métricas"
+  },
+  "dashboard": {
+    "trialPlan": "Plan de prueba",
+    "fullPlan": "Plan completo",
+    "dashboard": "Tablero",
+    "quantity": "Cantidad",
+    "unitPrice": "Precio Unitario",
+    "lastUpdated": "Última actualización",
+    "todayAppointments": "Citas para hoy",
+    "dentist": "Dentista",
+    "date": "Fecha",
+    "time": "Hora",
+    "reason": "Razón",
+    "recentPayments": "Pagos recientes",
+    "paymentId": "ID de Pago",
+    "amount": "Cantidad",
+    "paymentDate": "Fecha de Pago"
+  },
+  "appointments": {
+    "title": "Citas",
+    "addAppointment": "Agregar Cita",
+    "deleteAppointment": "Eliminar Cita",
+    "appointmentNumber": "Cita #",
+    "dentistDni": "Dentista DNI",
+    "appointmentDate": "Fecha de Cita",
+    "reason": "Razón",
+    "duration": "Duración",
+    "minutes": "minutos",
+    "completed": "Completada",
+    "reminderSent": "Recordatorio Enviado",
+    "yes": "Sí",
+    "no": "No",
+    "addNewAppointment": "Agregar Nueva Cita",
+    "patientDni": "Paciente DNI",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "insertId": "Insertar ID de Cita",
+    "delete": "Eliminar"
+  },
+  "invoice": {
+    "title": "Factura",
+    "name": "Nombre",
+    "dni": "DNI",
+    "date": "Fecha",
+    "time": "Hora",
+    "description": "Descripción",
+    "amount": "Monto",
+    "goBack": "Regresar a Facturas"
+  },
+  "payment": {
+    "title": "Registrar Pago",
+    "appointmentInfo": "Información de la cita",
+    "patientName": "Nombre del paciente",
+    "patientDni": "DNI del paciente",
+    "date": "Fecha",
+    "time": "Hora",
+    "appointmentType": "Tipo de cita",
+    "dentistName": "Nombre del odontólogo",
+    "duration": "Duración de la cita",
+    "minutes": "minutos",
+    "paymentData": "Datos del pago",
+    "amount": "Monto",
+    "pay": "Pagar",
+    "goBack": "Regresar a citas a pagar",
+    "confirmation": "¡Pago confirmado!"
+  },
+  "payments": {
+    "title": "Pagos",
+    "pendingAppointments": "Citas a pagar:",
+    "searchPlaceholder": "Buscar",
+    "pendingAppointmentsButton": "Citas a pagar",
+    "invoicesButton": "Facturas",
+    "patient": "Paciente",
+    "dni": "DNI",
+    "date": "Fecha",
+    "time": "Hora",
+    "duration": "Duración",
+    "appointmentType": "Tipo de cita",
+    "dentist": "Odontólogo",
+    "status": "Estado",
+    "paid": "Pagado",
+    "pending": "Pendiente",
+    "registerPayment": "Registrar pago"
+  },
+  "paymentsInvoice": {
+    "title": "Pagos",
+    "invoices": "Facturas:",
+    "appointmentsToPay": "Citas a pagar",
+    "patient": "Paciente",
+    "dni": "DNI",
+    "date": "Fecha",
+    "time": "Hora",
+    "duration": "Duración",
+    "appointmentType": "Tipo de cita",
+    "dentist": "Odontólogo",
+    "status": "Estado",
+    "paid": "Pagado",
+    "pending": "Pendiente",
+    "invoice": "Factura"
+  },
+  "paymentMain": {
+    "title": "Gestión de Pagos",
+    "pendingAppointments": "Citas Pendientes",
+    "pendingAppointmentsButton": "Citas Pendientes",
+    "invoicesButton": "Facturas",
+    "benefitsTitle": "Beneficios de Administrar Citas y Pagos",
+    "cards": [
+      {
+        "title": "Organización Eficiente",
+        "description": "Gestionar tus citas y pagos de manera organizada mejora la productividad y reduce el estrés."
+      },
+      {
+        "title": "Ahorro de Tiempo",
+        "description": "Un sistema bien gestionado de citas y pagos permite ahorrar tiempo, evitando errores y olvidos de citas importantes."
+      },
+      {
+        "title": "Mejor Experiencia para el Cliente",
+        "description": "Una administración de citas y pagos adecuada garantiza una experiencia fluida y satisfactoria para los pacientes."
+      }
+    ]
+  },
+  "patient": {
+    "dni": "DNI",
+    "clinicalRecords": "Registros Clínicos",
+    "recordDate": "Fecha",
+    "diagnosis": "Diagnóstico",
+    "treatment": "Tratamiento",
+    "medicalHistory": "Historial Médico"
+  },
+  "mainPatient": {
+    "header": "Pacientes",
+    "addPatient": "Agregar Paciente",
+    "deletePatient": "Eliminar Paciente",
+    "addNewPatient": "Agregar Nuevo Paciente",
+    "firstName": "Nombre",
+    "lastName": "Apellido",
+    "email": "Correo Electrónico",
+    "age": "Edad",
+    "medicalHistory": "Historial Médico",
+    "birthDate": "Fecha de Nacimiento",
+    "recordDate": "Fecha de Registro",
+    "diagnosis": "Diagnóstico",
+    "treatment": "Tratamiento",
+    "cancel": "Cancelar",
+    "insertDni": "Insertar DNI del Paciente",
+    "delete": "Eliminar"
+  },
+  "inventoryMain": {
+    "header": "Inventario",
+    "addNewProduct": "Agregar nuevo producto",
+    "name": "Nombre",
+    "quantity": "Cantidad",
+    "price": "Precio",
+    "updateProduct": "Actualizar producto",
+    "deleteProduct": "Eliminar producto"
+  },
+  "addProduct": {
+    "header": "Registrar Producto",
+    "nameLabel": "Nombre:",
+    "priceLabel": "Precio:",
+    "quantityLabel": "Cantidad:",
+    "registerButton": "Registrar",
+    "goBackLink": "Regresar",
+    "successMessage": "¡Producto registrado!"
+  },
+  "updateProduct": {
+    "header": "Actualizar Producto",
+    "nameLabel": "Nombre:",
+    "priceLabel": "Precio:",
+    "quantityLabel": "Cantidad:",
+    "updateButton": "Actualizar",
+    "goBackLink": "Regresar",
+    "successMessage": "¡Producto actualizado!"
+  },
+  "deleteProduct": {
+    "confirmMessage": "¿Está seguro de que desea eliminar este producto?",
+    "confirmButton": "Sí, eliminar",
+    "cancelButton": "Cancelar"
+  },
+  "reports": {
+    "inventoryReport": "Reporte de Inventario",
+    "averageUnitPrice": "Precio Unitario Promedio",
+    "minPrice": "Precio Mínimo",
+    "maxPrice": "Precio Máximo",
+    "totalQuantity": "Cantidad Total",
+    "averagePerProduct": "Promedio por Producto",
+    "mostProduct": "Producto con Mayor Cantidad",
+    "minProduct": "Producto con Menor Cantidad",
+    "totalInventoryValue": "Valor Total de Inventario"
   }
+
+
+
+
+
+
+
 }

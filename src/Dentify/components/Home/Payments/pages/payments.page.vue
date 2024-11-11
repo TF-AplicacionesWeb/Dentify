@@ -1,6 +1,24 @@
 <script>
 export default {
   name: "payments.vue",
+  data(){
+    return {
+      cards: [
+        {
+          title: 'Organización Eficiente',
+          description: 'Gestionar tus citas y pagos de manera organizada mejora la productividad y reduce el estrés al mantener todo bajo control.'
+        },
+        {
+          title: 'Ahorro de Tiempo',
+          description: 'Un sistema bien gestionado de citas y pagos permite ahorrar tiempo, evitando errores y olvidos de citas importantes.'
+        },
+        {
+          title: 'Mejor Experiencia para el Cliente',
+          description: 'Una administración de citas y pagos adecuada garantiza una experiencia fluida y satisfactoria para los pacientes.'
+        }
+      ]
+    }
+  },
 
   methods: {
 
@@ -15,36 +33,48 @@ export default {
 </script>
 
 <template>
-  <div class="payments-container mx-auto mt-20 max-w-5xl p-5" v-if="$route.path === '/home/payments'">
-    <h1 class="text-left text-4xl font-bold mb-5">Pagos</h1>
-    <h3 class="text-left text-2xl font-bold mb-4">Citas a pagar:</h3>
+  <div class="payments-container mx-auto mt-20 w-1/2 p-5" v-if="$route.path === '/home/payments'">
+    <h1 class="text-left text-4xl font-bold mb-5">{{ $t('paymentMain.title') }}</h1>
+    <h3 class="text-left text-2xl font-bold mb-4">{{ $t('paymentMain.pendingAppointments') }}</h3>
 
-    <div class="toolbar flex justify-between items-center gap-2 mb-5">
-      <div class="search-container w-full flex items-center justify-between">
-        <div class="search-input-container flex items-center bg-teal-100 rounded-full px-2 py-1 w-1/2">
-          <i class="pi pi-search mr-2"/>
-          <pv-inputtext
-              placeholder="Buscar"
-              class="search-input bg-teal-100 w-full outline-none border-b-2 border-teal-700 transition duration-300 ease-in-out"
-          />
-          <i class="pi pi-cog ml-2 cursor-pointer" @click="$emit('openSettings')"/>
-        </div>
-      </div>
+    <div class="toolbar flex justify-start items-center gap-2 mb-5">
       <pv-button
-          label="Citas a pagar"
+          :label="$t('paymentMain.pendingAppointmentsButton')"
           class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg whitespace-nowrap"
           @click="goToAppointments"
       />
       <pv-button
-          label="Facturas"
+          :label="$t('paymentMain.invoicesButton')"
           class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg"
           @click="goToInvoices"
       />
     </div>
   </div>
 
+
+  <div class="container mx-auto mt-10 p-6">
+    <h1 class="text-3xl font-bold text-center mb-10 mt-10">{{ $t('paymentMain.benefitsTitle') }}</h1>
+
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <pv-card class="pv-card"
+               v-for="(card, index) in cards"
+               :key="index"
+      >
+        <template #header>
+          <p class="text-center font-bold">{{ card.title }}</p>
+        </template>
+        <template #content>
+          <p class="text-center mt-4">{{ card.description }}</p>
+        </template>
+      </pv-card>
+    </div>
+  </div>
+
   <router-view></router-view>
 </template>
+
+
 
 <style scoped>
 .payments-container {
@@ -52,15 +82,17 @@ export default {
   max-width: 1200px;
   margin-top: 80px;
 }
-
-.search-input-container {
-  background-color: #D1F2EB;
+.pv-card {
+  width: 80%;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.search-input {
-  background-color: #D1F2EB;
-  outline: none;
-  border-bottom: 2px solid #2C3E50;
-  transition: border-bottom 0.3s ease;
+.pv-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
 }
 </style>

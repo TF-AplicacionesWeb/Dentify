@@ -44,36 +44,35 @@ export default {
   }
 };
 </script>
-
 <template>
   <div class="overlay">
     <div class="payment-card p-5 shadow-lg rounded-lg bg-light-blue">
-      <h1 class="text-xl font-semibold mb-2 text-gray-800">Actualizar Producto</h1>
+      <h1 class="text-xl font-semibold mb-2 text-gray-800">{{ $t('updateProduct.header') }}</h1>
       <form @submit.prevent="updateProduct">
         <div class="mb-4">
-          <label for="material_name" class="block text-black">Nombre:</label>
+          <label for="material_name" class="block text-black">{{ $t('updateProduct.nameLabel') }}</label>
           <input id="material_name" v-model="material_name" type="text"
                  class="input border-2 border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label for="unit_price" class="block text-black">Precio:</label>
+          <label for="unit_price" class="block text-black">{{ $t('updateProduct.priceLabel') }}</label>
           <input id="unit_price" v-model="unit_price" type="text"
                  class="input border-2 border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label for="quantity" class="block text-black">Cantidad:</label>
+          <label for="quantity" class="block text-black">{{ $t('updateProduct.quantityLabel') }}</label>
           <input id="quantity" v-model="quantity" type="number"
                  class="input border-2 border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="flex justify-center">
-          <button type="submit" class="btn bg-dark-blue text-white px-4 py-2 rounded shadow">Actualizar</button>
+          <button type="submit" class="btn bg-dark-blue text-white px-4 py-2 rounded shadow">{{ $t('updateProduct.updateButton') }}</button>
         </div>
         <div class="mt-4 text-center">
-          <a href="#" @click.prevent="goBack" class="text-sm text-dark-blue">Regresar</a>
+          <a href="#" @click.prevent="goBack" class="text-sm text-dark-blue">{{ $t('updateProduct.goBackLink') }}</a>
         </div>
       </form>
       <div v-if="updateConfirmed" class="mt-4 p-4 bg-green-100 text-green-700 rounded">
-        <p>¡Producto actualizado!</p>
+        <p>{{ $t('updateProduct.successMessage') }}</p>
       </div>
     </div>
   </div>

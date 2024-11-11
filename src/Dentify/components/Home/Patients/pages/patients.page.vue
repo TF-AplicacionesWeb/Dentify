@@ -1,30 +1,17 @@
 <template>
-  <h1 class="mt-24 text-4xl mb-5">{{ $t('Patients.header') }}</h1>
-  <div class="flex justify-between">
-    <pv-toolbar class="bg-[#D1F2EB] shadow-md w-4/12 rounded-3xl flex items-center justify-between p-4">
-      <template #start>
-        <pv-iconfield>
-          <pv-inputicon class="mr-3">
-            <i class="pi pi-search"/>
-          </pv-inputicon>
-          <pv-inputtext class="bg-[#D1F2EB] w-80" placeholder="Search"/>
-        </pv-iconfield>
-      </template>
-      <template #end>
-        <i class="pi pi-sliders-h"/>
-      </template>
-    </pv-toolbar>
+  <h1 class="mt-24 text-4xl mb-5">{{ $t('mainPatient.header') }}</h1>
+  <div class="flex justify-end">
     <button
         @click="showAddPatientModal = true"
-        class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33] transition-colors"
+        class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33] transition-colors mx-5"
     >
-      Add Patient
+      {{ $t('mainPatient.addPatient') }}
     </button>
     <button
         @click="showDeletePatientModal = true"
         class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33] transition-colors"
     >
-      Delete Patient
+      {{ $t('mainPatient.deletePatient') }}
     </button>
   </div>
 
@@ -35,52 +22,52 @@
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
   >
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
-      <h2 class="text-2xl font-semibold text-[#082f49] mb-4">Add New Patient</h2>
+      <h2 class="text-2xl font-semibold text-[#082f49] mb-4">{{ $t('mainPatient.addNewPatient') }}</h2>
 
       <form @submit.prevent="addPatient" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">First Name</label>
-          <pv-inputtext v-model="newPatient.first_name" placeholder="First Name" required
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.firstName') }}</label>
+          <pv-inputtext v-model="newPatient.first_name" :placeholder="$t('mainPatient.firstName')" required
                         class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Last Name</label>
-          <pv-inputtext v-model="newPatient.last_name" placeholder="Last Name" required
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.lastName') }}</label>
+          <pv-inputtext v-model="newPatient.last_name" :placeholder="$t('mainPatient.lastName')" required
                         class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Email</label>
-          <pv-inputtext v-model="newPatient.email" placeholder="Email" required
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.email') }}</label>
+          <pv-inputtext v-model="newPatient.email" :placeholder="$t('mainPatient.email')" required
                         class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Age</label>
-          <pv-inputtext v-model="newPatient.age" placeholder="Age" required type="number"
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.age') }}</label>
+          <pv-inputtext v-model="newPatient.age" :placeholder="$t('mainPatient.age')" required type="number"
                         class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Medical History</label>
-          <pv-inputtext v-model="newPatient.medical_history" placeholder="Medical History"
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.medicalHistory') }}</label>
+          <pv-inputtext v-model="newPatient.medical_history" :placeholder="$t('mainPatient.medicalHistory')"
                         class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Birth Date</label>
-          <input v-model="newPatient.birth_date" type="datetime-local" placeholder="Birth Date"
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.birthDate') }}</label>
+          <input v-model="newPatient.birth_date" type="datetime-local" :placeholder="$t('mainPatient.birthDate')"
                  class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Record Date</label>
-          <input v-model="newPatient.record_date" type="datetime-local" placeholder="Record Date"
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.recordDate') }}</label>
+          <input v-model="newPatient.record_date" type="datetime-local" :placeholder="$t('mainPatient.recordDate')"
                  class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Diagnosis</label>
-          <pv-inputtext v-model="newPatient.diagnosis" placeholder="Diagnosis"
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.diagnosis') }}</label>
+          <pv-inputtext v-model="newPatient.diagnosis" :placeholder="$t('mainPatient.diagnosis')"
                         class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Treatment</label>
-          <pv-inputtext v-model="newPatient.treatment" placeholder="Treatment"
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.treatment') }}</label>
+          <pv-inputtext v-model="newPatient.treatment" :placeholder="$t('mainPatient.treatment')"
                         class="w-full border border-gray-300 rounded px-3 py-2"/>
         </div>
         <div class="col-span-2 flex justify-end">
@@ -89,10 +76,10 @@
               @click="showAddPatientModal = false"
               class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2"
           >
-            Cancel
+            {{ $t('mainPatient.cancel') }}
           </button>
           <pv-button type="submit" class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33]">
-            Add Patient
+            {{ $t('mainPatient.addPatient') }}
           </pv-button>
 
         </div>
@@ -100,18 +87,16 @@
     </div>
   </div>
 
-
-
   <div
       v-if="showDeletePatientModal"
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
   >
     <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-      <h2 class="text-2xl font-semibold text-[#082f49] mb-4">Delete Patient</h2>
+      <h2 class="text-2xl font-semibold text-[#082f49] mb-4">{{ $t('mainPatient.deletePatient') }}</h2>
 
       <form @submit.prevent="deletePatient">
         <div class="mb-4">
-          <label class="block text-[#082f49] mb-1">Insert DNI Patient </label>
+          <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.insertDni') }}</label>
           <input v-model="dniPatient" type="text"
                  class="w-full border border-gray-300 rounded px-3 py-2" required/>
         </div>
@@ -121,10 +106,10 @@
               @click="showDeletePatientModal = false"
               class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2"
           >
-            Cancel
+            {{ $t('mainPatient.cancel') }}
           </button>
           <button type="submit" class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33]">
-            Delete
+            {{ $t('mainPatient.delete') }}
           </button>
         </div>
       </form>
@@ -132,6 +117,7 @@
   </div>
 
 </template>
+
 
 <script>
 import cardPatientsComponent from "../components/card-patients.component.vue";

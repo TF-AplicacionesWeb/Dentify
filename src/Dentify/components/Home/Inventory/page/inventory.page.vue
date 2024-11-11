@@ -83,12 +83,11 @@ export default {
 
 <template>
   <div class="payments-container mx-auto mt-20 max-w-5xl p-5">
-    <h1 class="text-left text-4xl font-bold mb-5">Inventory</h1>
+    <h1 class="text-left text-4xl font-bold mb-5">{{ $t('inventoryMain.header') }}</h1>
 
     <div class="toolbar flex justify-between items-center gap-2 mb-5">
-
       <pv-button
-          label="Add new product"
+          :label="$t('inventoryMain.addNewProduct')"
           class="action-button bg-sky-950 text-white px-4 py-2 rounded-full text-lg"
           @click="showAddCard = true"
       />
@@ -98,9 +97,9 @@ export default {
       <thead>
       <tr class="bg-sky-950 text-white">
         <th class="p-3"></th>
-        <th class="p-3">Name</th>
-        <th class="p-3">Quantiy</th>
-        <th class="p-3">Price</th>
+        <th class="p-3">{{ $t('inventoryMain.name') }}</th>
+        <th class="p-3">{{ $t('inventoryMain.quantity') }}</th>
+        <th class="p-3">{{ $t('inventoryMain.price') }}</th>
       </tr>
       </thead>
       <tbody>
@@ -115,7 +114,7 @@ export default {
         </td>
         <td class="p-3 text-center">{{ product.material_name }}</td>
         <td class="p-3 text-center">{{ product.quantity }}</td>
-        <td class="p-3 text-center">{{ product.unit_price}}</td>
+        <td class="p-3 text-center">{{ product.unit_price }}</td>
       </tr>
       </tbody>
     </table>
@@ -134,14 +133,14 @@ export default {
     />
     <div class="actions mt-5 flex justify-center">
       <pv-button
-          label="Update product"
+          :label="$t('inventoryMain.updateProduct')"
           class="register-button bg-sky-950 text-white px-5 py-2 rounded-full text-lg"
           @click="showUpdateForm"
       />
     </div>
     <div class="actions mt-5 flex justify-center">
       <pv-button
-          label="Delete product"
+          :label="$t('inventoryMain.deleteProduct')"
           class="register-button bg-sky-950 text-white px-5 py-2 rounded-full text-lg"
           @click="confirmDelete"
       />
@@ -153,10 +152,9 @@ export default {
         @confirmDelete="deleteProductFromInventory"
         @close="showDeleteCard = false"
     />
-
-
   </div>
 </template>
+
 
 <style scoped>
 .payments-container {

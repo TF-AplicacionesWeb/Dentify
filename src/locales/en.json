@@ -120,5 +120,199 @@
     "header": "Metrics",
     "dropdown": "Choose type of metrics",
     "button": "Generate metrics"
+  },
+  "dashboard": {
+    "trialPlan": "Trial Plan",
+    "fullPlan": "Full Plan",
+    "dashboard": "Dashboard",
+    "quantity": "Quantity",
+    "unitPrice": "Unit Price",
+    "lastUpdated": "Last Updated",
+    "todayAppointments": "Today's Appointments",
+    "dentist": "Dentist",
+    "date": "Date",
+    "time": "Time",
+    "reason": "Reason",
+    "recentPayments": "Recent Payments",
+    "paymentId": "Payment ID",
+    "amount": "Amount",
+    "paymentDate": "Payment Date"
+  },
+  "appointments": {
+    "title": "Appointments",
+    "addAppointment": "Add Appointment",
+    "deleteAppointment": "Delete Appointment",
+    "appointmentNumber": "Appointment #",
+    "dentistDni": "Dentist DNI",
+    "appointmentDate": "Appointment Date",
+    "reason": "Reason",
+    "duration": "Duration",
+    "minutes": "minutes",
+    "completed": "Completed",
+    "reminderSent": "Reminder Sent",
+    "yes": "Yes",
+    "no": "No",
+    "addNewAppointment": "Add New Appointment",
+    "patientDni": "Patient DNI",
+    "cancel": "Cancel",
+    "save": "Save",
+    "insertId": "Insert ID Appointment",
+    "delete": "Delete"
+  },
+  "invoice": {
+    "title": "Invoice",
+    "name": "Name",
+    "dni": "DNI",
+    "date": "Date",
+    "time": "Time",
+    "description": "Description",
+    "amount": "Amount",
+    "goBack": "Back to Invoices"
+  },
+  "payment": {
+    "title": "Register Payment",
+    "appointmentInfo": "Appointment Information",
+    "patientName": "Patient Name",
+    "patientDni": "Patient DNI",
+    "date": "Date",
+    "time": "Time",
+    "appointmentType": "Appointment Type",
+    "dentistName": "Dentist's Name",
+    "duration": "Appointment Duration",
+    "minutes": "minutes",
+    "paymentData": "Payment Data",
+    "amount": "Amount",
+    "pay": "Pay",
+    "goBack": "Back to Appointments to Pay",
+    "confirmation": "Payment Confirmed!"
+  },
+  "payments": {
+    "title": "Payments",
+    "pendingAppointments": "Appointments to Pay:",
+    "searchPlaceholder": "Search",
+    "pendingAppointmentsButton": "Appointments to Pay",
+    "invoicesButton": "Invoices",
+    "patient": "Patient",
+    "dni": "DNI",
+    "date": "Date",
+    "time": "Time",
+    "duration": "Duration",
+    "appointmentType": "Appointment Type",
+    "dentist": "Dentist",
+    "status": "Status",
+    "paid": "Paid",
+    "pending": "Pending",
+    "registerPayment": "Register Payment"
+  },
+  "paymentsInvoice": {
+    "title": "Payments",
+    "invoices": "Invoices:",
+    "appointmentsToPay": "Appointments to Pay",
+    "patient": "Patient",
+    "dni": "DNI",
+    "date": "Date",
+    "time": "Time",
+    "duration": "Duration",
+    "appointmentType": "Appointment Type",
+    "dentist": "Dentist",
+    "status": "Status",
+    "paid": "Paid",
+    "pending": "Pending",
+    "invoice": "Invoice"
+  },
+  "paymentMain": {
+    "title": "Payments Management",
+    "pendingAppointments": "Pending Appointments",
+    "pendingAppointmentsButton": "Pending Appointments",
+    "invoicesButton": "Invoices",
+    "benefitsTitle": "Benefits of Managing Appointments and Payments",
+    "cards": [
+      {
+        "title": "Efficient Organization",
+        "description": "Managing your appointments and payments in an organized way improves productivity and reduces stress."
+      },
+      {
+        "title": "Time Savings",
+        "description": "A well-managed system for appointments and payments saves time, preventing mistakes and missed appointments."
+      },
+      {
+        "title": "Better Client Experience",
+        "description": "Proper management of appointments and payments ensures a smooth and satisfying experience for clients."
+      }
+    ]
+  },
+  "patient": {
+    "dni": "DNI",
+    "clinicalRecords": "Clinical Records",
+    "recordDate": "Date",
+    "diagnosis": "Diagnosis",
+    "treatment": "Treatment",
+    "medicalHistory": "Medical History"
+  },
+  "mainPatient": {
+    "header": "Patients",
+    "addPatient": "Add Patient",
+    "deletePatient": "Delete Patient",
+    "addNewPatient": "Add New Patient",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "email": "Email",
+    "age": "Age",
+    "medicalHistory": "Medical History",
+    "birthDate": "Birth Date",
+    "recordDate": "Record Date",
+    "diagnosis": "Diagnosis",
+    "treatment": "Treatment",
+    "cancel": "Cancel",
+    "insertDni": "Insert DNI Patient",
+    "delete": "Delete"
+  },
+  "inventoryMain": {
+    "header": "Inventory",
+    "addNewProduct": "Add new product",
+    "name": "Name",
+    "quantity": "Quantity",
+    "price": "Price",
+    "updateProduct": "Update product",
+    "deleteProduct": "Delete product"
+  },
+  "addProduct": {
+    "header": "Register Product",
+    "nameLabel": "Name:",
+    "priceLabel": "Price:",
+    "quantityLabel": "Quantity:",
+    "registerButton": "Register",
+    "goBackLink": "Go Back",
+    "successMessage": "Product registered successfully!"
+  },
+  "updateProduct": {
+    "header": "Update Product",
+    "nameLabel": "Name:",
+    "priceLabel": "Price:",
+    "quantityLabel": "Quantity:",
+    "updateButton": "Update",
+    "goBackLink": "Go Back",
+    "successMessage": "Product updated successfully!"
+  },
+  "deleteProduct": {
+    "confirmMessage": "Are you sure you want to delete this product?",
+    "confirmButton": "Yes, delete",
+    "cancelButton": "Cancel"
+  },
+  "reports": {
+    "inventoryReport": "Inventory Report",
+    "averageUnitPrice": "Average Unit Price",
+    "minPrice": "Minimum Price",
+    "maxPrice": "Maximum Price",
+    "totalQuantity": "Total Quantity",
+    "averagePerProduct": "Average per Product",
+    "mostProduct": "Product with Most Quantity",
+    "minProduct": "Product with Least Quantity",
+    "totalInventoryValue": "Total Inventory Value"
   }
+
+
+
+
+
 }
