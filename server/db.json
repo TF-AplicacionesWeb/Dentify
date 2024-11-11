@@ -242,7 +242,7 @@
     },
     {
       "id": 7777777,
-      "clinical_record_id": 1,
+      "clinical_record_id": 872445,
       "first_name": "Roman",
       "last_name": "Reigns",
       "email": "reigns@example.com",
@@ -311,6 +311,30 @@
       "birth_date": "2024-11-13T12:41",
       "appointment_id": 404764,
       "user_id": 3
+    },
+    {
+      "id": 256693,
+      "clinical_record_id": 831141,
+      "first_name": "Dean",
+      "last_name": "Ambrose",
+      "email": "damb@gmail.com",
+      "age": "34",
+      "medical_history": "None",
+      "birth_date": "2024-11-05T14:37",
+      "appointment_id": null,
+      "user_id": 4
+    },
+    {
+      "id": 191063,
+      "clinical_record_id": 560255,
+      "first_name": "Seth",
+      "last_name": "Rollins",
+      "email": "test",
+      "age": "30",
+      "medical_history": "test",
+      "birth_date": "2024-09-09T14:39",
+      "appointment_id": null,
+      "user_id": 4
     }
   ],
   "clinical_records": [
@@ -353,19 +377,22 @@
       "diagnosis": "None",
       "treatment": "None",
       "user_id": 3
-    }
-  ],
-  "clinical_exam": [
+    },
     {
-      "id": 1,
-      "exam_id": 1
-    }
-  ],
-  "exams": [
+      "id": 831141,
+      "medical_history": "None",
+      "record_date": "2024-11-29T14:37",
+      "diagnosis": "TEST",
+      "treatment": "TEST",
+      "user_id": 4
+    },
     {
-      "id": 1,
-      "description": "Dental X-ray",
-      "image_path": "/images/xray1.jpg"
+      "id": 560255,
+      "medical_history": "test",
+      "record_date": "2024-11-16T14:39",
+      "diagnosis": "Test",
+      "treatment": "Test",
+      "user_id": 4
     }
   ],
   "appointments": [

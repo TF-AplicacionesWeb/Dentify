@@ -66,8 +66,6 @@ export default {
         {{ $t('Toolbar.Reports') }}
       </pv-button>
 
-      -->
-
     </template>
     <template #end>
       <div class="flex items-center space-x-1">
