@@ -21,6 +21,19 @@ export class PatientsService extends BaseService {
             throw new Error("Could not fetch patient data");
         }
     }
+
+    async getClinicalRecordsByUserId(user_id){
+        const serviceInstance = new PatientsService();
+        const patients = await serviceInstance.getData(user_id);
+
+        const patientId = patients.map(pData => pData.clinical_record_id);
+
+
+        const clinicalRecords = await serviceInstance.getAll('clinical_records');
+
+        return clinicalRecords.filter(record => patientId.includes(record.id));
+
+    }
     async getNames(){
         const sInstance = new PatientsService();
         try {
