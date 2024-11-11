@@ -106,5 +106,19 @@
     "ok": "OK",
     "cDelete": " Are you sure you want to remove Dr.",
     "days": "Monday | Tuesday | Wednesday | Thursday | Friday | Saturday | Sunday"
+  },
+  "Reports": {
+    "header": "Reports",
+    "dropdown": "Choose type of reports",
+    "date": "Date",
+    "from": "From",
+    "to": "To",
+    "close": "Close report",
+    "button": "Generate reports"
+    },
+  "Metrics": {
+    "header": "Metrics",
+    "dropdown": "Choose type of metrics",
+    "button": "Generate metrics"
   }
 }

@@ -22,7 +22,7 @@ import ProgressSpinner from "primevue/progressspinner";
 import Chart from "primevue/chart";
 import Carousel from "primevue/carousel";
 import RadioButton from "primevue/radiobutton";
-
+import Dropdown from 'primevue/dropdown';
 const app = createApp(App);
 
 app.use(PrimeVue, {unstyled: true});
@@ -46,6 +46,8 @@ app.component('pv-card', Card)
     .component('pv-carousel', Carousel)
     .component('pv-radiobutton', RadioButton)
     .component('Chart', Chart);
+    .component('pv-Dropdown', Dropdown);
+
 
 
 

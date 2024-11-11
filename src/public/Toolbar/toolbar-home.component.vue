@@ -65,6 +65,9 @@ export default {
         <i class="pi pi-chart-bar mx-1"></i>
         {{ $t('Toolbar.Reports') }}
       </pv-button>
+
+      -->
+
     </template>
     <template #end>
       <div class="flex items-center space-x-1">
