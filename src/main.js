@@ -17,6 +17,11 @@ import 'primeicons/primeicons.css'
 import IconField from "primevue/iconfield";
 import InputIcon from "primevue/inputicon";
 import store from "./shared/stores/validation-store.js";
+import MeterGroup from "primevue/metergroup";
+import ProgressSpinner from "primevue/progressspinner";
+import Chart from "primevue/chart";
+import Carousel from "primevue/carousel";
+import RadioButton from "primevue/radiobutton";
 import Dropdown from 'primevue/dropdown';
 const app = createApp(App);
 
@@ -24,7 +29,6 @@ app.use(PrimeVue, {unstyled: true});
 app.use(Router);
 app.use(i18n);
 app.use(store);
-
 
 app.component('pv-card', Card)
     .component('pv-inputtext', InputText)
@@ -37,10 +41,15 @@ app.component('pv-card', Card)
     .component('pv-calendar', Calendar)
     .component('pv-dialog', Dialog)
     .component('pv-inputicon', InputIcon)
+    .component('pv-metergroup', MeterGroup)
+    .component('pv-progress-spinner', ProgressSpinner)
+    .component('pv-carousel', Carousel)
+    .component('pv-radiobutton', RadioButton)
+    .component('Chart', Chart);
     .component('pv-Dropdown', Dropdown);
+
+
 
 
 app.mount('#app');
 
-
-//json-server --watch server/db.json --port 3000

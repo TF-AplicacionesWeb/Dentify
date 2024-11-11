@@ -27,6 +27,10 @@ import dentistsPage from "../Dentify/components/Home/Dentists/pages/dentists-pag
 import inventoryComponent from "../Dentify/components/Home/Inventory/page/inventory.page.vue";
 
 import appointmentCardComponent from "../Dentify/components/Home/Appointments/components/appointment-card.component.vue";
+import reportsPage from "../Dentify/components/Home/Reports/pages/reports.page.vue";
+
+import validationStore from "../shared/stores/validation-store.js";
+
 
 
 const router = createRouter({
@@ -47,6 +51,18 @@ const router = createRouter({
                 {
                     path: "dashboard",
                     component: dashboardComponent
+                },
+                {
+                    path:"reports",
+                    component: reportsPage,
+                    beforeEnter: (to, from, next) => {
+
+                        if (validationStore.getters.isTrialUser) {
+                            next("/home/dashboard");
+                        } else {
+                            next();
+                        }
+                    },
                 },
                 {
                     path: "support",

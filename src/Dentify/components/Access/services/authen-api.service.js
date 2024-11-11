@@ -32,15 +32,30 @@ export class AuthenApiService extends BaseService {
         }
     }
 
-    static async register({username, email, password}){
+    static formatDateTime(date) {
+
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    }
+
+    static async register({username, email, password, trial}){
         const serviceInstance = new AuthenApiService();
         const user_id = Math.floor(Math.random()*10000)
+
+        const dateTime = AuthenApiService.formatDateTime(new Date())
         try{
             const newUser = new User({
                 user_id:user_id,
                 username: username,
                 email: email,
-                password: password
+                password: password,
+                register_date: dateTime,
+                trial: trial,
 
                 });
 

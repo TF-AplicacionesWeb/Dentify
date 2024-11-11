@@ -23,4 +23,12 @@ export class ProfileApiService extends BaseService{
         }
     }
 
+    async updateCompany(userLogged, updatedProfile) {
+        try {
+            const serviceInstance = new ProfileApiService();
+            return await serviceInstance.update('users', userLogged, updatedProfile);
+        } catch (error) {
+            console.error("Error updating profile", error);
+        }
+    }
 }

@@ -9,62 +9,45 @@
       "phone": "1234567890",
       "register_date": "2024-01-01",
       "company": "Example Corp",
-      "password": "admin"
+      "password": "admin",
+      "trial": false
     },
     {
       "id": 2,
       "username": "hola",
-      "first_name": "Jesus",
-      "last_name": "Uribe",
-      "email": "jesus@gmail.com",
-      "phone": "default",
-      "register_date": "default",
-      "company": "default",
-      "password": "123"
-    },
-    {
-      "id": 3,
-      "username": "b",
-      "first_name": "default",
-      "last_name": "default",
-      "email": "b",
-      "phone": "default",
-      "register_date": "default",
-      "company": "default",
-      "password": "321"
-    },
-    {
-      "id": 4,
-      "username": "test",
-      "first_name": "default",
-      "last_name": "default",
+      "first_name": "Andres",
+      "last_name": "Lujan",
       "email": "test@g.com",
       "phone": "default",
       "register_date": "default",
       "company": "default",
-      "password": "12345678"
-    }
-  ],
-  "subscriptions": [
-    {
-      "id": 1,
-      "name": "Basic Subscription",
-      "description": "Limited access"
+      "password": "123",
+      "trial": false
     },
     {
-      "id": 2,
-      "name": "Premium Subscription",
-      "description": "Full access"
-    }
-  ],
-  "subscriptions_users": [
-    {
-      "id": 1,
-      "user_id": 1
+      "id": 3,
+      "username": "test",
+      "first_name": "Jesus",
+      "last_name": "Uribe",
+      "email": "Dentify@gmail.com",
+      "phone": "default",
+      "register_date": "2024-11-08 11:23:07",
+      "company": "Dentify",
+      "password": "12345678",
+      "companyName": "companygaga",
+      "trial": false
     },
     {
-      "id": 2,
-      "user_id": 1
+      "id": 4,
+      "username": "test3",
+      "first_name": "default",
+      "last_name": "default",
+      "email": "test3",
+      "phone": "default",
+      "register_date": "2024-11-11 01:33:23",
+      "company": "test3",
+      "password": "12345678",
+      "trial": true
     }
   ],
   "dentists": [
@@ -111,6 +94,17 @@
       "email": "juan@gmail.com",
       "total_appointments": 0,
       "user_id": 1
+    },
+    {
+      "id": 93476377,
+      "first_name": "Erick",
+      "last_name": "Foremann",
+      "specialty": "Dentist",
+      "experience": 30,
+      "phone": "928356113",
+      "email": "eFor@gmail.com",
+      "total_appointments": 0,
+      "user_id": 3
     }
   ],
   "schedule_dentists": [
@@ -155,26 +149,82 @@
     {
       "id": 1,
       "material_name": "Gloves",
-      "quantity": 100,
+      "quantity": 17,
       "unit_price": 6,
-      "last_updated": "2024-10-30",
+      "last_updated": "2024-11-08",
       "user_id": 1
-    },
-    {
-      "id": 2,
-      "material_name": "Masks",
-      "quantity": 200,
-      "unit_price": 2.5,
-      "last_updated": "2024-01-05",
-      "user_id": 2
     },
     {
       "id": 3,
       "material_name": "Masks",
-      "quantity": 4,
-      "unit_price": 55,
-      "last_updated": "2024-10-30",
+      "quantity": 20,
+      "unit_price": 30,
+      "last_updated": "2024-11-07",
       "user_id": 1
+    },
+    {
+      "id": 4,
+      "material_name": "scalpel",
+      "quantity": 5,
+      "unit_price": 200,
+      "last_updated": "2024-11-08",
+      "user_id": 1
+    },
+    {
+      "id": 5,
+      "material_name": "Dental Burs",
+      "quantity": 13,
+      "unit_price": 20,
+      "last_updated": "2024-11-08",
+      "user_id": 1
+    },
+    {
+      "id": 6,
+      "material_name": "Orthodontic Bracket",
+      "quantity": 6,
+      "unit_price": 300,
+      "last_updated": "2024-11-08",
+      "user_id": 1
+    },
+    {
+      "id": 7,
+      "material_name": "example",
+      "quantity": 10,
+      "unit_price": 10,
+      "last_updated": "2024-11-08",
+      "user_id": 2
+    },
+    {
+      "id": 8,
+      "material_name": "example2",
+      "quantity": 5,
+      "unit_price": 300,
+      "last_updated": "2024-11-08",
+      "user_id": 2
+    },
+    {
+      "id": 9,
+      "material_name": "scalpel",
+      "quantity": 10,
+      "unit_price": 20,
+      "last_updated": "2024-11-08",
+      "user_id": 3
+    },
+    {
+      "id": 10,
+      "material_name": "masks",
+      "quantity": 20,
+      "unit_price": 39,
+      "last_updated": "2024-11-08",
+      "user_id": 3
+    },
+    {
+      "id": 11,
+      "material_name": "Glass",
+      "quantity": 20,
+      "unit_price": 55,
+      "last_updated": "2024-11-08",
+      "user_id": 3
     }
   ],
   "patients": [
@@ -237,6 +287,30 @@
       "birth_date": "2024-10-08T17:47",
       "appointment_id": 2,
       "user_id": 1
+    },
+    {
+      "id": 698538,
+      "clinical_record_id": 488288,
+      "first_name": "Test",
+      "last_name": "Test",
+      "email": "Test@gmail.com",
+      "age": "30",
+      "medical_history": "Test",
+      "birth_date": "2024-11-06T09:54",
+      "appointment_id": 854029,
+      "user_id": 2
+    },
+    {
+      "id": 569003,
+      "clinical_record_id": 598578,
+      "first_name": "Alex",
+      "last_name": "Sanchez",
+      "email": "asan@gmail.com",
+      "age": "30",
+      "medical_history": "Noner",
+      "birth_date": "2024-11-13T12:41",
+      "appointment_id": 404764,
+      "user_id": 3
     }
   ],
   "clinical_records": [
@@ -263,6 +337,22 @@
       "diagnosis": "None",
       "treatment": "None",
       "user_id": 1
+    },
+    {
+      "id": 488288,
+      "medical_history": "Test",
+      "record_date": "2024-11-19T09:54",
+      "diagnosis": "Test",
+      "treatment": "Test",
+      "user_id": 2
+    },
+    {
+      "id": 598578,
+      "medical_history": "Noner",
+      "record_date": "2024-11-13T12:41",
+      "diagnosis": "None",
+      "treatment": "None",
+      "user_id": 3
     }
   ],
   "clinical_exam": [
@@ -326,6 +416,30 @@
       "duration_minutes": 15,
       "payment_id": 4,
       "payment_status": true
+    },
+    {
+      "id": 854029,
+      "dentist_dni": 13579246,
+      "user_id": 2,
+      "appointment_date": "2024-10-29T09:58",
+      "reason": "Test",
+      "completed": false,
+      "reminder_sent": false,
+      "duration_minutes": 10,
+      "payment_id": null,
+      "payment_status": false
+    },
+    {
+      "id": 404764,
+      "dentist_dni": 93476377,
+      "user_id": 3,
+      "appointment_date": "2024-11-05T12:43",
+      "reason": "testing",
+      "completed": true,
+      "reminder_sent": false,
+      "duration_minutes": 10,
+      "payment_id": 5,
+      "payment_status": true
     }
   ],
   "payments": [
@@ -351,40 +465,11 @@
       "amount": null,
       "payment_date": "2024-10-30T18:42:44.295Z",
       "id": 4
-    }
-  ],
-  "payment_methods": [
-    {
-      "id": 1,
-      "name": "Credit Card"
     },
     {
-      "id": 2,
-      "name": "PayPal"
-    }
-  ],
-  "payment_method_relation": [
-    {
-      "id": 1,
-      "payment_method_id": 1
-    },
-    {
-      "id": 2,
-      "payment_method_id": 1
-    },
-    {
-      "id": 3,
-      "payment_method_id": 2
-    }
-  ],
-  "schedules": [
-    {
-      "id": 1,
-      "dentist_dni": 12345678,
-      "weekday": "Monday",
-      "start_time": "09:00",
-      "end_time": "17:00",
-      "user_id": 1
+      "amount": 190,
+      "payment_date": "2024-11-08T17:44:54.782Z",
+      "id": 5
     }
   ],
   "support-message": [

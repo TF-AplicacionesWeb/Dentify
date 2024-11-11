@@ -1,9 +1,24 @@
 <script>
 import changelangComponent from "../changelang.component.vue";
+import {mapGetters} from "vuex";
 
 export default {
   name: "toolbar-home.component",
-  components: {changelangComponent}
+  components: {changelangComponent},
+  computed: {
+    ...mapGetters(['getUser']),
+    username() {
+      return this.getUser;
+    }
+  },
+  data(){
+    return{
+      isTrial: null
+    }
+  },
+  mounted() {
+    this.isTrial = this.username.trial;
+  }
 
 }
 </script>
@@ -46,15 +61,9 @@ export default {
         <i class="pi pi-box mx-1"></i>
         {{ $t('Toolbar.Inventory') }}
       </pv-button>
-      <!--
-      
-      <pv-button class ="mx-3" @click="this.$router.push('/home/reports')">
-        <i class="pi pi-file mx-1"></i>
-        {{ $t('Toolbar.Reports') }}
-      </pv-button>
-      <pv-button class="mx-3" @click="this.$router.push('/home/metrics')">
+      <pv-button v-if="!isTrial" class ="mx-3" @click="this.$router.push('/home/reports')">
         <i class="pi pi-chart-bar mx-1"></i>
-        {{ $t('Toolbar.Metrics') }}
+        {{ $t('Toolbar.Reports') }}
       </pv-button>
 
       -->
