@@ -9,7 +9,8 @@
       "phone": "1234567890",
       "register_date": "2024-01-01",
       "company": "Example Corp",
-      "password": "admin"
+      "password": "admin",
+      "trial": false
     },
     {
       "id": 2,
@@ -20,7 +21,8 @@
       "phone": "default",
       "register_date": "default",
       "company": "default",
-      "password": "123"
+      "password": "123",
+      "trial": false
     },
     {
       "id": 3,
@@ -32,27 +34,20 @@
       "register_date": "2024-11-08 11:23:07",
       "company": "Dentify",
       "password": "12345678",
-      "companyName": "companygaga"
-    }
-  ],
-  "subscriptions": [
-    {
-      "id": 1,
-      "name": "Basic Subscription",
-      "description": "Limited access",
-      "month_duration": 12,
-      "amount": null,
-      "updated_at": null,
-      "user_id": 2
+      "companyName": "companygaga",
+      "trial": false
     },
     {
-      "id": 2,
-      "name": "Premium Subscription",
-      "description": "Full access",
-      "month_duration": 12,
-      "amount": null,
-      "updated_at": null,
-      "user_id": 1
+      "id": 4,
+      "username": "test3",
+      "first_name": "default",
+      "last_name": "default",
+      "email": "test3",
+      "phone": "default",
+      "register_date": "2024-11-11 01:33:23",
+      "company": "test3",
+      "password": "12345678",
+      "trial": true
     }
   ],
   "dentists": [

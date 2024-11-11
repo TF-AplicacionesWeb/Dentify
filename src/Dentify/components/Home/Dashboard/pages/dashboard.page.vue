@@ -1,5 +1,11 @@
 <template>
   <div class="dashboard-container mt-24">
+    <div class="flex justify-center items-center">
+      <div class="dashboard-title" v-if="this.username.trial">Trial Plan</div>
+      <div class="dashboard-title" v-else>Full Plan</div>
+    </div>
+
+
     <h1 class="dashboard-title">Dashboard</h1>
 
     <div class="cards-bar">
@@ -54,7 +60,7 @@
 
 <script>
 import DashboardApiService from '../services/dashboard-api.service.js';
-import { mapGetters } from 'vuex';
+import {mapGetters} from 'vuex';
 
 export default {
   name: "dashboard",
@@ -119,6 +125,7 @@ export default {
   border-radius: 8px;
   text-align: center;
 }
+
 .dashboard-card.info-card {
   border-radius: 0;
 }

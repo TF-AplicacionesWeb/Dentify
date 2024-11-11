@@ -1,6 +1,6 @@
 export class User {
     constructor({id=0, username="", first_name="default", last_name="default",
-                    email="default", phone="default", register_date ="default", company ="default", password = "default"}) {
+                    email="default", phone="default", register_date ="default", company ="default", password = "default", trial = true}) {
         this.id = id;
         this.username = username;
         this.first_name = first_name;
@@ -10,6 +10,7 @@ export class User {
         this.register_date = register_date;
         this.company = company;
         this.password = password;
+        this.trial = trial;
     }
 }
 

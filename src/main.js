@@ -21,6 +21,7 @@ import MeterGroup from "primevue/metergroup";
 import ProgressSpinner from "primevue/progressspinner";
 import Chart from "primevue/chart";
 import Carousel from "primevue/carousel";
+import RadioButton from "primevue/radiobutton";
 
 const app = createApp(App);
 
@@ -43,9 +44,9 @@ app.component('pv-card', Card)
     .component('pv-metergroup', MeterGroup)
     .component('pv-progress-spinner', ProgressSpinner)
     .component('pv-carousel', Carousel)
+    .component('pv-radiobutton', RadioButton)
     .component('Chart', Chart);
 
-;
 
 
 app.mount('#app');

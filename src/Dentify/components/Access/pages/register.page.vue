@@ -11,12 +11,15 @@ export default {
       email:'',
       password:'',
       c_password:'',
-      errorMessage:null
-
+      errorMessage:null,
+      trial: null
     };
   },
   mounted() {
 
+  },
+  updated(){
+    console.log(this.trial);
   },
   methods:{
     goToLogin(){
@@ -34,7 +37,12 @@ export default {
       }
 
       try {
-        const result = await AuthenApiService.register({username:this.username, email:this.email, password:this.password});
+
+        let isTrial = false;
+
+        if (this.trial === "true") isTrial = true;
+
+        const result = await AuthenApiService.register({username:this.username, email:this.email, password:this.password, trial: isTrial});
         if (result.success) {
           alert("Registration Successful");
           this.$router.push('/login');
@@ -82,6 +90,20 @@ export default {
           <label for="confirm-password" class="text-left">{{$t('Access.C_password')}}</label>
           <pv-inputtext type="password" id="confirm-password" class="custom-input cursor-text" v-model="c_password" size="small" toggleMask
                         placeholder="confirm your password"/>
+          <label for="trial" class="text-left">choose plan:</label>
+          <div class="card flex justify-center">
+            <div class="flex flex-wrap gap-4">
+              <div class="flex items-center gap-2">
+                <pv-radiobutton v-model="trial" inputId="trial" name="trial" value="true" />
+                <label for="ingredient1">Trial Plan</label>
+              </div>
+              <div class="flex items-center gap-2">
+                <pv-radiobutton v-model="trial" inputId="FullPlan" name="Full plan" value="false" />
+                <label for="ingredient2">Full Plan</label>
+              </div>
+            </div>
+          </div>
+
 
           <pv-button class="mt-4 button" @click="register">{{$t('Access.SignIn')}}</pv-button>
 
