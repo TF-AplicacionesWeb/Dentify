@@ -22,14 +22,15 @@ export default {
 <template>
   <div v-if="visible" class="overlay">
     <div class="confirmation-card">
-      <p>¿Está seguro de que desea eliminar este producto?</p>
+      <p>{{ $t('deleteProduct.confirmMessage') }}</p>
       <div class="buttons">
-        <button @click="confirm" class="btn-confirm">Sí, eliminar</button>
-        <button @click="close" class="btn-cancel">Cancelar</button>
+        <button @click="confirm" class="btn-confirm">{{ $t('deleteProduct.confirmButton') }}</button>
+        <button @click="close" class="btn-cancel">{{ $t('deleteProduct.cancelButton') }}</button>
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .overlay {

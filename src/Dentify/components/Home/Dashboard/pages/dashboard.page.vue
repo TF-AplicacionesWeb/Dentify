@@ -1,12 +1,11 @@
 <template>
   <div class="dashboard-container mt-24">
     <div class="flex justify-center items-center">
-      <div class="dashboard-title" v-if="this.username.trial">Trial Plan</div>
-      <div class="dashboard-title" v-else>Full Plan</div>
+      <div class="dashboard-title" v-if="this.username.trial">{{ $t('dashboard.trialPlan') }}</div>
+      <div class="dashboard-title" v-else>{{ $t('dashboard.fullPlan') }}</div>
     </div>
 
-
-    <h1 class="dashboard-title">Dashboard</h1>
+    <h1 class="dashboard-title">{{ $t('dashboard.dashboard') }}</h1>
 
     <div class="cards-bar">
       <pv-card
@@ -16,41 +15,41 @@
       >
         <template #content>
           <p>{{ item.material_name }}</p>
-          <p>Cantidad: {{ item.quantity }}</p>
-          <p>Precio Unitario: {{ item.unit_price }}</p>
-          <p>Última actualización: {{ item.last_updated }}</p>
+          <p>{{ $t('dashboard.quantity') }}: {{ item.quantity }}</p>
+          <p>{{ $t('dashboard.unitPrice') }}: {{ item.unit_price }}</p>
+          <p>{{ $t('dashboard.lastUpdated') }}: {{ item.last_updated }}</p>
         </template>
       </pv-card>
     </div>
 
     <div class="appointments-payments-container">
       <div class="appointments">
-        <h2>Citas para hoy</h2>
+        <h2>{{ $t('dashboard.todayAppointments') }}</h2>
         <pv-card
             v-for="appointment in appointments"
             :key="appointment.appointment_id"
             class="dashboard-card appointments-card"
         >
           <template #content>
-            <p>Dentista: {{ appointment.dentist_dni }}</p>
-            <p>Fecha: {{ new Date(appointment.appointment_date).toLocaleDateString() }}</p>
-            <p>Hora: {{ new Date(appointment.appointment_date).toLocaleTimeString() }}</p>
-            <p>Razón: {{ appointment.reason }}</p>
+            <p>{{ $t('dashboard.dentist') }}: {{ appointment.dentist_dni }}</p>
+            <p>{{ $t('dashboard.date') }}: {{ new Date(appointment.appointment_date).toLocaleDateString() }}</p>
+            <p>{{ $t('dashboard.time') }}: {{ new Date(appointment.appointment_date).toLocaleTimeString() }}</p>
+            <p>{{ $t('dashboard.reason') }}: {{ appointment.reason }}</p>
           </template>
         </pv-card>
       </div>
 
       <div class="payments">
-        <h2>Pagos recientes</h2>
+        <h2>{{ $t('dashboard.recentPayments') }}</h2>
         <pv-card
             v-for="payment in payments"
             :key="payment.payment_id"
             class="dashboard-card payments-card"
         >
           <template #content>
-            <p>ID de Pago: {{ payment.id }}</p>
-            <p>Cantidad: {{ payment.amount }}</p>
-            <p>Fecha de Pago: {{ new Date(payment.payment_date).toLocaleDateString() }}</p>
+            <p>{{ $t('dashboard.paymentId') }}: {{ payment.id }}</p>
+            <p>{{ $t('dashboard.amount') }}: {{ payment.amount }}</p>
+            <p>{{ $t('dashboard.paymentDate') }}: {{ new Date(payment.payment_date).toLocaleDateString() }}</p>
           </template>
         </pv-card>
       </div>

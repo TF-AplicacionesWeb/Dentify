@@ -19,21 +19,20 @@ export default {
 <template>
   <div class="overlay">
     <div class="invoice-card p-5 shadow-lg rounded-lg bg-light-blue">
-      <h1 class="text-3xl font-bold mb-4 text-center text-black">Factura</h1>
+      <h1 class="text-3xl font-bold mb-4 text-center text-black">{{ $t('invoice.title') }}</h1>
 
       <div class="invoice-info mb-6">
-
-        <p><strong>Nombre:</strong> {{ invoice.name }}</p>
-        <p><strong>DNI:</strong> {{ invoice.dni }}</p>
-        <p><strong>Fecha:</strong> {{ new Date(invoice.date).toLocaleDateString() }}</p>
-        <p><strong>Hora:</strong> {{ new Date(invoice.date).toLocaleTimeString() }}</p>
+        <p><strong>{{ $t('invoice.name') }}:</strong> {{ invoice.name }}</p>
+        <p><strong>{{ $t('invoice.dni') }}:</strong> {{ invoice.dni }}</p>
+        <p><strong>{{ $t('invoice.date') }}:</strong> {{ new Date(invoice.date).toLocaleDateString() }}</p>
+        <p><strong>{{ $t('invoice.time') }}:</strong> {{ new Date(invoice.date).toLocaleTimeString() }}</p>
       </div>
 
       <table class="w-full mb-4 table-fixed border-collapse border border-gray-300">
         <thead>
         <tr class="bg-sky-950">
-          <th class="border border-gray-300 p-2 text-white px-4 py-2 rounded shadow">Descripción</th>
-          <th class="border border-gray-300 p-2 text-white px-4 py-2 rounded shadow">Monto</th>
+          <th class="border border-gray-300 p-2 text-white px-4 py-2 rounded shadow">{{ $t('invoice.description') }}</th>
+          <th class="border border-gray-300 p-2 text-white px-4 py-2 rounded shadow">{{ $t('invoice.amount') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -46,12 +45,13 @@ export default {
 
       <div class="actions flex justify-center mt-5">
         <button @click.prevent="goBack" class="bg-sky-950 btn bg-dark-blue text-white px-4 py-2 rounded shadow">
-          Regresar a Facturas
+          {{ $t('invoice.goBack') }}
         </button>
       </div>
     </div>
   </div>
 </template>
+
 
 <style scoped>
 .overlay {

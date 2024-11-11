@@ -335,6 +335,18 @@
       "birth_date": "2024-09-09T14:39",
       "appointment_id": null,
       "user_id": 4
+    },
+    {
+      "id": 34780,
+      "clinical_record_id": 531626,
+      "first_name": "Eddie",
+      "last_name": "Guerrero",
+      "email": "eGuerr",
+      "age": "39",
+      "medical_history": "TEST",
+      "birth_date": "2024-10-29T15:54",
+      "appointment_id": null,
+      "user_id": 1
     }
   ],
   "clinical_records": [
@@ -393,6 +405,14 @@
       "diagnosis": "Test",
       "treatment": "Test",
       "user_id": 4
+    },
+    {
+      "id": 531626,
+      "medical_history": "TEST",
+      "record_date": "2024-11-02T15:54",
+      "diagnosis": "TEST",
+      "treatment": "TEST",
+      "user_id": 1
     }
   ],
   "appointments": [

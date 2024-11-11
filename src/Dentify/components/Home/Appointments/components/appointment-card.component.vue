@@ -1,100 +1,99 @@
 <template>
   <div class="bg-[#d1f2eb] min-h-screen mt-28 p-8">
     <div class="flex items-center justify-between mb-8">
-      <h1 class="text-3xl font-bold text-[#082f49]">Appointments</h1>
+      <h1 class="text-3xl font-bold text-[#082f49]">{{ $t('appointments.title') }}</h1>
     </div>
     <div class="flex items-center justify-end mb-8 mx-4">
       <button
           @click="showAddAppointmentModal = true"
           class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33] transition-colors mx-4"
       >
-        Add Appointment
+        {{ $t('appointments.addAppointment') }}
       </button>
 
       <button
           @click="showDeleteAppointmentModal = true"
           class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33] transition-colors"
       >
-        Delete Appointment
+        {{ $t('appointments.deleteAppointment') }}
       </button>
-      </div>
+    </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div
-            v-for="appointment in appointments"
-            :key="appointment.id"
-            class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg border border-[#082f49]"
-        >
-          <h2 class="text-2xl font-semibold text-[#082f49] mb-2">Appointment #{{ appointment.id }}</h2>
-          <p class="text-[#082f49]"><strong>Dentist DNI:</strong> {{ appointment.dentist_dni }}</p>
-          <p class="text-[#082f49]"><strong>Appointment Date:</strong> {{ formatDate(appointment.appointment_date) }}
-          </p>
-          <p class="text-[#082f49]"><strong>Reason:</strong> {{ appointment.reason }}</p>
-          <p class="text-[#082f49]"><strong>Duration:</strong> {{ appointment.duration_minutes }} minutes</p>
-          <p class="text-[#082f49]"><strong>Completed:</strong> {{ appointment.completed ? 'Yes' : 'No' }}</p>
-          <p class="text-[#082f49]"><strong>Reminder Sent:</strong> {{ appointment.reminder_sent ? 'Yes' : 'No' }}</p>
-        </div>
-      </div>
-
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <div
-          v-if="showAddAppointmentModal"
-          class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          v-for="appointment in appointments"
+          :key="appointment.id"
+          class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg border border-[#082f49]"
       >
-        <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-          <h2 class="text-2xl font-semibold text-[#082f49] mb-4">Add New Appointment</h2>
-
-          <form @submit.prevent="addAppointment">
-            <div class="mb-4">
-              <label class="block text-[#082f49] mb-1">Dentist DNI</label>
-              <input v-model="newAppointment.dentist_dni" type="text"
-                     class="w-full border border-gray-300 rounded px-3 py-2" required/>
-            </div>
-            <div class="mb-4">
-              <label class="block text-[#082f49] mb-1">Patient DNI</label>
-              <input v-model="newAppointment.patient_dni" type="text"
-                     class="w-full border border-gray-300 rounded px-3 py-2" required/>
-            </div>
-            <div class="mb-4">
-              <label class="block text-[#082f49] mb-1">Appointment Date</label>
-              <input v-model="newAppointment.appointment_date" type="datetime-local"
-                     class="w-full border border-gray-300 rounded px-3 py-2" required/>
-            </div>
-            <div class="mb-4">
-              <label class="block text-[#082f49] mb-1">Reason</label>
-              <input v-model="newAppointment.reason" type="text" class="w-full border border-gray-300 rounded px-3 py-2"
-                     required/>
-            </div>
-            <div class="mb-4">
-              <label class="block text-[#082f49] mb-1">Duration (minutes)</label>
-              <input v-model="newAppointment.duration_minutes" type="number"
-                     class="w-full border border-gray-300 rounded px-3 py-2" required/>
-            </div>
-            <div class="flex justify-end">
-              <button
-                  type="button"
-                  @click="showAddAppointmentModal = false"
-                  class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2"
-              >
-                Cancel
-              </button>
-              <button type="submit" class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33]">
-                Save
-              </button>
-            </div>
-          </form>
-        </div>
+        <h2 class="text-2xl font-semibold text-[#082f49] mb-2">{{ $t('appointments.appointmentNumber') }} {{ appointment.id }}</h2>
+        <p class="text-[#082f49]"><strong>{{ $t('appointments.dentistDni') }}:</strong> {{ appointment.dentist_dni }}</p>
+        <p class="text-[#082f49]"><strong>{{ $t('appointments.appointmentDate') }}:</strong> {{ formatDate(appointment.appointment_date) }}</p>
+        <p class="text-[#082f49]"><strong>{{ $t('appointments.reason') }}:</strong> {{ appointment.reason }}</p>
+        <p class="text-[#082f49]"><strong>{{ $t('appointments.duration') }}:</strong> {{ appointment.duration_minutes }} {{ $t('appointments.minutes') }}</p>
+        <p class="text-[#082f49]"><strong>{{ $t('appointments.completed') }}:</strong> {{ appointment.completed ? $t('appointments.yes') : $t('appointments.no') }}</p>
+        <p class="text-[#082f49]"><strong>{{ $t('appointments.reminderSent') }}:</strong> {{ appointment.reminder_sent ? $t('appointments.yes') : $t('appointments.no') }}</p>
       </div>
+    </div>
+
+    <div
+        v-if="showAddAppointmentModal"
+        class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+    >
+      <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+        <h2 class="text-2xl font-semibold text-[#082f49] mb-4">{{ $t('appointments.addNewAppointment') }}</h2>
+
+        <form @submit.prevent="addAppointment">
+          <div class="mb-4">
+            <label class="block text-[#082f49] mb-1">{{ $t('appointments.dentistDni') }}</label>
+            <input v-model="newAppointment.dentist_dni" type="text"
+                   class="w-full border border-gray-300 rounded px-3 py-2" required/>
+          </div>
+          <div class="mb-4">
+            <label class="block text-[#082f49] mb-1">{{ $t('appointments.patientDni') }}</label>
+            <input v-model="newAppointment.patient_dni" type="text"
+                   class="w-full border border-gray-300 rounded px-3 py-2" required/>
+          </div>
+          <div class="mb-4">
+            <label class="block text-[#082f49] mb-1">{{ $t('appointments.appointmentDate') }}</label>
+            <input v-model="newAppointment.appointment_date" type="datetime-local"
+                   class="w-full border border-gray-300 rounded px-3 py-2" required/>
+          </div>
+          <div class="mb-4">
+            <label class="block text-[#082f49] mb-1">{{ $t('appointments.reason') }}</label>
+            <input v-model="newAppointment.reason" type="text" class="w-full border border-gray-300 rounded px-3 py-2"
+                   required/>
+          </div>
+          <div class="mb-4">
+            <label class="block text-[#082f49] mb-1">{{ $t('appointments.duration') }} ({{ $t('appointments.minutes') }})</label>
+            <input v-model="newAppointment.duration_minutes" type="number"
+                   class="w-full border border-gray-300 rounded px-3 py-2" required/>
+          </div>
+          <div class="flex justify-end">
+            <button
+                type="button"
+                @click="showAddAppointmentModal = false"
+                class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2"
+            >
+              {{ $t('appointments.cancel') }}
+            </button>
+            <button type="submit" class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33]">
+              {{ $t('appointments.save') }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <div
         v-if="showDeleteAppointmentModal"
         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
     >
       <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
-        <h2 class="text-2xl font-semibold text-[#082f49] mb-4">Delete Appointment</h2>
+        <h2 class="text-2xl font-semibold text-[#082f49] mb-4">{{ $t('appointments.deleteAppointment') }}</h2>
 
         <form @submit.prevent="deleteAppointment">
           <div class="mb-4">
-            <label class="block text-[#082f49] mb-1">Insert ID Appointment </label>
+            <label class="block text-[#082f49] mb-1">{{ $t('appointments.insertId') }}</label>
             <input v-model="idAppointment" type="text"
                    class="w-full border border-gray-300 rounded px-3 py-2" required/>
           </div>
@@ -104,16 +103,16 @@
                 @click="showDeleteAppointmentModal = false"
                 class="bg-gray-300 text-gray-800 px-4 py-2 rounded mr-2"
             >
-              Cancel
+              {{ $t('appointments.cancel') }}
             </button>
             <button type="submit" class="bg-[#082f49] text-white px-4 py-2 rounded hover:bg-[#061f33]">
-              Delete
+              {{ $t('appointments.delete') }}
             </button>
           </div>
         </form>
       </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>

@@ -1,60 +1,60 @@
 <template>
   <div v-if="report" class="inventory-report mt-24">
-    <h1 class="justify-center text-center title">Reporte de Inventario</h1>
+    <h1 class="justify-center text-center title">{{ $t('reports.inventoryReport') }}</h1>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
       <pv-card class="pv-card flex items-center justify-center">
         <template #content>
-          <h3>Precio Unitario Promedio:</h3>
+          <h3>{{ $t('reports.averageUnitPrice') }}:</h3>
           <p>{{ report.averageUnitPrice || 0 }}</p>
         </template>
       </pv-card>
 
       <pv-card class="pv-card flex items-center justify-center">
         <template #content>
-          <h3>Precio Mínimo:</h3>
+          <h3>{{ $t('reports.minPrice') }}:</h3>
           <p>{{ report.minPrice || 0 }}</p>
         </template>
       </pv-card>
 
       <pv-card class="pv-card flex items-center justify-center">
         <template #content>
-          <h3>Precio Máximo:</h3>
+          <h3>{{ $t('reports.maxPrice') }}:</h3>
           <p>{{ report.maxPrice || 0 }}</p>
         </template>
       </pv-card>
 
       <pv-card class="pv-card flex items-center justify-center">
         <template #content>
-          <h3>Cantidad Total:</h3>
+          <h3>{{ $t('reports.totalQuantity') }}:</h3>
           <p>{{ report.totalQuantity || 0 }}</p>
         </template>
       </pv-card>
 
       <pv-card class="pv-card flex items-center justify-center">
         <template #content>
-          <h3>Promedio por Producto:</h3>
+          <h3>{{ $t('reports.averagePerProduct') }}:</h3>
           <p>{{ report.averagePerProduct || 0 }}</p>
         </template>
       </pv-card>
 
       <pv-card class="pv-card flex items-center justify-center">
         <template #content>
-          <h3>Producto con Mayor Cantidad:</h3>
+          <h3>{{ $t('reports.mostProduct') }}:</h3>
           <p>{{ report.mostProduct?.name || 'N/A' }} ({{ report.mostProduct?.quantity || 0 }})</p>
         </template>
       </pv-card>
 
       <pv-card class="pv-card flex items-center justify-center">
         <template #content>
-          <h3>Producto con Menor Cantidad:</h3>
+          <h3>{{ $t('reports.minProduct') }}:</h3>
           <p>{{ report.minProduct?.name || 'N/A' }} ({{ report.minProduct?.quantity || 0 }})</p>
         </template>
       </pv-card>
 
       <pv-card class="pv-card flex items-center justify-center">
         <template #content>
-          <h3>Valor Total de Inventario:</h3>
+          <h3>{{ $t('reports.totalInventoryValue') }}:</h3>
           <p>{{ report.totalValueInventory || 0 }}</p>
         </template>
       </pv-card>
@@ -70,6 +70,7 @@
     </div>
   </div>
 </template>
+
 
 <script>
 import {mapGetters} from "vuex";
