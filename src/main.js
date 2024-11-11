@@ -45,7 +45,7 @@ app.component('pv-card', Card)
     .component('pv-progress-spinner', ProgressSpinner)
     .component('pv-carousel', Carousel)
     .component('pv-radiobutton', RadioButton)
-    .component('Chart', Chart);
+    .component('Chart', Chart)
     .component('pv-Dropdown', Dropdown);
 
 

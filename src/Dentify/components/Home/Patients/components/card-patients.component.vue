@@ -7,6 +7,7 @@ export default {
   data(){
     return {
       patients: [],
+      clinicalRecords: [],
       errorMessage: null,
     };
   },
@@ -22,7 +23,25 @@ export default {
     try {
       this.patients = await sInstance.getData(this.userLogged.id);
 
-      }catch(error){
+      this.clinicalRecords = await sInstance.getClinicalRecordsByUserId(this.userLogged.id);
+
+
+
+    }catch(error){
+      console.error("Error", error);
+      this.errorMessage = "Failed save names"
+    }
+
+
+  },
+  async updated(){
+    const sInstance = new PatientsService();
+    try {
+      this.patients = await sInstance.getData(this.userLogged.id);
+
+      this.clinicalRecords = await sInstance.getClinicalRecordsByUserId(this.userLogged.id);
+
+    }catch(error){
       console.error("Error", error);
       this.errorMessage = "Failed save names"
     }
@@ -41,12 +60,24 @@ export default {
       </div>
     </template>
     <template #content>
-      <pv-toolbar class="py-8 bg-[#D1F2EB] rounded-b-2xl">
-        <template #start class="toolbar-content">
-          <pv-button class="mx-10">{{$t('Patients.Personal_doc')}}</pv-button>
-          <pv-button class="mx-10">{{$t('Patients.Misc_doc')}}</pv-button>
-        </template>
-      </pv-toolbar>
+      <div class="py-8 bg-[#D1F2EB] rounded-b-2xl">
+        <p class="text-black px-5">DNI: {{patient.id}}</p>
+        <div>
+          <h3 class="text-black px-5">Clinical Records:</h3>
+          <ul>
+            <li
+                v-for="record in clinicalRecords.filter(record => record.id === patient.clinical_record_id)"
+                :key="record.id"
+                class="text-black px-5"
+            >
+              <!-- Muestra los datos de cada registro clínico según sea necesario -->
+              <p>Fecha: {{ record.record_date }} </p>
+              <p>Diagnóstico: {{ record.diagnosis }} - Tratamiento: {{record.treatment}}</p>
+              <p>Historial Médico: {{record.medical_history}}</p>
+            </li>
+          </ul>
+        </div>
+      </div>
     </template>
   </pv-card>
 </div>
