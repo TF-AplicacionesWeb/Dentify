@@ -7,7 +7,7 @@ export class InventoryService extends BaseService {
     }
 
     async getInventory(userId = null) {
-        const products = await this.getAll('inventory');
+        const products = await this.getAll('inventory') || [];
 
         return products
             .filter(product => product && (!userId || product.user_id === userId))
@@ -17,7 +17,7 @@ export class InventoryService extends BaseService {
         return await this.create('inventory', product);
     }
     async updateProduct(id,product) {
-        return await this.update('inventory', id, product);
+        return await this.patch('inventory', id, product);
     }
 
     async deleteProduct(id) {
