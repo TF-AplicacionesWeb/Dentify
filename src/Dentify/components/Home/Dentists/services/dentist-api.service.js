@@ -10,6 +10,7 @@ export class DentistApiService extends BaseService{
     static async getData(user_id) {
         const serviceInstance = new DentistApiService();
         const dentistsData = await serviceInstance.getAll('dentists');
+        console.log(dentistsData);
         const filteredDentists = dentistsData.filter(dentistData => Number(dentistData.user_id) === Number(user_id));
         return filteredDentists.map(dentistData => new Dentist(dentistData));
     }
