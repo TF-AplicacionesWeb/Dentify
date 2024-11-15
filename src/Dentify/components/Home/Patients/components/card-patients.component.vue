@@ -19,32 +19,25 @@ export default {
     }
   },
   async mounted(){
-    const sInstance = new PatientsService();
-    try {
-      this.patients = await sInstance.getData(this.userLogged.id);
-
-      this.clinicalRecords = await sInstance.getClinicalRecordsByUserId(this.userLogged.id);
-
-
-
-    }catch(error){
-      console.error("Error", error);
-      this.errorMessage = "Failed save names"
-    }
-
+    await this.refreshData();
 
   },
-  async updated(){
-    const sInstance = new PatientsService();
-    try {
-      this.patients = await sInstance.getData(this.userLogged.id);
+  methods: {
+    async refreshData(){
+      const sInstance = new PatientsService();
+      try {
+        this.patients = await sInstance.getData(this.userLogged.id);
 
-      this.clinicalRecords = await sInstance.getClinicalRecordsByUserId(this.userLogged.id);
+        this.clinicalRecords = await sInstance.getClinicalRecordsByUserId(this.userLogged.id);
 
-    }catch(error){
-      console.error("Error", error);
-      this.errorMessage = "Failed save names"
+
+
+      }catch(error){
+        console.error("Error", error);
+        this.errorMessage = "Failed save names"
+      }
     }
+
   }
 
 }
