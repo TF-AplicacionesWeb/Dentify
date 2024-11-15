@@ -162,6 +162,7 @@ export default {
         appointment_date: this.newAppointment.appointment_date,
         reason: this.newAppointment.reason,
         duration_minutes: this.newAppointment.duration_minutes,
+        payment_id: 0
       };
 
 

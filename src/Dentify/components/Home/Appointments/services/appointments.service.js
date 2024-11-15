@@ -64,7 +64,19 @@ export class AppointmentsService extends BaseService {
 
         const patientToUpdate = await this.getById('patients', patientDni);
 
-        // Crear la cita
+
+        //Crea el pago
+        const paymentData = {
+            amount: 0,
+            payment_date: new Date().toISOString(),
+            user_id: patientToUpdate.user_id, //user_id del patient como referencia
+        }
+
+        const newPayment = await this.create('payments', paymentData);
+
+        // Crear la cita y settea el payment_id del parametro dado con el id del nuevo payment generado
+        appointmentData.payment_id = newPayment.id;
+
         const AppointmentCreated = await this.create('appointments', appointmentData);
 
         const dataPatientToUpdate = {
