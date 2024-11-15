@@ -156,19 +156,13 @@ export default {
     async addAppointment() {
       const service = new AppointmentsService();
 
-      const randomId = Math.floor(Math.random() * 1000000);
-
       const appointmentData = {
-        id: randomId,
         dentist_dni: parseInt(this.newAppointment.dentist_dni),
         user_id: this.username.id,
         appointment_date: this.newAppointment.appointment_date,
         reason: this.newAppointment.reason,
-        completed: false,
-        reminder_sent: false,
         duration_minutes: this.newAppointment.duration_minutes,
-        payment_id: null,
-        payment_status: false,
+        payment_id: 0
       };
 
 

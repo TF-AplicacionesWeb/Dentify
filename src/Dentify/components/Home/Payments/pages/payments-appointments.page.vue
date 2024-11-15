@@ -37,20 +37,14 @@ export default {
       const paymentsService = new PaymentsService();
 
       try {
-        const paymentData = {
+        const newPaymentData = {
           amount: parseInt(this.amount),
-          payment_date: new Date().toISOString()
+          payment_date: new Date().toISOString(),
+          user_id: this.userLogged.id,
 
         };
 
-        const paymentId = await paymentsService.createPayment(paymentData);
-
-        await paymentsService.updateAppointmentStatus(appointmentId, {
-          payment_status: true,
-          payment_id: paymentId,
-          completed: true
-
-        });
+        await paymentsService.updatePayment(newPaymentData, this.userLogged.id, appointmentId);
 
         const appointmentIndex = this.pendingPayments.findIndex(p => p.id === appointmentId);
         if (appointmentIndex !== -1) {

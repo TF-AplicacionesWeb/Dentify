@@ -30,14 +30,14 @@ export default {
     }
   },
   created() {
+    this.userId = this.userLogged.id;
+    console.log(this.userLogged.id);
     this.getData();
   },
   methods: {
     async getData() {
       try {
         this.dentists = await DentistApiService.getData(this.userLogged.id);
-        this.userId = this.userLogged.id;
-        console.log(this.dentists);
       } catch (error) {
         console.error("Error loading dentists:", error);
       }
@@ -67,7 +67,7 @@ export default {
       this.isEditing = true;
     },
     openCreatePersonalProfile() {
-      this.dentistId = null;
+      this.dentistId = 0;
       this.showPersonalProfile = true;
       this.isEditing = false;
       this.isCreating = true;

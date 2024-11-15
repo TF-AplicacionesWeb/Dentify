@@ -12,6 +12,10 @@ export class PatientsService extends BaseService {
         try {
 
             const patients = await sInstance.getAll('patients');
+            if (!Array.isArray(patients)) {
+                console.warn("Expected 'patients' to be an array, but got:", patients);
+                return [];
+            }
 
             const filteredPatients = patients.filter(pData => pData.user_id === user_id);
 

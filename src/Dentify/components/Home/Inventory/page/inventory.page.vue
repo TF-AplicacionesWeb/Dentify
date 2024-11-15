@@ -31,19 +31,23 @@ export default {
     }
   },
   async created() {
-    try {
-      const inventoryService = new InventoryService();
-      if (!this.userLogged || !this.userLogged.id) {
-        console.error("El usuario no está definido o no tiene un ID.");
-        return;
-      }
-      this.allProducts = await inventoryService.getInventory(this.userLogged.id);
-      console.log("Inventario cargado:", this.allProducts);
-    } catch (error) {
-      console.error("Error al cargar productos:", error);
-    }
+    await this.getInventoryData();
   },
   methods: {
+
+    async getInventoryData(){
+      try {
+        const inventoryService = new InventoryService();
+        if (!this.userLogged || !this.userLogged.id) {
+          console.error("El usuario no está definido o no tiene un ID.");
+          return;
+        }
+        this.allProducts = await inventoryService.getInventory(this.userLogged.id);
+        console.log("Inventario cargado:", this.allProducts);
+      } catch (error) {
+        console.error("Error al cargar productos:", error);
+      }
+    },
 
     setProductSelection(product) {
       this.productSelection = this.productSelection === product ? null : product;

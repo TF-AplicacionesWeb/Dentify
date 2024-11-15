@@ -26,6 +26,11 @@
 
       <form @submit.prevent="addPatient" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="mb-4">
+          <label class="block text-[#082f49] mb-1">DNI</label>
+          <pv-inputtext v-model="newPatient.dni" placeholder="dni" required
+                        class="w-full border border-gray-300 rounded px-3 py-2"/>
+        </div>
+        <div class="mb-4">
           <label class="block text-[#082f49] mb-1">{{ $t('mainPatient.firstName') }}</label>
           <pv-inputtext v-model="newPatient.first_name" :placeholder="$t('mainPatient.firstName')" required
                         class="w-full border border-gray-300 rounded px-3 py-2"/>
@@ -135,10 +140,12 @@ export default {
   components: {cardPatientsComponent},
   data() {
     return {
+      dniPatient: null,
+      addDni: null,
       showAddPatientModal: false,
       showDeletePatientModal: false,
-      dniPatient: null,
       newPatient: {
+        id: 0,
         first_name: "",
         last_name: "",
         email: "",
@@ -156,29 +163,9 @@ export default {
 
       const service = new PatientsService();
 
-      const randomId = Math.floor(Math.random() * 1000000);
-
-      let clinicalRecordId;
-      do {
-        clinicalRecordId = Math.floor(Math.random() * 1000000);
-      } while (clinicalRecordId === randomId);
-
-      const patientData = {
-        id: randomId,
-        clinical_record_id: clinicalRecordId,
-        first_name: this.newPatient.first_name,
-        last_name: this.newPatient.last_name,
-        email: this.newPatient.email,
-        age: this.newPatient.age,
-        medical_history: this.newPatient.medical_history,
-        birth_date: this.newPatient.birth_date,
-        appointment_id: null,
-        user_id: this.username.id,
-      };
-
 
       const clinical_record_Data = {
-        id: patientData.clinical_record_id,
+        id: 0,
         medical_history: this.newPatient.medical_history,
         record_date: this.newPatient.record_date,
         diagnosis: this.newPatient.diagnosis,
@@ -186,9 +173,26 @@ export default {
         user_id: this.username.id,
       }
 
+      const clinicalRec = await service.addClinicalRecord(clinical_record_Data);
+      const clinicalRecordId = clinicalRec.id;
+
+      const patientData = {
+        id: parseInt(this.newPatient.dni),
+        clinical_record_id: clinicalRecordId,
+        first_name: this.newPatient.first_name,
+        last_name: this.newPatient.last_name,
+        email: this.newPatient.email,
+        age: parseInt(this.newPatient.age),
+        medical_history: this.newPatient.medical_history,
+        birth_date: this.newPatient.birth_date,
+        appointment_id: null,
+        user_id: this.username.id,
+      };
+
+      console.log(patientData);
 
       await service.addPatient(patientData);
-      await service.addClinicalRecord(clinical_record_Data);
+
 
       this.showAddPatientModal = false;
       this.newPatient = {
@@ -219,7 +223,8 @@ export default {
         console.error("Error en deletePatient:", error);
 
       }
-    }
+    },
+
   },
 };
 </script>

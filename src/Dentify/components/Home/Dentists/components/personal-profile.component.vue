@@ -39,7 +39,7 @@ export default {
     }
   },
   async mounted() {
-    if(this.id != null) {
+    if(this.isEditing && this.id != null) {
       try {
         this.dentist = await DentistApiService.getDentistById(this.id);
         this.loadDentist();
