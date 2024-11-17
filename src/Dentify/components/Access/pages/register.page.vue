@@ -18,9 +18,6 @@ export default {
   mounted() {
 
   },
-  updated(){
-    console.log(this.trial);
-  },
   methods:{
     goToLogin(){
       this.$router.push("/login");

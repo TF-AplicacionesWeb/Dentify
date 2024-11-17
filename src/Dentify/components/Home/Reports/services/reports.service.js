@@ -66,7 +66,9 @@ export class ReportsService extends BaseService {
         const inventory = await this.getAll('inventory');
 
         let allProducts = [];
-
+        if (!Array.isArray(inventory)) {
+            return [];
+        }
         let data = inventory.filter(response => response && (!userId || response.user_id === userId));
 
 

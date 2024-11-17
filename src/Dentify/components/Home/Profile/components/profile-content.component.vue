@@ -38,9 +38,24 @@ export default {
     async updateCompanyName(){
       const service = new ProfileApiService();
       try {
-        await service.updateCompany(this.userLogged.id, {company: this.nameCompany});
+
+        const updatedProfile = {
+          username: this.userLogged.username,
+          first_name: this.userLogged.first_name,
+          last_name: this.userLogged.last_name,
+          email: this.userLogged.email,
+          phone: this.userLogged.phone,
+          company: this.nameCompany,
+          password: this.userLogged.password,
+          trial: this.userLogged.trial
+        };
+
+        await service.updateCompany(this.userLogged.id, updatedProfile);
+
+
         this.profile.company = this.nameCompany;
         this.showModal = false;
+
       } catch (error) {
         console.error("Error updating profile:", error);
       }

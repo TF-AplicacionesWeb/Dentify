@@ -62,11 +62,37 @@ export class AppointmentsService extends BaseService {
             throw new Error(`Patient with DNI ${patientDni} does not exist for the specified user.`);
         }
 
-        //Añade el id de la cita al paciente correspondiente
-        await this.update('patients', patientDni ,{ appointment_id: appointmentData.id });
+        const patientToUpdate = await this.getById('patients', patientDni);
 
-        // Crear la cita
-        return this.create('appointments', appointmentData);
+
+        //Crea el pago
+        const paymentData = {
+            amount: 0,
+            payment_date: new Date().toISOString(),
+            user_id: patientToUpdate.user_id, //user_id del patient como referencia
+        }
+
+        const newPayment = await this.create('payments', paymentData);
+
+        // Crear la cita y settea el payment_id del parametro dado con el id del nuevo payment generado
+        appointmentData.payment_id = newPayment.id;
+
+        const AppointmentCreated = await this.create('appointments', appointmentData);
+
+        const dataPatientToUpdate = {
+            clinical_record_id: patientToUpdate.clinical_record_id,
+            first_name: patientToUpdate.first_name,
+            last_name: patientToUpdate.last_name,
+            email: patientToUpdate.email,
+            age: patientToUpdate.age,
+            medical_history: patientToUpdate.medical_history,
+            birth_date: patientToUpdate.birth_date,
+            appointment_id: AppointmentCreated.id,
+            user_id: patientToUpdate.user_id
+        }
+
+        //Añade el id de la cita al paciente correspondiente
+        await this.update('patients', patientDni ,dataPatientToUpdate);
 
     }
 
